@@ -9,6 +9,8 @@ gem 'pg'
 gem 'mongrel'
 gem 'devise'
 gem 'json'
+gem 'taps'
+gem 'mysql'
 
 # Use unicorn as the web server
 # gem 'unicorn'
