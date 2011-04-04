@@ -1,0 +1,17 @@
+<table>
+<% for chart in @charts %>
+	<tr>
+		<td><%= chart.name %></td>
+		<td></td>
+		<td><%= chart.publish_date %></td>
+	</tr>
+	<% chart.songs.each_with_index do |song,i| %>
+		<tr>
+			<td><%= i %></td>
+			<td><%= "#{song.name} (#{song.mix_name}) - #{song.artist}" %></td>
+			<td></td>
+		</tr>
+	<% end %>
+<% end %>
+</table>			
+	
