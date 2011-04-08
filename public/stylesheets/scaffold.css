@@ -1,13 +1,11 @@
 body { 
 	color: #666; 
 	font-family: Century Gothic; 
-	line-height: 1.4;
 }
 
 body, p, ol, ul, td {
   font-family: Century Gothic;
   font-size:   13px;
-  line-height: 18px;
 }
 
 pre {

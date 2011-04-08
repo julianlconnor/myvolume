@@ -1,24 +1,33 @@
-<h1>Welcome to myvolu.me</h1>
 <div id="wrapper">
+	<h1>Welcome to myvolu.me</h1>
 	<audio preload="none"></audio>
-	<% for chart in @charts %>
-	<h1><%= chart.name %> ~ <em><%= chart.publish_date.to_date.to_formatted_s(:long_ordinal) %></em></h1> 
-	<ol>
-		<% chart.songs.each_with_index do |song,i| %>
-		<li>
-			<span>
-				<div class="song_title">
-					<a href="#" data-src="<%= song.sample_url %>"><%= "#{song.name} (#{song.mix_name})" %></a>
-				</div>
-				<div class="song_artist">
-					<%= "#{song.artist}"%>
-				</div>
-			</span>
-			<!-- <div><%= link_to "Download using Google", "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+site:zippyshare.com" %> -->
-		</li> 
+	<div id="charts">
+		<% for chart in @charts %>
+		<header>
+			<h1 id="<%= chart.id %>" style="background: url(<%= chart.chart_thumbnail.medium %>) no-repeat no-repeat; background-position:0 50%;">
+				<div><%= chart.name %></div>
+				<div><em><%= chart.publish_date.to_date.to_formatted_s(:long_ordinal) %></em></div>
+			</h1> 
+		</header>
+		<ul class="<%= chart.id %>" style="display:none;">
+			<% chart.songs.each_with_index do |song,i| %>
+				<% if !song.song_thumbnail.nil? %>
+					<li style="background: url(<%= song.song_thumbnail.small %>) no-repeat no-repeat; background-position: 7% 50%;">
+				<% else %>
+					<li>
+				<% end %>
+				<span class="track_info">
+						<a href="#" data-src="<%= song.sample_url %>"><%= "#{song.name} (#{song.mix_name})" %></a>
+						<br/>
+						<span><%= "#{song.artist}"%></span>
+				</span>	
+			
+					<!-- <div><%= link_to "Download using Google", "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+site:zippyshare.com" %> -->	
+				</li> 
+			<% end %>
+		</ul>
 		<% end %>
-	</ol>
-	<% end %> 
+	</div>
 </div>
 
 <script>
@@ -26,7 +35,7 @@
 	     // Setup the player to autoplay the next track
 	     var a = audiojs.createAll({
 	       trackEnded: function() {
-	         var next = $('ol li.playing').next();
+	         var next = $('ul li.playing').next();
 	         if (!next.length) next = $('ol li').first();
 	         next.addClass('playing').siblings().removeClass('playing');
 	         audio.load($('a', next).attr('data-src'));
@@ -36,12 +45,18 @@
      
 	     // Load in the first track
 	     var audio = a[0];
-	         first = $('ol a').attr('data-src');
-	     $('ol li').first().addClass('playing');
+	         first = $('ul a').attr('data-src');
+	     $('ul li').first().addClass('playing');
 	     audio.load(first);
 
+		 // Expand a playlist on header click
+		$('h1').click(function(e) {
+			var chart_id = $(this).attr("id");
+			$("." + chart_id).slideToggle("slow");
+		});
+
 	     // Load in a track on click
-	     $('ol li').click(function(e) {
+	     $('ul li').click(function(e) {
 	       e.preventDefault();
 		   $(".playing").removeClass('playing');
 	       $(this).addClass('playing').siblings().removeClass('playing');
@@ -54,12 +69,12 @@
 	          // right arrow
 	       if (unicode == 39) {
 	         var next = $('li.playing').next();
-	         if (!next.length) next = $('ol li').first();
+	         if (!next.length) next = $('ul li').first();
 	         next.click();
 	         // back arrow
 	       } else if (unicode == 37) {
 	         var prev = $('li.playing').prev();
-	         if (!prev.length) prev = $('ol li').last();
+	         if (!prev.length) prev = $('ul li').last();
 	         prev.click();
 	         // spacebar
 	       } else if (unicode == 32) {
