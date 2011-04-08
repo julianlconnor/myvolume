@@ -1,10 +1,11 @@
 <div id="wrapper">
+	<span>Only working in chrome atm :(</span>
 	<h1>Welcome to myvolu.me</h1>
 	<audio preload="none"></audio>
 	<div id="charts">
 		<% for chart in @charts %>
 		<header>
-			<h1 id="<%= chart.id %>" style="background: url(<%= chart.chart_thumbnail.medium %>) no-repeat no-repeat; background-position:0 50%;">
+			<h1 id="<%= chart.id %>" style="background-image: url(<%= chart.chart_thumbnail.medium %>); background-repeat: no-repeat; background-position: 0 50%;">
 				<div><%= chart.name %></div>
 				<div><em><%= chart.publish_date.to_date.to_formatted_s(:long_ordinal) %></em></div>
 			</h1> 
@@ -12,17 +13,18 @@
 		<ul class="<%= chart.id %>" style="display:none;">
 			<% chart.songs.each_with_index do |song,i| %>
 				<% if !song.song_thumbnail.nil? %>
-					<li style="background: url(<%= song.song_thumbnail.small %>) no-repeat no-repeat; background-position: 7% 50%;">
+					<li style="background-image: url(<%= song.song_thumbnail.small %>); background-repeat: no-repeat; background-position: 7% 50%;">
 				<% else %>
 					<li>
 				<% end %>
-				<span class="track_info">
+				<div class="track_info">
+					<div>
 						<a href="#" data-src="<%= song.sample_url %>"><%= "#{song.name} (#{song.mix_name})" %></a>
-						<br/>
-						<span><%= "#{song.artist}"%></span>
-				</span>	
+					</div>
+					<div><%= "#{song.artist}"%></div>
+				</div>
 			
-					<!-- <div><%= link_to "Download using Google", "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+site:zippyshare.com" %> -->	
+					<!-- <div><%= link_to "Download using Google", "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+site:zippyshare.com" %></div> -->
 				</li> 
 			<% end %>
 		</ul>

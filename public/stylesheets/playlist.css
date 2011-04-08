@@ -1,6 +1,6 @@
 body { 
 	color: #444751; 
-	font-family: Century Gothic; 
+	font-family: 'Century Gothic', 'lucida grande', 'lucida sans', 'bitstream vera sans', 'verdana'; 
 	line-height: 1.4; 
 }
 img {
@@ -33,8 +33,7 @@ a {
 ul {
 	padding: 0px;
 	margin: 0px;
-	/*list-style: decimal-leading-zero inside;*/
-	list-style: none;
+	list-style: decimal-leading-zero outside;
 	color: #ccc;
 	width: 460px;
 	border-top: 1px solid #ccc;
@@ -69,7 +68,7 @@ li.playing:before {
 	font-size: 13px; 
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); 
 }
-ul li span.track_info {
+ul li div.track_info {
 	padding: 0 0 0 68px;
 }
 

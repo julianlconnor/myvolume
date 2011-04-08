@@ -21,6 +21,21 @@
 </body>
 </html>
 <script>
-    var as = audiojs.createAll();
+	if ($.browser.mozilla) {
+		alert("mozils");
+		audiojs.events.ready(function() {
+		    var as = audiojs.createAll();
+		  });
+	  }
+	else if ($.browser.webkit) {
+		var as = audiojs.createAll();
+	}
+	else {
+		audiojs.events.ready(function() {
+		    var as = audiojs.createAll();
+		  });
+	}
+
+var as = audiojs.createAll();
 </script>
 
