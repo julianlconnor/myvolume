@@ -1,54 +1,78 @@
-<div id="wrapper">
-	<span>Only working in chrome atm :(</span>
-	<h1>Welcome to myvolu.me</h1>
-	<audio preload="none"></audio>
-	<div id="charts">
-		<% for chart in @charts %>
-		<header>
-			<h1 id="<%= chart.id %>" style="background-image: url(<%= chart.chart_thumbnail.medium %>); background-repeat: no-repeat; background-position: 0 50%;">
-				<div><%= chart.name %></div>
-				<div><em><%= chart.publish_date.to_date.to_formatted_s(:long_ordinal) %></em></div>
-			</h1> 
-		</header>
-		<ul class="<%= chart.id %>" style="display:none;">
-			<% chart.songs.each_with_index do |song,i| %>
-				<% if !song.song_thumbnail.nil? %>
-					<li style="background-image: url(<%= song.song_thumbnail.small %>); background-repeat: no-repeat; background-position: 7% 50%;">
-				<% else %>
-					<li>
-				<% end %>
-				<div class="track_info">
-					<div>
-						<a href="#" data-src="<%= song.sample_url %>"><%= "#{song.name} (#{song.mix_name})" %></a>
+<div id="body_container">
+	<div id="player_wrapper">
+		<div id="player_fixed">
+			<audio preload="none"></audio>
+			<ol id="player_playlist">
+			</ol>
+		</div>
+	</div>
+	<div id="content_wrapper">
+		<span>myvolu.me beta v 1.0 ~ Only working in chrome atm :( </span>
+		<h1>Welcome to myvolu.me</h1>
+		<div id="charts">
+			<% for chart in @charts %>
+			<header>
+				<h1 id="<%= chart.id %>" style="background-image: url(<%= chart.chart_thumbnail.medium %>); background-repeat: no-repeat; background-position: 0 50%;">
+					<div><%= chart.name %></div>
+					<div><em><%= chart.publish_date.to_date.to_formatted_s(:long_ordinal) %></em></div>
+				</h1> 
+			</header>
+			<ul class="<%= chart.id %>" style="display:none;">
+				<% chart.songs.each_with_index do |song,i| %>
+					<% if !song.song_thumbnail.nil? %>
+						<li style="background-image: url(<%= song.song_thumbnail.small %>); background-repeat: no-repeat; background-position: 7% 50%;">
+					<% else %>
+						<li>
+					<% end %>
+					<div class="track_detail">
+						<div class="play_button">►</div>
+						<div class="track_info">
+							<div>
+								<% track_title = "#{song.name} (#{song.mix_name})"%>
+								<a href="#" data-src="<%= song.sample_url %>"><%= truncate(track_title, :length => 40) %></a>
+							</div>
+							<div><%= "#{truncate(song.artist, :length => 40)}"%></div>
+						</div>
+						<div class="download">
+							<%= link_to  "⇪", "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com", :target => "_blank" %>
+						</div>
 					</div>
-					<div><%= "#{song.artist}"%></div>
-				</div>
-			
-					<!-- <div><%= link_to "Download using Google", "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+site:zippyshare.com" %></div> -->
-				</li> 
+					</li> 
+				<% end %>
+			</ul>
 			<% end %>
-		</ul>
-		<% end %>
+		</div>
+		<%= will_paginate @charts, :prev_label => 'Previous', :next_label => 'Next' %>
 	</div>
 </div>
 
 <script>
+	// Handle audio player scroll thingie
+	$(window).scroll(function(e){ 
+		$el = $('#player_fixed');
+		if ($(this).scrollTop() > 118 && $el.css('position') != 'fixed'){ 
+			$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
+		}
+		if ($(this).scrollTop() < 118 && $el.css('position') != 'absolute'){ 
+			$('#player_fixed').css({'position': 'absolute', 'top': '118px'});
+		}
+	});
 	$(function() { 
 	     // Setup the player to autoplay the next track
 	     var a = audiojs.createAll({
-	       trackEnded: function() {
-	         var next = $('ul li.playing').next();
-	         if (!next.length) next = $('ol li').first();
-	         next.addClass('playing').siblings().removeClass('playing');
-	         audio.load($('a', next).attr('data-src'));
-	         audio.play();
-	       }
-	     });
+	     	       trackEnded: function() {
+	     	       	     	         var next = $('ul li.playing').next();
+	     	       	     	         if (!next.length) next = $('ol li').first();
+	     	       	     	         next.addClass('playing').siblings().removeClass('playing');
+	     	       	     	         audio.load($('a', next).attr('data-src'));
+	     	       	     	         audio.play();
+	     	       	     	       }
+	     	     });
      
 	     // Load in the first track
 	     var audio = a[0];
 	         first = $('ul a').attr('data-src');
-	     $('ul li').first().addClass('playing');
+	     //$('ul li').first().addClass('playing');
 	     audio.load(first);
 
 		 // Expand a playlist on header click
@@ -57,31 +81,46 @@
 			$("." + chart_id).slideToggle("slow");
 		});
 
-	     // Load in a track on click
-	     $('ul li').click(function(e) {
+	     // Load in a track on click from right div playlists
+	     $('ul li div.play_button').click(function(e) {
+		   var clicked_node = $(this).parent().parent();
+		   // Load the track into the player
 	       e.preventDefault();
 		   $(".playing").removeClass('playing');
+	       //$(this).addClass('playing').siblings().removeClass('playing');
+		   clicked_node.clone().addClass('playing').prependTo($("#player_playlist"));
+		   if ( $("#player_playlist li").length > 9 ) {
+			$("#player_playlist li:last").remove()
+		   }
+	       audio.load($('a', clicked_node).attr('data-src'));
+	       audio.play();
+	     });
+		// Load in a track on click from the player playlist
+		$('ol li').click(function(e) {
+		   // Load the track into the player
+	       e.preventDefault();
 	       $(this).addClass('playing').siblings().removeClass('playing');
+		   $("#player_playlist").append($(this));
 	       audio.load($('a', this).attr('data-src'));
 	       audio.play();
 	     });
 	     // Keyboard shortcuts
-	     $(document).keydown(function(e) {
-	       var unicode = e.charCode ? e.charCode : e.keyCode;
-	          // right arrow
-	       if (unicode == 39) {
-	         var next = $('li.playing').next();
-	         if (!next.length) next = $('ul li').first();
-	         next.click();
-	         // back arrow
-	       } else if (unicode == 37) {
-	         var prev = $('li.playing').prev();
-	         if (!prev.length) prev = $('ul li').last();
-	         prev.click();
-	         // spacebar
-	       } else if (unicode == 32) {
-	         audio.playPause();
-	       }
-	     })
+	     // $(document).keydown(function(e) {
+	     //   var unicode = e.charCode ? e.charCode : e.keyCode;
+	     //      // right arrow
+	     //   if (unicode == 39) {
+	     //     var next = $('li.playing').next();
+	     //     if (!next.length) next = $('ul li').first();
+	     //     next.click();
+	     //     // back arrow
+	     //   } else if (unicode == 37) {
+	     //     var prev = $('li.playing').prev();
+	     //     if (!prev.length) prev = $('ul li').last();
+	     //     prev.click();
+	     //     // spacebar
+	     //   } else if (unicode == 32) {
+	     //     audio.playPause();
+	     //   }
+	     // })
 	   });
 </script>

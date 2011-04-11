@@ -10,12 +10,12 @@ img {
 	padding: 30px 2px 30px 70px;
 	margin: 15px 0 0 0;
 	font-size: 1em;
-	border-bottom-color:#E0E0E0;
-	border-bottom-style:solid;
-	border-bottom-width:1px;
 	border-top-color:#444751;
 	border-top-style:solid;
 	border-top-width:5px;
+}
+#charts h1:hover {
+	cursor: pointer;
 }
 em {
 	font-size: 1em; 
@@ -25,36 +25,62 @@ em {
 a { 
 	color: #888; 
 	text-decoration: none; 
+	cursor: default;
 }
-#wrapper {
-	width: 460px; margin: 0px auto;
+#player_wrapper {
+	width: 300px;
+	float: left;
+}
+#player_fixed {
+	position: absolute;
+	width: 300px;
+	top: 118px;
+	left: 315px;
+	z-index:100;
+}
+#player_playlist {
+	margin: 5px 0 0 0;
+	border: 0;
+}
+#content_wrapper {
+	width: 400px;
+	float: right;
+}
+#body_container {
+	width: 800px;
+	margin: 0px auto;
 }
 
-ul {
+ul, ol {
 	padding: 0px;
 	margin: 0px;
-	list-style: decimal-leading-zero outside;
+	list-style: none;
 	color: #ccc;
-	width: 460px;
+	width: 400px;
 	border-top: 1px solid #ccc;
 	font-size: 0.9em;
 }
-ul li {
+ul li, ol li{
 	margin: 0px;
+	width: 456px;
 	padding: 15px 2px 15px;
 	border-bottom: 1px solid #ccc;
-	cursor: pointer;
 }
-ul li a { 
+ul li {
+	width: 400px;
+}
+
+ul li a, ol li a { 
 	color: #888; 
 	text-indent: -3.3ex; 
 	padding: 0; 
 }
 li.playing {
 	color: #aaa; 
+	background-color: #b3ffba;
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); 
 }
-li.playing:before { 
+ol li.playing:before { 
 	content: '►';
 	width: 14px; 
 	height: 14px; 
@@ -62,15 +88,122 @@ li.playing:before {
 	line-height: 14px; 
 	margin: 0px; 
 	position: absolute; 
-	left: -48px; 
-	top: 9px; 
+	left: -35px; 
+	top: 60px; 
 	color: #000; 
 	font-size: 13px; 
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); 
 }
-ul li div.track_info {
-	padding: 0 0 0 68px;
+
+ul li div.play_button {
+	float: left;
+	margin: 10px 0 0 3px;
+	font-size: 16px;
 }
+ol li div.play_button {
+	display: none;
+}
+ul li div.play_button:hover {
+	color: #b3ffba;
+	cursor: pointer;
+}
+
+ul li div.track_info {
+	float: left;
+	margin: 0 0 0 53px;
+}
+ol li div.track_info {
+	float: left;
+	margin: 0 0 0 68px;
+}
+ol li div.download, ul li div.download {
+	font-size: 25px;
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+ol li div.download a:hover, ul li div.download a:hover {
+	color: #000;
+	cursor: pointer;
+}
+ol li div.download {
+	float: right;
+	margin: 0 35px 0 0;
+}
+ul li div.download {
+	float: right;
+	margin: 0 10px 0 0;
+}
+ol li .track_detail {
+	height: 35px;
+	width: 480px;
+}
+ul li .track_detail {
+	height: 35px;
+	width: 400px;
+}
+.pagination {
+	margin: 0 0 25px 0;
+}
+.pagination a, .pagination span, .pagination em {
+	display:inline;
+	margin-right:5px;
+	-webkit-box-shadow:#CCCCCC 0 1px 2px, white 0 1px 1px inset;
+	background-color:#F9F8F9;
+	background-image:-webkit-linear-gradient(top, #F9F8F9, #EDE8ED);
+	border-bottom-color:#D2CBD2;
+	border-bottom-left-radius:4px 4px;
+	border-bottom-right-radius:4px 4px;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+	border-left-color:#D2CBD2;
+	border-left-style:solid;
+	border-left-width:1px;
+	border-right-color:#D2CBD2;
+	border-right-style:solid;
+	border-right-width:1px;
+	border-top-color:#D2CBD2;
+	border-top-left-radius:4px 4px;
+	border-top-right-radius:4px 4px;
+	border-top-style:solid;
+	border-top-width:1px;
+	box-shadow:#CCCCCC 0 1px 2px, white 0 1px 1px inset;
+	cursor:pointer;
+	font-size:14px;
+	font-weight:bold;
+	line-height:14px;
+	padding-bottom:3px;
+	padding-left:6px;
+	padding-right:6px;
+	padding-top:5px;
+	text-align:center;
+	text-decoration:none;
+	text-shadow:white 0 1px 0;
+}
+
+.pagination a:hover, .pagination span:hover, .pagination em {
+	background-color:#E0DAE0;
+	  background-image:-webkit-linear-gradient(top, #E0DAE0, #CCC5CC);
+	  border-bottom-color:#A89BA8;
+	  border-bottom-style:solid;
+	  border-bottom-width:1px;
+	  border-left-color:#A89BA8;
+	  border-left-style:solid;
+	  border-left-width:1px;
+	  border-right-color:#A89BA8;
+	  border-right-style:solid;
+	  border-right-width:1px;
+	  border-top-color:#A89BA8;
+	  border-top-style:solid;
+	  border-top-width:1px;
+	  box-shadow:#CCCCCC 0 1px 2px;
+	  cursor:default;
+	  text-shadow:white 0 1px 0;
+}
+
+
+.fixed {position: fixed;top: 0px;margin-left: 540px;}
 
 @media screen and (max-device-width: 480px) {
 	 #wrapper { position: relative; left: -3%; }

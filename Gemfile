@@ -11,6 +11,7 @@ gem 'devise'
 gem 'json'
 gem 'taps'
 gem 'mysql'
+gem 'will_paginate', '~> 3.0.beta'
 
 # Use unicorn as the web server
 # gem 'unicorn'
