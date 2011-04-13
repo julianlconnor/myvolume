@@ -28,14 +28,13 @@ a {
 	cursor: default;
 }
 #player_wrapper {
-	width: 300px;
 	float: left;
 }
 #player_fixed {
-	position: absolute;
-	width: 300px;
-	top: 118px;
-	left: 315px;
+	position: relative;
+	/*width: 300px;*/
+	top: 90px;
+	/*left: 315px;*/
 	z-index:100;
 }
 #player_playlist {
@@ -47,7 +46,7 @@ a {
 	float: right;
 }
 #body_container {
-	width: 800px;
+	width: 920px;
 	margin: 0px auto;
 }
 
@@ -95,14 +94,15 @@ ol li.playing:before {
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); 
 }
 
-ul li div.play_button {
+ul li div.play_button, ol li div.play_button {
 	float: left;
 	margin: 10px 0 0 3px;
 	font-size: 16px;
 }
-ol li div.play_button {
-	display: none;
-}
+/*ol li div.play_button {
+	float: left;
+	/*display: none;
+}*/
 ul li div.play_button:hover {
 	color: #b3ffba;
 	cursor: pointer;
