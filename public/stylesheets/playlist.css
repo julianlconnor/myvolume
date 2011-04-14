@@ -94,15 +94,14 @@ ol li.playing:before {
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); 
 }
 
-ul li div.play_button, ol li div.play_button {
-	float: left;
-	margin: 10px 0 0 3px;
-	font-size: 16px;
+ul li div.play_button {
+	float: right;
+	margin: 4px 11px 0 0;
+	font-size: 20px;
 }
-/*ol li div.play_button {
-	float: left;
-	/*display: none;
-}*/
+ol li div.play_button {
+	display: none;
+}
 ul li div.play_button:hover {
 	color: #b3ffba;
 	cursor: pointer;
@@ -110,11 +109,11 @@ ul li div.play_button:hover {
 
 ul li div.track_info {
 	float: left;
-	margin: 0 0 0 53px;
+	margin: 0 0 0 70px;
 }
 ol li div.track_info {
 	float: left;
-	margin: 0 0 0 68px;
+	margin: 0 0 0 70px;
 }
 ol li div.download, ul li div.download {
 	font-size: 25px;

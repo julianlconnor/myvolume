@@ -25,17 +25,17 @@
 						<li>
 					<% end %>
 					<div class="track_detail">
-						<div class="play_button">►</div>
 						<div class="track_info">
 							<div>
 								<% track_title = "#{song.name} (#{song.mix_name})"%>
-								<a href="#" data-src="<%= song.sample_url %>"><%= truncate(track_title, :length => 40) %></a>
+								<a href="#" data-src="<%= song.sample_url %>"><%= truncate(track_title, :length => 35) %></a>
 							</div>
-							<div><%= "#{truncate(song.artist, :length => 40)}"%></div>
+							<div><%= "#{truncate(song.artist, :length => 35)}"%></div>
 						</div>
 						<div class="download">
 							<%= link_to  "⇪", "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com", :target => "_blank" %>
 						</div>
+						<div class="play_button">►</div>
 					</div>
 					</li> 
 				<% end %>
@@ -47,6 +47,14 @@
 </div>
 
 <script>
+	$(function() {
+		if ($.browser.mozilla) {
+			audiojs.createAll();
+		}
+		else {
+			var as = audiojs.createAll();
+		}
+	});
 	// Handle audio player scroll thingie
 	$(window).scroll(function(e){ 
 		$el = $('#player_fixed');
@@ -61,7 +69,7 @@
 	     // Setup the player to autoplay the next track
 	     var a = audiojs.createAll({
 	     	       trackEnded: function() {
-	     	       	     	         var next = $('ul li.playing').next();
+	     	       	     	         var next = $('ol li.playing').next();
 	     	       	     	         if (!next.length) next = $('ol li').first();
 	     	       	     	         next.addClass('playing').siblings().removeClass('playing');
 	     	       	     	         audio.load($('a', next).attr('data-src'));
