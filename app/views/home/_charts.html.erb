@@ -1,4 +1,4 @@
-
+<%= will_paginate @charts, :prev_label => 'Previous', :next_label => 'Next' %>
 <% @charts.each do |chart| %>
 <header>
 	<h1 id="<%= chart.id %>" style="background-image: url(<%= chart.chart_thumbnail.medium %>); background-repeat: no-repeat; background-position: 0 50%;">

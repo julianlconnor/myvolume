@@ -4,6 +4,6 @@ class Chart < ActiveRecord::Base
   
   has_one :chart_thumbnail
   
-  self.per_page = 10
+  self.per_page = 15
   
 end
