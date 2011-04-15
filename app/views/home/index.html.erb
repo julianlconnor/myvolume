@@ -99,10 +99,9 @@
 	
 		// Load in a track on click from the player playlist
 		$('ol li div.play_button').live('click', function(e) {
-		   var clicked_node = $(this).parent().parent();
+		   var clicked_node = $(this).parent().parent().parent();
 		   // Load the track into the player
 	       e.preventDefault();
-		   clicked_node
 	       clicked_node.addClass('playing').siblings().removeClass('playing');
 	       audio.load($('a', clicked_node).attr('data-src'));
 	       audio.play();
