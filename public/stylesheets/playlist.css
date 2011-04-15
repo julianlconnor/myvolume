@@ -5,6 +5,7 @@ body {
 }
 img {
 	display: inline;
+	border: 0;
 }
 #charts h1 { 
 	padding: 30px 2px 30px 70px;
@@ -42,7 +43,7 @@ a {
 	border: 0;
 }
 #content_wrapper {
-	width: 400px;
+	width: 425px;
 	float: right;
 }
 #body_container {
@@ -55,18 +56,20 @@ ul, ol {
 	margin: 0px;
 	list-style: none;
 	color: #ccc;
-	width: 400px;
+	width: 425px;
 	border-top: 1px solid #ccc;
 	font-size: 0.9em;
 }
 ul li, ol li{
 	margin: 0px;
-	width: 456px;
-	padding: 15px 2px 15px;
+	padding: 15px 0px 15px;
 	border-bottom: 1px solid #ccc;
 }
 ul li {
-	width: 400px;
+	width: 425px;
+}
+ol li {
+	width: 461px;
 }
 
 ul li a, ol li a { 
@@ -80,7 +83,7 @@ li.playing {
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); 
 }
 ol li.playing:before { 
-	content: '►';
+/*	content: '►';
 	width: 14px; 
 	height: 14px; 
 	padding: 3px; 
@@ -91,56 +94,60 @@ ol li.playing:before {
 	top: 60px; 
 	color: #000; 
 	font-size: 13px; 
-	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); 
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); */
 }
 
-ul li div.play_button {
+ol li div.track_icons, ul li div.track_icons {
 	float: right;
-	margin: 4px 11px 0 0;
+}
+
+ol li div.queue_button,
+ul li div.queue_button,
+ol li div.play_button,
+ul li div.play_button, 
+ol li div.download,
+ul li div.download  {
+	float: right;
+	cursor: pointer;
+	margin: 11px 0 0 5px;
+}
+
+ol li div.download,
+ol li div.queue_button,
+ol li div.play_button {
+	margin: 11px 5px 0 0;
+}
+
+/*ul li div.queue_button, ol li div.queue_button {
+	margin: 11px 11px 0 0;
+}
+
+ul li div.play_button, ol li div.play_button {
+	margin: 5px 11px 0 0;
 	font-size: 20px;
 }
-ol li div.play_button {
-	display: none;
-}
-ul li div.play_button:hover {
-	color: #b3ffba;
-	cursor: pointer;
+*/
+ul li div.track_info, ol li div.track_info {
+	float: left;
+	margin: 0 0 0 70px;
 }
 
-ul li div.track_info {
-	float: left;
-	margin: 0 0 0 70px;
-}
-ol li div.track_info {
-	float: left;
-	margin: 0 0 0 70px;
-}
-ol li div.download, ul li div.download {
+/*ol li div.download, ul li div.download {
 	font-size: 25px;
-	-webkit-transform: rotate(180deg);
-	-moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-ol li div.download a:hover, ul li div.download a:hover {
-	color: #000;
-	cursor: pointer;
-}
+}*/
+/*
 ol li div.download {
-	float: right;
-	margin: 0 35px 0 0;
+	margin: 0 0 0 0;
 }
 ul li div.download {
-	float: right;
 	margin: 0 10px 0 0;
-}
+}*/
+
 ol li .track_detail {
 	height: 35px;
-	width: 480px;
 }
 ul li .track_detail {
 	height: 35px;
-	width: 400px;
 }
 .pagination {
 	margin: 0 0 25px 0;

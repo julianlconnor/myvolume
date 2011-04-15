@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   def index
     #fetch_genres()
     # fetch_charts()
-    #@charts = Chart.order("publish_date desc").limit(10)
+    # @charts = Chart.order("publish_date desc").limit(10)
     @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
   end
   

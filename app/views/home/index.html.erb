@@ -7,46 +7,17 @@
 		</div>
 	</div>
 	<div id="content_wrapper">
-		<span>myvolu.me beta v 1.0 ~ Only working in chrome atm :( </span>
+		<span>myvolu.me beta v 1.0</span>
 		<h1>Welcome to myvolu.me</h1>
 		<div id="charts">
-			<% for chart in @charts %>
-			<header>
-				<h1 id="<%= chart.id %>" style="background-image: url(<%= chart.chart_thumbnail.medium %>); background-repeat: no-repeat; background-position: 0 50%;">
-					<div><%= chart.name %></div>
-					<div><em><%= chart.publish_date.to_date.to_formatted_s(:long_ordinal) %></em></div>
-				</h1> 
-			</header>
-			<ul class="<%= chart.id %>" style="display:none;">
-				<% chart.songs.each_with_index do |song,i| %>
-					<% if !song.song_thumbnail.nil? %>
-						<li style="background-image: url(<%= song.song_thumbnail.small %>); background-repeat: no-repeat; background-position: 7% 50%;">
-					<% else %>
-						<li>
-					<% end %>
-					<div class="track_detail">
-						<div class="track_info">
-							<div>
-								<% track_title = "#{song.name} (#{song.mix_name})"%>
-								<a href="#" data-src="<%= song.sample_url %>"><%= truncate(track_title, :length => 35) %></a>
-							</div>
-							<div><%= "#{truncate(song.artist, :length => 35)}"%></div>
-						</div>
-						<div class="download">
-							<%= link_to  "⇪", "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com", :target => "_blank" %>
-						</div>
-						<div class="play_button">►</div>
-					</div>
-					</li> 
-				<% end %>
-			</ul>
-			<% end %>
+			<%= render 'charts' %>
 		</div>
-		<%= will_paginate @charts, :prev_label => 'Previous', :next_label => 'Next' %>
 	</div>
 </div>
 
 <script>
+
+	// Initialize HTML5 <audio>
 	$(function() {
 		if ($.browser.mozilla) {
 			audiojs.createAll();
@@ -55,6 +26,7 @@
 			var as = audiojs.createAll();
 		}
 	});
+	
 	// Handle audio player scroll thingie
 	$(window).scroll(function(e){ 
 		$el = $('#player_fixed');
@@ -84,32 +56,55 @@
 	     audio.load(first);
 
 		 // Expand a playlist on header click
-		$('h1').click(function(e) {
+		$('h1').live('click',function(e) {
 			var chart_id = $(this).attr("id");
 			$("." + chart_id).slideToggle("slow");
 		});
 
 	     // Load in a track on click from right div playlists
-	     $('ul li div.play_button').click(function(e) {
-		   var clicked_node = $(this).parent().parent();
+	     $('ul li div.play_button').live('click',function(e) {
+		   // Copy selected node
+		   var clicked_node = $(this).parent().parent().parent().clone();
+		   var playing = $(".playing").removeClass('playing');
+		
+		   // Hide play and queue button during playback
+		   // clicked_node.find('.play_button').hide();
+		   // clicked_node.find('.queue_button').hide();
+		   // Show play and queue button for previously playing track
+		   // playing.find('.play_button').show();
+		   // playing.find('.queue_button').show();
 		   // Load the track into the player
+		
 	       e.preventDefault();
-		   $(".playing").removeClass('playing');
 	       //$(this).addClass('playing').siblings().removeClass('playing');
-		   clicked_node.clone().addClass('playing').prependTo($("#player_playlist"));
+		   	clicked_node.addClass('playing').addClass('playlist').prependTo($("#player_playlist"));
 		   if ( $("#player_playlist li").length > 9 ) {
 			$("#player_playlist li:last").remove()
 		   }
 	       audio.load($('a', clicked_node).attr('data-src'));
 	       audio.play();
 	     });
-		// Load in a track on click from the player playlist
-		$('ol li').click(function(e) {
+	
+		// Queue track on playlist, same but append
+		$('ul li div.queue_button').live('click', function(e) {
+		   var clicked_node = $(this).parent().parent().parent();
 		   // Load the track into the player
 	       e.preventDefault();
-	       $(this).addClass('playing').siblings().removeClass('playing');
-		   $("#player_playlist").append($(this));
-	       audio.load($('a', this).attr('data-src'));
+	       //$(this).addClass('playing').siblings().removeClass('playing');
+		   clicked_node.clone().appendTo($("#player_playlist"));
+		   if ( $("#player_playlist li").length > 9 ) {
+			$("#player_playlist li:last").remove()
+		   }
+	     });
+	
+		// Load in a track on click from the player playlist
+		$('ol li div.play_button').live('click', function(e) {
+		   var clicked_node = $(this).parent().parent();
+		   // Load the track into the player
+	       e.preventDefault();
+		   clicked_node
+	       clicked_node.addClass('playing').siblings().removeClass('playing');
+	       audio.load($('a', clicked_node).attr('data-src'));
 	       audio.play();
 	     });
 	     // Keyboard shortcuts
