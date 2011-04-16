@@ -150,7 +150,7 @@ ul li .track_detail {
 	height: 35px;
 }
 .pagination {
-	margin: 0 0 25px 0;
+	margin: 5px 0 10px 0;
 }
 .pagination a, .pagination span, .pagination em {
 	display:inline;
