@@ -55,13 +55,16 @@ a {
 }
 
 ul, ol {
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 	list-style: none;
 	color: #ccc;
 	width: 425px;
 	border-top: 1px solid #ccc;
 	font-size: 0.9em;
+}
+ul {
+	border-bottom: 1px solid #ccc;
 }
 ul li, ol li{
 	margin: 0px;
@@ -153,7 +156,10 @@ ul li .track_detail {
 	height: 35px;
 }
 .pagination {
-	margin: 5px 0 10px 0;
+	margin: 5px 0 25px 0;
+}
+.pagination.bottom {
+	margin: 15px 0 25px 0;
 }
 .pagination a, .pagination span, .pagination em {
 	display:inline;
