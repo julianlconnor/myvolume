@@ -28,10 +28,10 @@
 	// Handle audio player scroll thingie
 	$(window).scroll(function(e){ 
 		$el = $('#player_fixed');
-		if ($(this).scrollTop() > 103 && $el.css('position') != 'fixed'){ 
+		if ($(this).scrollTop() > 60 && $el.css('position') != 'fixed'){ 
 			$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
 		}
-		if ($(this).scrollTop() < 103 && $el.css('position') != 'absolute'){ 
+		if ($(this).scrollTop() < 60 && $el.css('position') != 'absolute'){ 
 			$('#player_fixed').css({'position': 'relative', 'top': '0px'});
 		}
 	});
