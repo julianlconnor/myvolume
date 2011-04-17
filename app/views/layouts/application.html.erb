@@ -9,14 +9,24 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	<% if user_signed_in? %>
-		<p>Welcome <%= current_user.email %> ! ~ <%= link_to "Sign Out", destroy_user_session_path %></p>
-	<% else %>
-		<%= link_to "Sign In", new_user_session_path %> ~ <%= link_to "Register", new_user_registration_path %>
-	<% end %>
-	<%= yield %>
+	<div id="container">
+		<div id="header">
+			<div id="flash">
+				<p class="notice"><%= notice %></p>
+				<p class="alert"><%= alert %></p>
+			</div>
+			<% if user_signed_in? %>
+				<p>Welcome <%= current_user.email %> ! ~ <%= link_to "Sign Out", destroy_user_session_path %></p>
+			<% else %>
+				<%= link_to "Sign In", new_user_session_path %> ~ <%= link_to "Register", new_user_registration_path %>
+			<% end %>
+			<br/> 
+			<h1>Welcome to myvolu.me</h1>
+		</div>
+		<div id="body_container">
+			<%= yield %>
+		</div>
+	</div>
 
 
 </body>

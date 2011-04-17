@@ -1,19 +1,17 @@
-<div id="body_container">
-	<div id="player_wrapper">
-		<div id="player_fixed">
-			<audio preload="none"></audio>
-			<ol id="player_playlist">
-			</ol>
-		</div>
-	</div>
-	<div id="content_wrapper">
-		<span>myvolu.me beta v 1.0</span>
-		<h1>Welcome to myvolu.me</h1>
-		<div id="charts">
-			<%= render 'charts' %>
-		</div>
+
+<div id="player_wrapper">
+	<div id="player_fixed">
+		<audio preload="none"></audio>
+		<ol id="player_playlist">
+		</ol>
 	</div>
 </div>
+<div id="content_wrapper">
+	<div id="charts">
+		<%= render 'charts' %>
+	</div>
+</div>
+
 
 <script>
 
@@ -30,19 +28,22 @@
 	// Handle audio player scroll thingie
 	$(window).scroll(function(e){ 
 		$el = $('#player_fixed');
-		if ($(this).scrollTop() > 118 && $el.css('position') != 'fixed'){ 
+		if ($(this).scrollTop() > 103 && $el.css('position') != 'fixed'){ 
 			$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
 		}
-		if ($(this).scrollTop() < 118 && $el.css('position') != 'absolute'){ 
-			$('#player_fixed').css({'position': 'relative', 'top': '90px'});
+		if ($(this).scrollTop() < 103 && $el.css('position') != 'absolute'){ 
+			$('#player_fixed').css({'position': 'relative', 'top': '0px'});
 		}
 	});
 	$(function() { 
 	     // Setup the player to autoplay the next track
 	     var a = audiojs.createAll({
 		          trackEnded: function() {
+					var playing = $('ol li.playing');
 		            var next = $('ol li.playing').next();
 		            if (!next.length) next = $('ol li').first();
+					playing.find('.play_button').html("<img src='/images/player_play.png'>");
+					next.find('.play_button').html("<img src='/images/player_pause.png'>");
 		            next.addClass('playing').siblings().removeClass('playing');
 		            audio.load($('a', next).attr('data-src'));
 		            audio.play();
@@ -127,24 +128,26 @@
 					audio.play();
 				}
 			});
-			// Track that's paused, plays
+			// Track that's not playing gets removed
 			$('ol li:not(.playing) div.queue_button').live('click', function(e) {
 				var clicked_node = $(this).parent().parent().parent();
 				e.preventDefault();
 				//alert($('ol li').index(clicked_node));
 				$('ol li').eq($('ol li').index(clicked_node)).remove();
 			});
+			// Track that's playing is removed
 			$('ol li.playing div.queue_button').live('click', function(e) {
 				var clicked_node = $(this).parent().parent().parent();
 				e.preventDefault();
 				//alert($('ol li').index(clicked_node));
 				var next = $('ol li.playing').next();
 				$('ol li').eq($('ol li').index(clicked_node)).remove();
-	            if (!next.length && $('ol li').first() == null) {
+				
+	            if (!next.length && !($('ol li').length)) {
 					first = $('ul a').attr('data-src');
 			        audio.load(first);
 				}
-				else if ( $('ol li').first != null ) {
+				else if ( $('ol li').first() != null ) {
 					var next = $('ol li').first();
 		            next.addClass('playing');
 					next.find('.play_button').html("<img src='/images/player_pause.png'>");

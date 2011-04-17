@@ -1,11 +1,14 @@
 body { 
-	color: #444751; 
+	color: #444751;
 	font-family: 'Century Gothic', 'lucida grande', 'lucida sans', 'bitstream vera sans', 'verdana'; 
 	line-height: 1.4; 
 }
 img {
 	display: inline;
 	border: 0;
+}
+h1 {
+	margin: 5px 0;
 }
 #charts h1 { 
 	padding: 30px 2px 30px 70px;
@@ -34,7 +37,7 @@ a {
 #player_fixed {
 	position: relative;
 	/*width: 300px;*/
-	top: 90px;
+	top: 0px;
 	/*left: 315px;*/
 	z-index:100;
 }
@@ -46,7 +49,7 @@ a {
 	width: 425px;
 	float: right;
 }
-#body_container {
+#container, #body_container {
 	width: 920px;
 	margin: 0px auto;
 }
