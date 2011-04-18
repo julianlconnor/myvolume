@@ -6,7 +6,7 @@ require 'mysql'
 
 class HomeController < ApplicationController
   def index
-    #fetch_genres()
+    # fetch_genres()
     # fetch_charts()
     # @charts = Chart.order("publish_date desc").limit(10)
     @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
@@ -73,11 +73,14 @@ class HomeController < ApplicationController
     genre_overview_data = genre_overview_fetch.body
     genre_overview = JSON.parse(genre_overview_data)
     genre_overview["results"].each do |genre|
-      genre_object = Genre.new(:name => genre["name"], :slug => genre["slug"])
-      genre_object.save
-      genre["subgenres"].each do |subgenre|
-        subgenre_object = SubGenre.new(:name => subgenre["name"], :slug => subgenre["slug"], :genre_id => genre_object.id)
-        subgenre_object.save
+      genre_object = Genre.first(:conditions => {:name => genre["name"]})
+      if genre_object.nil?
+        genre_object = Genre.new(:name => genre["name"], :slug => genre["slug"])
+        genre_object.save
+        genre["subgenres"].each do |subgenre|
+          subgenre_object = SubGenre.new(:name => subgenre["name"], :slug => subgenre["slug"], :genre_id => genre_object.id)
+          subgenre_object.save
+        end
       end
     end
   end
@@ -98,12 +101,27 @@ class HomeController < ApplicationController
         chart_object = Chart.new(:name => chart["name"], :beatport_id => chart["id"], 
                                  :description => chart["description"], :publish_date => chart["publishDate"])
         if chart_object.save
+          chart_detail["results"]["genres"].each do |genre|
+            genre_object = Genre.first(:conditions => {:name => genre["name"]})
+            # Check to see if the genre exists
+            if genre_object.nil?
+              genre_object = Genre.new(:name => genre["name"], :slug => genre["slug"])
+              genre_object.save
+            end
+            # Check to see if the membership already exists
+            chart_genre_object = ChartGenreMembership.first(:conditions => {:genre_id => genre_object.id, :chart_id => chart_object.id})
+            if chart_genre_object.nil?
+              chart_genre_object = ChartGenreMembership.new(:chart_id => chart_object.id, :genre_id => genre_object.id)
+              chart_genre_object.save
+            end
+          end
           # Iterate through each track of every chart
           chart_thumb_object = ChartThumbnail.new(:chart_id => chart_object.id, :small => chart_detail["results"]["images"]["small"]["url"],
                                               :medium => chart_detail["results"]["images"]["medium"]["url"],
                                               :large => chart_detail["results"]["images"]["large"]["url"])
           chart_thumb_object.save
           chart_detail["results"]["tracks"].each_with_index do |track,i|
+            
             artists = ""
             type = "asdf"
             remixer = ""
@@ -113,7 +131,11 @@ class HomeController < ApplicationController
             chart_membership_object = ChartMembership.new(:song_id => song_object.id, :chart_id => chart_object.id, :pos => i+1)
             chart_membership_object.save
             track["genres"].each do |genre|
-              genre_membership_object = GenreMembership.new(:genre_id => genre["id"], :song_id => song_object.id)
+              genre_object = Genre.first(:conditions => {:name => genre["name"]})
+              if genre_object.nil?
+                genre_object = Genre.new(:name => genre["name"], :slug => genre["name"])
+              end
+              genre_membership_object = GenreMembership.new(:genre_id => genre_object.id, :song_id => song_object.id)
               genre_membership_object.save
             end
             artists = []

@@ -12,6 +12,7 @@ gem 'json'
 gem 'taps'
 gem 'mysql'
 gem 'will_paginate', '~> 3.0.beta'
+gem 'ruby-debug'
 
 # Use unicorn as the web server
 # gem 'unicorn'

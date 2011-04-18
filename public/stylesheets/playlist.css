@@ -12,12 +12,13 @@ h1 {
 	margin: 5px 0;
 }
 #charts h1 { 
-	padding: 30px 2px 30px 70px;
-	margin: 15px 0 0 0;
+	padding: 25px 2px 30px 135px;
+	margin: 0;
 	font-size: 1em;
 	border-top-color:#444751;
 	border-top-style:solid;
 	border-top-width:5px;
+	height: 100px;
 }
 #charts h1:hover {
 	cursor: pointer;
@@ -133,30 +134,32 @@ a {
 	border-top: 1px solid #ccc;
 	font-size: 0.9em;
 }
-#charts ul {
-	border-bottom: 1px solid #ccc;
-}
 #charts ul li, #player_fixed ol li{
 	margin: 0px;
-	padding: 15px 0px 15px;
+	padding: 10px 0px;
 	border-bottom: 1px solid #ccc;
+	height: 50px;
 }
 #charts ul li {
 	width: 425px;
+	height: 67px;
 }
 #player_fixed ol li div.track_artist, #charts ul li div.track_artist {
-	font-size: 12px;
+	font-size: 13px;
 	color: #999999;
+	margin: 3px 0 0 0;
 }
 #player_fixed ol li {
 	width: 461px;
+	height: 67px;
 	margin: 5px 0;
 }
 
 #charts ul li a, #player_fixed ol li a { 
-	color: #888; 
+	color: #000; 
 	text-indent: -3.3ex; 
-	padding: 0; 
+	padding: 0;
+	font-size: 13px;
 }
 li.playing {
 	background-color: #b3ffba;
@@ -189,13 +192,13 @@ li.playing {
 #charts ul li div.download  {
 	float: right;
 	cursor: pointer;
-	margin: 11px 0 0 5px;
+	margin: 18px 0 0 5px;
 }
 
 #player_fixed ol li div.download,
 #player_fixed ol li div.queue_button,
 #player_fixed ol li div.play_button {
-	margin: 11px 5px 0 0;
+	margin: 23px 5px 0 0;
 }
 
 /*ul li div.queue_button, ol li div.queue_button {
@@ -209,7 +212,7 @@ ul li div.play_button, ol li div.play_button {
 */
 #charts ul li div.track_info, #player_fixed ol li div.track_info {
 	float: left;
-	margin: 0 0 0 70px;
+	margin: 0 0 0 83px;
 }
 
 /*ol li div.download, ul li div.download {
@@ -291,6 +294,39 @@ ul li div.download {
 	box-shadow:#CCCCCC 0 1px 2px;
 	cursor:default;
 	text-shadow:white 0 1px 0;
+}
+
+.tags span {
+	-webkit-box-shadow:white 0 0 1px 0;
+	background-attachment:initial;
+	background-clip:initial;
+	background-color:#02A0C7;
+	background-image:initial;
+	background-origin:initial;
+	border-bottom-left-radius:10px 10px;
+	border-bottom-right-radius:10px 10px;
+	border-top-left-radius:10px 10px;
+	border-top-right-radius:10px 10px;
+	box-shadow:white 0 0 1px 0;
+	color:white;
+	cursor:pointer;
+	display:inline;
+	float:left;
+	font-size:10px;
+	margin-bottom:0;
+	margin-left:0;
+	margin-right:4px;
+	margin-top:2px;
+	padding-bottom:3px;
+	padding-left:4px;
+	padding-right:4px;
+	padding-top:3px;
+	text-shadow:#017794 0 1px 0;
+}
+
+ul .tags span {
+	font-size: 12px;
+	margin: 3px 0 0 0;
 }
 
 #topbar {

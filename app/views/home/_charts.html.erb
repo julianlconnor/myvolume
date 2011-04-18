@@ -1,15 +1,20 @@
 <%= will_paginate @charts, :prev_label => 'Previous', :next_label => 'Next' %>
 <% @charts.each do |chart| %>
 <header>
-	<h1 id="<%= chart.id %>" style="background-image: url(<%= chart.chart_thumbnail.medium %>); background-repeat: no-repeat; background-position: 0 50%;">
+	<h1 id="<%= chart.id %>" style="background-image: url(<%= chart.chart_thumbnail.large %>); background-repeat: no-repeat; background-position: 0 50%;">
 		<div><%= chart.name %></div>
 		<div><em><%= chart.publish_date.to_date.to_formatted_s(:long_ordinal) %></em></div>
+		<div class="tags">
+			<% chart.genres.each do |genre| %>
+				<span><%= genre.name %></span>
+			<% end %>
+		</div>
 	</h1> 
 </header>
 <ul class="<%= chart.id %>" style="display:none;">
 	<% chart.songs.each_with_index do |song,i| %>
 		<% if !song.song_thumbnail.nil? %>
-			<li style="background-image: url(<%= song.song_thumbnail.small %>); background-repeat: no-repeat; background-position: 7% 50%;">
+			<li style="background-image: url(<%= song.song_thumbnail.medium %>); background-repeat: no-repeat; background-position: 4% 50%;">
 		<% else %>
 			<li>
 		<% end %>
@@ -20,6 +25,11 @@
 					<a href="#" data-src="<%= song.sample_url %>"><%= truncate(track_title, :length => 40) %></a>
 				</div>
 				<div class="track_artist"><%= "#{truncate(song.artist, :length => 40)}"%></div>
+				<div class="tags">
+					<% song.genres.order("name asc").each do |genre| %>
+						<span><%= genre.name %></span>
+					<% end %>
+				</div>
 			</div>
 			<div class="track_icons">
 				<div class="download">
