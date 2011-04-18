@@ -32,6 +32,74 @@ a {
 	text-decoration: none; 
 	cursor: default;
 }
+#header {
+	background-attachment:initial;
+	background-clip:initial;
+	background-color:#FFFFFF;
+	background-image:initial;
+	background-origin:initial;
+	background-position:initial initial;
+	background-repeat:initial initial;
+	clear:both;
+	display:inline;
+	float:left;
+	min-width:940px;
+	width:100%;
+}
+#logo {
+	margin: 0 auto;
+	height: 80px;
+	text-align: center;
+	clear: both;
+	font-size: 55px;
+}
+#tagline {
+	margin: 0 auto;
+	text-align: center;
+	clear: both;
+	font-size: 16px;
+	height: 50px;
+}
+#body {
+	background-attachment:initial;
+	background-clip:initial;
+	background-color:#FFFFFF;
+	background-image:initial;
+	background-origin:initial;
+	background-position:initial initial;
+	background-repeat:initial initial;
+	border-bottom-color:#FFFFFF;
+	border-bottom-style:solid;
+	border-bottom-width:15px;
+	clear:both;
+	display:inline;
+	float:left;
+	min-width:940px;
+	width:100%;
+}
+#footer {
+	border-top-color:#C0C0C8;
+	border-top-style:solid;
+	border-top-width:2px;
+	clear:both;
+	color:#565656;
+	display:inline;
+	float:left;
+	min-width:940px;
+	padding-bottom:40px;
+	padding-left:0;
+	padding-right:0;
+	padding-top:15px;
+	width:100%;
+}
+.wrap {
+	margin-bottom:0;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:0;
+	text-align:left;
+	width:920px;
+}
 #player_wrapper {
 	float: left;
 	height: 0;
@@ -51,12 +119,13 @@ a {
 	width: 425px;
 	float: right;
 }
-#container, #body_container {
+#container, #body {
 	width: 920px;
+	min-height: 100%;
 	margin: 0px auto;
 }
 
-ul, ol {
+#charts ul, #player_fixed ol {
 	padding: 0;
 	margin: 0;
 	list-style: none;
@@ -64,26 +133,27 @@ ul, ol {
 	border-top: 1px solid #ccc;
 	font-size: 0.9em;
 }
-ul {
+#charts ul {
 	border-bottom: 1px solid #ccc;
 }
-ul li, ol li{
+#charts ul li, #player_fixed ol li{
 	margin: 0px;
 	padding: 15px 0px 15px;
 	border-bottom: 1px solid #ccc;
 }
-ul li {
+#charts ul li {
 	width: 425px;
 }
-ol li div.track_artist, ul li div.track_artist {
+#player_fixed ol li div.track_artist, #charts ul li div.track_artist {
 	font-size: 12px;
 	color: #999999;
 }
-ol li {
+#player_fixed ol li {
 	width: 461px;
+	margin: 5px 0;
 }
 
-ul li a, ol li a { 
+#charts ul li a, #player_fixed ol li a { 
 	color: #888; 
 	text-indent: -3.3ex; 
 	padding: 0; 
@@ -92,7 +162,7 @@ li.playing {
 	background-color: #b3ffba;
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); 
 }
-ol li.playing:before { 
+#player_fixed ol li.playing:before { 
 /*	content: '►';
 	width: 14px; 
 	height: 14px; 
@@ -107,24 +177,24 @@ ol li.playing:before {
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); */
 }
 
-ol li div.track_icons, ul li div.track_icons {
+#player_fixed ol li div.track_icons, #charts ul li div.track_icons {
 	float: right;
 }
 
-ol li div.queue_button,
-ul li div.queue_button,
-ol li div.play_button,
-ul li div.play_button, 
-ol li div.download,
-ul li div.download  {
+#player_fixed ol li div.queue_button,
+#charts ul li div.queue_button,
+#player_fixed ol li div.play_button,
+#charts ul li div.play_button, 
+#player_fixed ol li div.download,
+#charts ul li div.download  {
 	float: right;
 	cursor: pointer;
 	margin: 11px 0 0 5px;
 }
 
-ol li div.download,
-ol li div.queue_button,
-ol li div.play_button {
+#player_fixed ol li div.download,
+#player_fixed ol li div.queue_button,
+#player_fixed ol li div.play_button {
 	margin: 11px 5px 0 0;
 }
 
@@ -137,7 +207,7 @@ ul li div.play_button, ol li div.play_button {
 	font-size: 20px;
 }
 */
-ul li div.track_info, ol li div.track_info {
+#charts ul li div.track_info, #player_fixed ol li div.track_info {
 	float: left;
 	margin: 0 0 0 70px;
 }
@@ -153,10 +223,10 @@ ul li div.download {
 	margin: 0 10px 0 0;
 }*/
 
-ol li .track_detail {
+#player_fixed ol li .track_detail {
 	height: 35px;
 }
-ul li .track_detail {
+#charts ul li .track_detail {
 	height: 35px;
 }
 .pagination {
@@ -223,18 +293,37 @@ ul li .track_detail {
 	text-shadow:white 0 1px 0;
 }
 
-#topadminbar {
+#topbar {
 	background-color:#777777;
 	background-image:-webkit-gradient(linear, 0 100%, 0 0%, from(#D7D7D7), to(#E4E4E4));
-	border-bottom-color:#C6C6C6;
-	border-bottom-style:solid;
-	border-bottom-width:1px;
 	color:#DDDDDD;
-	font:normal normal normal 12px/28px Arial, Helvetica, sans-serif;
 	height:28px;
 	float: left;
 	width:920px;
 	margin: 0 0 15px 0;
+    border-bottom: 2px solid #028F9D;
+    min-width: 1000px;
+    width: 100%;
+}
+#topnav {
+	display: inline;
+	float: right;
+	height: 35px;
+	font-size: 15px;
+}
+#topbar ul {
+	margin: 0;
+	padding: 5px 0;
+	margin: 0 15px;
+}
+#topnav li {
+	display: inline;
+	float: left;
+	padding: 0 10px;
+	margin: 0 5px 0 0;
+	border-left: 1px solid #444751;
+}
+#topnav li a {
 }
 
 

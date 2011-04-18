@@ -40,10 +40,10 @@
 	$(window).scroll(function(e){
 		if (!$.browser.mozilla) {
 			$el = $('#player_fixed');
-			if ($(this).scrollTop() > 50 && $el.css('position') != 'fixed'){ 
+			if ($(this).scrollTop() > 176 && $el.css('position') != 'fixed'){ 
 				$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
 			}
-			if ($(this).scrollTop() < 50 && $el.css('position') != 'absolute'){ 
+			if ($(this).scrollTop() < 176 && $el.css('position') != 'absolute'){ 
 				$('#player_fixed').css({'position': 'relative', 'top': '0px'});
 			}
 		}
@@ -66,7 +66,7 @@
 
 		        // Load in the first track
 		        var audio = a[0];
-		        first = $('ul a').attr('data-src');
+		        first = $('#charts ul a').attr('data-src');
 		        //$('ul li').first().addClass('playing');
 		        audio.load(first);
 

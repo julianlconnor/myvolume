@@ -9,24 +9,40 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+	<div id="topbar">
+		<!-- <ul id="topnav">
+				<% if user_signed_in? %>
+					<li>Welcome <%= current_user.email %> ! ~ <%= link_to "Sign Out", destroy_user_session_path %></li>
+				<% else %>
+					<li><%= link_to "Log In", new_user_session_path %></li>
+					<li><%= link_to "Join", new_user_registration_path %></li>
+				<% end %>
+				</ul> -->
+	</div>
 	<div id="container">
-		<!-- <div id="topadminbar">
-			<% if user_signed_in? %>
-				<p>Welcome <%= current_user.email %> ! ~ <%= link_to "Sign Out", destroy_user_session_path %></p>
-			<% else %>
-				<%= link_to "Sign In", new_user_session_path %> ~ <%= link_to "Register", new_user_registration_path %>
-			<% end %>
-		</div> -->
 		<div id="header">
-			<div id="flash">
-				<p class="notice"><%= notice %></p>
-				<p class="alert"><%= alert %></p>
+			<div class="wrap">
+				<div id="flash">
+					<p class="notice"><%= notice %></p>
+					<p class="alert"><%= alert %></p>
+				</div>
+				<br/> 
+				<div id="logo">myvolu.me</div>
+				<div id="tagline">An easy way to parse and fetch new music on Beatport.</div>
 			</div>
-			<br/> 
-			<h1>Welcome to myvolu.me</h1>
 		</div>
-		<div id="body_container">
-			<%= yield %>
+		<div id="body">
+			<div class="wrap">
+				<%= yield %>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="wrap">
+				<p id="copyright">
+				©2011 Julian Connor
+				<strong>I hope this helps you. ;)</strong>
+				</p>
+			</div>
 		</div>
 	</div>
 
