@@ -3,4 +3,5 @@ class Artist < ActiveRecord::Base
   has_many :songs, :through => :memberships
   
   has_one :artist_thumbnail
+  
 end

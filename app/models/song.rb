@@ -10,4 +10,6 @@ class Song < ActiveRecord::Base
   
   has_one :song_thumbnail
   belongs_to :label
+  
+  
 end
