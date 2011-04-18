@@ -24,8 +24,6 @@
 			var as = audiojs.createAll();
 		}
 	});
-	
-	// Handle audio player scroll thingie
 	$(window).scroll(function(e){ 
 		$el = $('#player_fixed');
 		if ($(this).scrollTop() > 60 && $el.css('position') != 'fixed'){ 
@@ -35,6 +33,31 @@
 			$('#player_fixed').css({'position': 'relative', 'top': '0px'});
 		}
 	});
+		
+	// Handle audio player scroll thingie
+	// $(window).scroll(function(e){
+	// 	if (!$.browser.mozilla) {
+	// 		$el = $('#player_fixed');
+	// 		if ($(this).scrollTop() > 60 && $el.css('position') != 'fixed'){ 
+	// 			$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
+	// 		}
+	// 		if ($(this).scrollTop() < 60 && $el.css('position') != 'absolute'){ 
+	// 			$('#player_fixed').css({'position': 'relative', 'top': '0px'});
+	// 		}
+	// 	}
+	// });
+	$(window).scroll(function(e){
+		if (!$.browser.mozilla) {
+			$el = $('#player_fixed');
+			if ($(this).scrollTop() > 60 && $el.css('position') != 'fixed'){ 
+				$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
+			}
+			if ($(this).scrollTop() < 60 && $el.css('position') != 'absolute'){ 
+				$('#player_fixed').css({'position': 'relative', 'top': '0px'});
+			}
+		}
+	});
+	
 	$(function() { 
 	     // Setup the player to autoplay the next track
 	     var a = audiojs.createAll({
@@ -61,7 +84,6 @@
 			var chart_id = $(this).attr("id");
 			$("." + chart_id).slideToggle("slow");
 		});
-		// 
 		//      // Load in a track on click from right div playlists
 		     $('ul li div.play_button').live('click',function(e) {
 		   // Copy selected node
