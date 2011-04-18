@@ -33,7 +33,7 @@
 			</div>
 			<div class="track_icons">
 				<div class="download">
-					<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{song.name.gsub(' ','+')}+#{song.mix_name.gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
+					<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
 				</div>
 				<div class="queue_button">
 					<%= image_tag("add_icon.png") %>
