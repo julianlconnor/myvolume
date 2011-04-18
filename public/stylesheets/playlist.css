@@ -307,6 +307,8 @@ ul li div.download {
 	border-bottom-right-radius:10px 10px;
 	border-top-left-radius:10px 10px;
 	border-top-right-radius:10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-moz-box-shadow: 0 0 1px 0 white;
 	box-shadow:white 0 0 1px 0;
 	color:white;
 	cursor:pointer;
