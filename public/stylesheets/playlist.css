@@ -314,7 +314,7 @@ ul li div.download {
 	cursor:pointer;
 	display:inline;
 	float:left;
-	font-size:10px;
+	font-size:11px;
 	margin-bottom:0;
 	margin-left:0;
 	margin-right:4px;
@@ -327,7 +327,6 @@ ul li div.download {
 }
 
 ul .tags span {
-	font-size: 12px;
 	margin: 3px 0 0 0;
 }
 
