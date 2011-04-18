@@ -121,7 +121,8 @@ class Chart < ActiveRecord::Base
 
     # Filter duplicates from artist IDs
     artist_list = artist_list.to_set
-
+    cron_watcher_object = CronWatcher.new(:last_update => Time.now)
+    cron_watcher_object.save
     #fill_artist_info(artist_list.to_a)
   end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418183941) do
+ActiveRecord::Schema.define(:version => 20110418205709) do
 
   create_table "artist_thumbnails", :force => true do |t|
     t.integer  "artist_id"
@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(:version => 20110418183941) do
     t.datetime "publish_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "cron_watchers", :force => true do |t|
+    t.datetime "last_update"
   end
 
   create_table "genre_memberships", :force => true do |t|
