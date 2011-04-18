@@ -8,6 +8,10 @@ body, p, ol, ul, td {
   font-size:   13px;
 }
 
+p {
+	margin: 0;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
