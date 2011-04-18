@@ -9,7 +9,7 @@ class Chart < ActiveRecord::Base
   
   self.per_page = 5
   
-  def fetch_chart_detail(charts)
+  def self.fetch_chart_detail(charts)
     artist_list = []
     charts.each do |chart|
     
@@ -108,7 +108,7 @@ class Chart < ActiveRecord::Base
     return artist_list
   end
   
-  def fetch_charts
+  def self.fetch_charts
     json_out = {}
     artist_list = []
     # Fetch Chart Overview JSON from Beatport
