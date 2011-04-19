@@ -7,7 +7,7 @@ class Chart < ActiveRecord::Base
   
   has_one :chart_thumbnail
   
-  self.per_page = 5
+  self.per_page = 8
   
   def self.fetch_chart_detail(charts)
     artist_list = []

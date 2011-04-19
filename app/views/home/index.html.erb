@@ -1,16 +1,13 @@
+<div id="body">
+	<div class="wrap">
+		<div id="content_wrapper">
+			<div id="charts">
+				<%= render 'charts' %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<div id="player_wrapper">
-	<div id="player_fixed">
-		<audio preload="none"></audio>
-		<ol id="player_playlist">
-		</ol>
-	</div>
-</div>
-<div id="content_wrapper">
-	<div id="charts">
-		<%= render 'charts' %>
-	</div>
-</div>
 
 
 <script>
@@ -37,17 +34,17 @@
 	// 		}
 	// 	}
 	// });
-	$(window).scroll(function(e){
-		if (!$.browser.mozilla) {
-			$el = $('#player_fixed');
-			if ($(this).scrollTop() > 160 && $el.css('position') != 'fixed'){ 
-				$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
-			}
-			if ($(this).scrollTop() < 160 && $el.css('position') != 'absolute'){ 
-				$('#player_fixed').css({'position': 'relative', 'top': '0px'});
-			}
-		}
-	});
+	// $(window).scroll(function(e){
+	// 	if (!$.browser.mozilla) {
+	// 		$el = $('#player_fixed');
+	// 		if ($(this).scrollTop() > 208 && $el.css('position') != 'fixed'){ 
+	// 			$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
+	// 		}
+	// 		if ($(this).scrollTop() < 208 && $el.css('position') != 'absolute'){ 
+	// 			$('#player_fixed').css({'position': 'relative', 'top': '178px'});
+	// 		}
+	// 	}
+	// });
 	
 	$(function() { 
 	     // Setup the player to autoplay the next track
