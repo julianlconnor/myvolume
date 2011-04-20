@@ -15,7 +15,7 @@
 <ul class="<%= @charts[i].id %>" style="display:none;">
 	<% @charts[i].songs.each_with_index do |song,i| %>
 		<% if !song.song_thumbnail.nil? %>
-			<li style="background-image: url(<%= song.song_thumbnail.medium %>); background-repeat: no-repeat; background-position: 4% 50%;">
+			<li style="background-image: url(<%= song.song_thumbnail.medium %>); background-repeat: no-repeat; background-position: 11% 50%;">
 		<% else %>
 			<li>
 		<% end %>
@@ -27,20 +27,20 @@
 				</div>
 				<div class="track_artist"><%= "#{truncate(song.artist, :length => 32)}"%></div>
 				<div class="tags">
+					<div class="track_icons">
+						<div class="play_button">
+							<%= image_tag("player_play.png") %>
+						</div>
+						<div class="queue_button">
+							<%= image_tag("add_icon.png") %>
+						</div>
+						<div class="download">
+							<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
+						</div>
+					</div>
 					<% song.genres.order("name asc").each do |genre| %>
 						<span><%= genre.name %></span>
 					<% end %>
-				</div>
-			</div>
-			<div class="track_icons">
-				<div class="download">
-					<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
-				</div>
-				<div class="queue_button">
-					<%= image_tag("add_icon.png") %>
-				</div>
-				<div class="play_button">
-					<%= image_tag("player_play.png") %>
 				</div>
 			</div>
 		</div>
@@ -65,7 +65,7 @@
 <ul class="<%= @charts[i].id %>" style="display:none;">
 	<% @charts[i].songs.each_with_index do |song,i| %>
 		<% if !song.song_thumbnail.nil? %>
-			<li style="background-image: url(<%= song.song_thumbnail.medium %>); background-repeat: no-repeat; background-position: 4% 50%;">
+			<li style="background-image: url(<%= song.song_thumbnail.medium %>); background-repeat: no-repeat; background-position: 11% 50%;">
 		<% else %>
 			<li>
 		<% end %>
@@ -77,20 +77,20 @@
 				</div>
 				<div class="track_artist"><%= "#{truncate(song.artist, :length => 32)}"%></div>
 				<div class="tags">
+					<div class="track_icons">
+						<div class="play_button">
+							<%= image_tag("player_play.png") %>
+						</div>
+						<div class="queue_button">
+							<%= image_tag("add_icon.png") %>
+						</div>
+						<div class="download">
+							<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
+						</div>
+					</div>
 					<% song.genres.order("name asc").each do |genre| %>
 						<span><%= genre.name %></span>
 					<% end %>
-				</div>
-			</div>
-			<div class="track_icons">
-				<div class="download">
-					<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
-				</div>
-				<div class="queue_button">
-					<%= image_tag("add_icon.png") %>
-				</div>
-				<div class="play_button">
-					<%= image_tag("player_play.png") %>
 				</div>
 			</div>
 		</div>

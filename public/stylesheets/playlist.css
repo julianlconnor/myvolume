@@ -181,7 +181,7 @@ a {
 	text-decoration: underline;
 }*/
 #player_fixed ol li {
-	width: 461px;
+	width: 320px;
 	height: 67px;
 	margin: 5px 0;
 }
@@ -213,7 +213,7 @@ li.playing {
 }
 
 #player_fixed ol li div.track_icons, #charts ul li div.track_icons {
-	float: right;
+	float: left;
 }
 
 #player_fixed ol li div.queue_button,
@@ -222,15 +222,15 @@ li.playing {
 #charts ul li div.play_button, 
 #player_fixed ol li div.download,
 #charts ul li div.download  {
-	float: right;
+	float: left;
 	cursor: pointer;
-	margin: 26px 0 0 5px;
+	margin: 8px 5px 0 0;
 }
 
 #player_fixed ol li div.download,
 #player_fixed ol li div.queue_button,
 #player_fixed ol li div.play_button {
-	margin: 23px 5px 0 0;
+	margin: 8px 5px 0 0;
 }
 
 /*ul li div.queue_button, ol li div.queue_button {
@@ -242,9 +242,13 @@ ul li div.play_button, ol li div.play_button {
 	font-size: 20px;
 }
 */
-#charts ul li div.track_info, #player_fixed ol li div.track_info {
+#charts ul li div.track_info {
 	float: left;
-	margin: 0 0 0 83px;
+	margin: 0 0 0 140px;
+}
+#player_fixed ol li div.track_info {
+	float: left;
+	margin: 0 0 0 100px;
 }
 
 /*ol li div.download, ul li div.download {
@@ -347,7 +351,7 @@ ul li div.download {
 	margin-bottom:0;
 	margin-left:0;
 	margin-right:4px;
-	margin-top:2px;
+	margin-top:6px;
 	padding-bottom:3px;
 	padding-left:4px;
 	padding-right:4px;

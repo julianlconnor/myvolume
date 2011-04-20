@@ -54,7 +54,7 @@
 					playing.find('.play_button').html("<img src='/images/player_play.png'>");
 					next.find('.play_button').html("<img src='/images/player_pause.png'>");
 		            next.addClass('playing').siblings().removeClass('playing');
-		            audio.load($('a', next).attr('data-src'));
+		            audio.load($('.track_info a', next).attr('data-src'));
 		            audio.play();
 		          }
 		        });
@@ -71,9 +71,9 @@
 			$("." + chart_id).slideToggle("slow");
 		});
 		//      // Load in a track on click from right div playlists
-		     $('ul li div.play_button').live('click',function(e) {
+		$('ul li div.play_button').live('click',function(e) {
 		   // Copy selected node
-		   var clicked_node = $(this).parent().parent().parent().clone();
+		   var clicked_node = $(this).parent().parent().parent().parent().parent().clone();
 		   $('ol li.playing').find('.play_button').html("<img src='/images/player_play.png'>");
 		   var playing = $(".playing").removeClass('playing');
 
@@ -91,13 +91,13 @@
 		   if ( $("#player_playlist li").length > 6 ) {
 			$("#player_playlist li:last").remove()
 		   }
-		       audio.load($('a', clicked_node).attr('data-src'));
+		       audio.load($('.track_info a', clicked_node).attr('data-src'));
 		       audio.play();
-		     });
+		 });
 
 		// Queue track on playlist, same but append
 		$('ul li div.queue_button').live('click', function(e) {
-		   var clicked_node = $(this).parent().parent().parent().clone();
+		   var clicked_node = $(this).parent().parent().parent().parent().parent().clone();
 		   // Load the track into the player
 		       e.preventDefault();
 		       clicked_node.find('.queue_button').html("<img src='/images/minus.png'>");
@@ -106,23 +106,23 @@
 		   if ( $("#player_playlist li").length > 6 ) {
 			$("#player_playlist li:last").remove()
 		   }
-		     });
+		});
 
 		// Load in a track on click from the player playlist
 		$('ol li:not(.playing) div.play_button').live('click', function(e) {
-		   var clicked_node = $(this).parent().parent().parent();
+		   var clicked_node = $(this).parent().parent().parent().parent().parent();
 		   // Load the track into the player
 		       e.preventDefault();
 		   // If there's a track currently playing, change it's play icon to 'paused'
 		   $('ol li.playing').find('.play_button').html("<img src='/images/player_play.png'>");
 		   clicked_node.find('.play_button').html("<img src='/images/player_pause.png'>");
 		       clicked_node.addClass('playing').siblings().removeClass('playing');
-		       audio.load($('a', clicked_node).attr('data-src'));
+		       audio.load($('.track_info a', clicked_node).attr('data-src'));
 		       audio.play();
-		     });
+		 });
 		// Track that's playing, gets paused, etc..
 		$('ol li.playing div.play_button').live('click', function(e) {
-				var clicked_node = $(this).parent().parent().parent();
+				var clicked_node = $(this).parent().parent().parent().parent().parent();
 				e.preventDefault();
 				// If the track is currently paused
 				if ( clicked_node.find('.play_button img').attr("src") == '/images/player_pause.png'){
@@ -138,34 +138,34 @@
 			});
 			// Track that's not playing gets removed
 			$('ol li:not(.playing) div.queue_button').live('click', function(e) {
-				var clicked_node = $(this).parent().parent().parent();
+				var clicked_node = $(this).parent().parent().parent().parent().parent();
 				e.preventDefault();
 				//alert($('ol li').index(clicked_node));
 				$('ol li').eq($('ol li').index(clicked_node)).remove();
 			});
 			// Track that's playing is removed
 			$('ol li.playing div.queue_button').live('click', function(e) {
-				var clicked_node = $(this).parent().parent().parent();
+				var clicked_node = $(this).parent().parent().parent().parent().parent();
 				e.preventDefault();
 				//alert($('ol li').index(clicked_node));
 				var next = $('ol li.playing').next();
 				$('ol li').eq($('ol li').index(clicked_node)).remove();
 				
 	            if (!next.length && !($('ol li').length)) {
-					first = $('ul a').attr('data-src');
+					first = $('ul .track_info a').attr('data-src');
 			        audio.load(first);
 				}
 				else if ( $('ol li').first() != null ) {
 					var next = $('ol li').first();
 		            next.addClass('playing');
 					next.find('.play_button').html("<img src='/images/player_pause.png'>");
-		            audio.load($('a', next).attr('data-src'));
+		            audio.load($('.track_info a', next).attr('data-src'));
 		            audio.play();
 				}
 				else {
 	            	next.addClass('playing');
 					next.find('.play_button').html("<img src='/images/player_pause.png'>")
-		            audio.load($('a', next).attr('data-src'));
+		            audio.load($('.track_info a', next).attr('data-src'));
 		            audio.play();
 				}
 			});
