@@ -10,9 +10,6 @@ img {
 h1 {
 	margin: 5px 0;
 }
-header {
-	width: 375px;
-}
 #charts {
 	float: left;
 	width: 1000px;
@@ -25,6 +22,7 @@ header {
 	border-top-style:solid;
 	border-top-width:5px;
 	height: 100px;
+	width: 240px;
 }
 #chart_row_one, #chart_row_two, #chart_row_three {
 	float: left;
@@ -126,14 +124,14 @@ a {
 	top: 50px;
 	left: 30px;
 	z-index:100;
-	width: 460px;
+	width: 320px;
 }
 #player_playlist {
 	margin: 5px 0 0 0;
 	border: 0;
 }
 #content_wrapper {
-	margin: 0 0 0 515px;
+	margin: 0 0 0 385px;
 	float: left;
 }
 
@@ -413,4 +411,7 @@ ul .tags span {
 	.clear {
 		clear: both;
 	}
+}
+.scrubber {
+	width: 150px !important;
 }

@@ -25,13 +25,7 @@
 				<% end %>
 				</ul> -->
 	</div>
-	<div id="player_wrapper">
-		<div id="player_fixed">
-			<audio preload="none"></audio>
-			<ol id="player_playlist">
-			</ol>
-		</div>
-	</div>
+	<div>
 	<div id="container">
 		<div id="header">
 			<div class="wrap">
@@ -39,6 +33,13 @@
 					<p class="notice"><%= notice %></p>
 					<p class="alert"><%= alert %></p>
 				</div>
+			</div>
+		</div>
+		<div id="player_wrapper">
+			<div id="player_fixed">
+				<audio preload="none"></audio>
+				<ol id="player_playlist">
+				</ol>
 			</div>
 		</div>
 		<%= yield %>
