@@ -21,7 +21,7 @@ h1 {
 	border-top-color:#444751;
 	border-top-style:solid;
 	border-top-width:5px;
-	height: 100px;
+	height: 115px;
 	width: 240px;
 }
 #chart_row_one, #chart_row_two, #chart_row_three {
@@ -103,9 +103,6 @@ a {
 	padding-top:15px;
 	width:100%;
 }
-#copyright {
-	margin: 0 0 0 238px;
-}
 .wrap {
 	margin-bottom:0;
 	margin-left:auto;
@@ -130,7 +127,7 @@ a {
 	margin: 5px 0 0 0;
 	border: 0;
 }
-#content_wrapper {
+.content_wrapper {
 	margin: 0 0 0 385px;
 	float: left;
 }
@@ -171,8 +168,13 @@ a {
 	width: 375px;
 	height: 67px;
 }
-#player_fixed ol li div.track_artist, #charts ul li div.track_artist {
+#charts ul li div.track_artist {
 	font-size: 13px;
+	color: #999999;
+	margin: 3px 0 0 0;
+}
+#player_fixed ol li div.track_artist {
+	font-size: 11px;
 	color: #999999;
 	margin: 3px 0 0 0;
 }
@@ -327,6 +329,10 @@ ul li div.download {
 	box-shadow:#CCCCCC 0 1px 2px;
 	cursor:default;
 	text-shadow:white 0 1px 0;
+}
+
+.tags {
+	clear: both;
 }
 
 .tags span {
