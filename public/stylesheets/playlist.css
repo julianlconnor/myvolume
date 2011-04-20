@@ -21,6 +21,7 @@ header {
 	border-top-style:solid;
 	border-top-width:5px;
 	height: 100px;
+	width: 1000px;
 }
 #chart_row_one, #chart_row_two, #chart_row_three {
 	float: left;
