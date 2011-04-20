@@ -22,7 +22,7 @@ header {
 	border-top-width:5px;
 	height: 100px;
 }
-#chart_row_one, #chart_row_two {
+#chart_row_one, #chart_row_two, #chart_row_three {
 	float: left;
 }
 #chart_row_one {
@@ -129,7 +129,11 @@ a {
 	border: 0;
 }
 #content_wrapper {
-	margin: 0 0 0 238px
+	margin: 0 0 0 515px;
+	float: left;
+}
+#charts {
+	float: left;
 }
 #container, #body {
 	background-attachment:initial;
@@ -263,12 +267,9 @@ ul li div.download {
 }
 .pagination {
 	float: left;
-	width: 795px;
 	height: 30px;
-	margin: 5px 0 15px 0;
-}
-.pagination.bottom {
-	margin: 15px 0 25px 0;
+	margin: 5px 0 0 15px;
+	clear: both;
 }
 .pagination a, .pagination span, .pagination em {
 	display:inline;

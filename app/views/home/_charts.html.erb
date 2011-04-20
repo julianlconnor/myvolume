@@ -1,4 +1,4 @@
-<%= will_paginate @charts, :prev_label => 'Previous', :next_label => 'Next' %>
+<!-- <%= will_paginate @charts, :prev_label => 'Previous', :next_label => 'Next' %> -->
 <div id="chart_row_one">
 <% for i in 0 ... @charts.size/2 %>
 <header>
@@ -99,4 +99,6 @@
 </ul>
 <% end %>
 </div>
-<%= will_paginate @charts, :class => "pagination bottom", :prev_label => 'Previous', :next_label => 'Next' %>
+<div id="chart_row_three">
+	<%= will_paginate @charts, :class => "pagination bottom", :prev_label => 'Previous', :next_label => 'Next' %>
+</div>
