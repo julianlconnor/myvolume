@@ -12,6 +12,9 @@
 	<div id="topbar">
 		<span id="logo">♥myvolu.me</span>
 		<span id="tagline">An easy way to discover new music.</span>
+		<!-- <ul id="topnav">
+			<li class="highlighted"><%= link_to "Charts", charts_path %></li>
+		</ul> -->
 		<span id="lastupdate"><%= CronWatcher.last.last_update.strftime("Last Updated at %I:%M%p on %m/%d/%Y") %></span>
 		<!-- <ul id="topnav">
 				<% if user_signed_in? %>

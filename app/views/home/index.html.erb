@@ -88,7 +88,7 @@
 		       e.preventDefault();
 		       //$(this).addClass('playing').siblings().removeClass('playing');
 		   	clicked_node.addClass('playing').addClass('playlist').prependTo($("#player_playlist"));
-		   if ( $("#player_playlist li").length > 8 ) {
+		   if ( $("#player_playlist li").length > 6 ) {
 			$("#player_playlist li:last").remove()
 		   }
 		       audio.load($('a', clicked_node).attr('data-src'));
@@ -103,7 +103,7 @@
 		       clicked_node.find('.queue_button').html("<img src='/images/minus.png'>");
 		       //$(this).addClass('playing').siblings().removeClass('playing');
 		   clicked_node.appendTo($("#player_playlist"));
-		   if ( $("#player_playlist li").length > 9 ) {
+		   if ( $("#player_playlist li").length > 6 ) {
 			$("#player_playlist li:last").remove()
 		   }
 		     });

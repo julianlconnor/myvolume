@@ -382,23 +382,23 @@ ul .tags span {
 }
 #topnav {
 	display: inline;
-	float: right;
-	height: 35px;
+	float: left;
 	font-size: 15px;
 }
 #topbar ul {
 	margin: 0;
 	padding: 5px 0;
-	margin: 0 15px;
+	margin: 0 115px;
+	height: 28px;
 }
 #topnav li {
 	display: inline;
 	float: left;
 	padding: 0 10px;
 	margin: 0 5px 0 0;
-	border-left: 1px solid #444751;
 }
 #topnav li a {
+	color: #9ED2D0;
 }
 
 
