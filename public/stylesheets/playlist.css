@@ -13,6 +13,10 @@ h1 {
 header {
 	width: 375px;
 }
+#charts {
+	float: left;
+	width: 1000px;
+}
 #charts h1 { 
 	padding: 25px 2px 30px 140px;
 	margin: 0;
@@ -21,7 +25,6 @@ header {
 	border-top-style:solid;
 	border-top-width:5px;
 	height: 100px;
-	width: 1000px;
 }
 #chart_row_one, #chart_row_two, #chart_row_three {
 	float: left;
@@ -133,9 +136,7 @@ a {
 	margin: 0 0 0 515px;
 	float: left;
 }
-#charts {
-	float: left;
-}
+
 #container, #body {
 	background-attachment:initial;
 	background-clip:initial;
