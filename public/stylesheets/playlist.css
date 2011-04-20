@@ -268,12 +268,11 @@ ul li div.download {
 .pagination {
 	float: left;
 	height: 30px;
-	margin: 5px 0 0 15px;
+	margin: 0 0 0 15px;
 	clear: both;
 }
 .pagination a, .pagination span, .pagination em {
 	display:inline;
-	margin-right:5px;
 	-moz-border-radius: 4px 4px 4px 4px;
 	-moz-box-shadow: 0 1px 2px #CCCCCC, 0 1px 1px white inset;
 	-webkit-box-shadow:#CCCCCC 0 1px 2px, white 0 1px 1px inset;
@@ -300,10 +299,7 @@ ul li div.download {
 	font-size:14px;
 	font-weight:bold;
 	line-height:14px;
-	padding-bottom:3px;
-	padding-left:6px;
-	padding-right:6px;
-	padding-top:5px;
+	padding: 1px 3px 1px 3px;
 	text-align:center;
 	text-decoration:none;
 	text-shadow:white 0 1px 0;
