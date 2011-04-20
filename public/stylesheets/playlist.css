@@ -361,8 +361,8 @@ ul .tags span {
 }
 
 #topbar {
-	background-color:#057150;
-	background-image:-webkit-gradient(linear, 0 100%, 0 0%, from(#282828), to(#282828));
+	background-color:#282828;
+/*	background-image:-webkit-gradient(linear, 0 100%, 0 0%, from(#282828), to(#282828));*/
 	border-bottom-color:#9ED2D0;
 	border-bottom-style:solid;
 	border-bottom-width:2px;
