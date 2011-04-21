@@ -5,14 +5,14 @@ gem 'rails', '3.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-gem 'mongrel'
-gem 'devise'
-gem 'json'
-gem 'taps'
-gem 'mysql'
-gem 'will_paginate', '~> 3.0.beta'
-gem 'ruby-debug'
+gem 'devise' 	# User login
+gem 'json'		# API Calls
+gem 'mongrel'	# Web Server
+gem 'pg'		# PostgreSQL
+gem 'ruby-debug'# Debugger
+gem 'taps'		# Heroku
+gem 'will_paginate', '~> 3.0.beta'	# Pagination
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

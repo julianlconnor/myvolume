@@ -4,6 +4,8 @@ class Artist < ActiveRecord::Base
   
   has_one :artist_thumbnail
   
+  # I haven't completed writing this function
+  
   def self.fill_artist_info(artist_list)
     artist_detail_fetch = Net::HTTP.get_response(URI.parse("http://api.beatport.com/catalog/artists?format=json&v=1.0&id=#{artist_list.join(",")}"));
     artist_detail_data = artist_detail_fetch.body
@@ -55,7 +57,7 @@ class Artist < ActiveRecord::Base
         end
       end
     end
-    # End routine ;)
+    # End routine
   end
   
 end
