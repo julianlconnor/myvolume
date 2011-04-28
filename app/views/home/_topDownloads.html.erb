@@ -1,0 +1,43 @@
+<div class="header">
+	<span class="title">Top Downloads</span>
+	<%= will_paginate @topdownloads, :params => { :controller => "home", :action => "top_downloads" }, :class => "pagination topdownloads", :prev_label => 'Previous', :next_label => 'Next', :page_links => false %>
+</div>
+<ul>
+<% @topdownloads.each do |track| %>
+	<% if !track.song.song_thumbnail.nil? %>
+		<li class="<%= cycle('even','odd')%>">
+	<% else %>
+		<li>
+	<% end %>
+	<div class="track_detail">
+		<span class="track_position"><%= track.rank.to_s.rjust(2, '0') %></span>
+		<div class="track_image">
+			<a href="<%= track.song.song_thumbnail.large %>" class="lightbox"><%= image_tag track.song.song_thumbnail.medium %></a>
+		</div>
+		<div class="track_info">
+			<div>
+				<% track_title = "#{track.song.name} (#{track.song.mix_name})"%>
+				<a href="#" data-src="<%= track.song.sample_url %>"><%= truncate(track_title, :length => 32) %></a>
+			</div>
+			<div class="track_artist"><%= "#{truncate(track.song.artist, :length => 28, :seperator => ' ')}"%></div>
+			<div class="tags">
+				<div class="track_icons">
+					<div class="play_button">
+						<%= image_tag("player_play.png") %>
+					</div>
+					<div class="queue_button">
+						<%= image_tag("add_icon.png") %>
+					</div>
+					<div class="download">
+						<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{track.song.name.gsub('&','').gsub(' ','+')}+#{track.song.mix_name.gsub('&','').gsub(' ','+')}+#{track.song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
+					</div>
+				</div>
+				<% track.song.genres.order("name asc").each do |genre| %>
+					<span><%= genre.name %></span>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	</li>
+<% end %>
+</ul>

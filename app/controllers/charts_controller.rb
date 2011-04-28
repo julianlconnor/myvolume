@@ -11,6 +11,7 @@ class ChartsController < ApplicationController
   end
 
   # GET /charts/1
+  # Will is the best!
   # GET /charts/1.xml
   def show
     @chart = Chart.find(params[:id])

@@ -1,7 +1,15 @@
 <div id="body">
+	<div id="player_fixed">
+		<audio preload="none"></audio>
+		<ol id="player_playlist">
+		</ol>
+	</div>
 	<div class="content_wrapper">
 		<div id="charts">
 			<%= render 'charts' %>
+		</div>
+		<div id="topdownloads">
+			<%= render 'topDownloads' %>
 		</div>
 	</div>
 </div>
@@ -20,17 +28,21 @@
 		}
 	});
 	// Handle audio player scroll thingie
-	// $(window).scroll(function(e){
-	// 	if (!$.browser.mozilla) {
+	// $(window).scroll(function(){
 	// 		$el = $('#player_fixed');
-	// 		if ($(this).scrollTop() > 60 && $el.css('position') != 'fixed'){ 
-	// 			$('#player_fixed').css({'position': 'fixed', 'top': '15px'}); 
+	// 		if ($(this).scrollLeft() > 0 ){ 
+	// 			$('#player_fixed').css({'position': 'absolute', 'top': $(this).scrollTop() + 50}); 
 	// 		}
-	// 		if ($(this).scrollTop() < 60 && $el.css('position') != 'absolute'){ 
-	// 			$('#player_fixed').css({'position': 'relative', 'top': '0px'});
+	// 		if ($(this).scrollTop() == 0 ){ 
+	// 			$('#player_fixed').css({'position': 'fixed', 'top': $(this).scrollTop() + 50});
 	// 		}
-	// 	}
-	// });
+	// 	});
+	$(window).scroll(function(){
+		var x = 0 - ($(this).scrollLeft() / 15);
+				$("#player_fixed").offset({
+					left: x + 30
+				});
+	});
 	// $(window).scroll(function(e){
 	// 	if (!$.browser.mozilla) {
 	// 		$el = $('#player_fixed');
@@ -42,7 +54,6 @@
 	// 		}
 	// 	}
 	// });
-	
 	$(function() { 
 	// Setup the player to autoplay the next track
 		var a = audiojs.createAll({
@@ -59,14 +70,14 @@
 				audio.play();
 			}
 		});
-
+		
 		// Load in the first track
 		var audio = a[0];
-		first = $('#charts ul a').attr('data-src');
+		first = $('#charts ul .track_info a').attr('data-src');
 		audio.load(first);
 
 		// Expand a playlist on header click
-		$('h1').live('click',function(e) {
+		$('div.chartheader').live('click',function(e) {
 			var chart_id = $(this).attr("id");
 			$("." + chart_id).slideToggle("slow");
 		});

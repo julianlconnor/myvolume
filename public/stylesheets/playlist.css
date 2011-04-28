@@ -7,28 +7,70 @@ img {
 	display: inline;
 	border: 0;
 }
-h1 {
-	margin: 5px 0;
-}
-#charts {
+#charts, #topdownloads {
 	float: left;
-	width: 1015px;
-}
-#charts h1 { 
-	padding: 25px 2px 30px 140px;
-	margin: 0;
-	font-size: 1em;
-	border-top-color:#444751;
-	border-top-style:solid;
-	border-top-width:5px;
-	height: 115px;
-	width: 240px;
-}
-#chart_row_one, #chart_row_two, #chart_row_three {
-	float: left;
-}
-#chart_row_one {
 	margin: 0 45px 0 0;
+}
+#charts h1, #topdownloads h1 { 
+	font-size: 1em;
+	margin: 0;
+}
+.chartheader {
+	background: -webkit-linear-gradient(top, #BDEBE9, #ADDAD8);
+	background: -moz-linear-gradient(top, #BDEBE9, #ADDAD8);;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border: 1px solid #86B2B1;
+	box-shadow: #CCCCCC 0 1px 1px;
+	-webkit-box-shadow: #C0C0C0 0 1px 1px;
+	color: #FFF;
+	text-shadow: #367B83 0 1px 1px;
+/*	border-bottom-color:#444751;
+	border-bottom-style:solid;
+	border-bottom-width:5px;*/
+	height: 160px;
+	width: 382px;
+	margin: 5px 0 5px 0;
+	clear: both;
+}
+.chartimage {
+	float: left;
+	padding: 15px 0 0px 0;
+	margin: 0 0 0 10px;
+}
+.chartinfo {
+	float: left;
+	width: 225px;
+	padding: 10px 0 0 0;
+	margin: 0 0 0 10px;
+}
+.chartinfo .charttitle {
+	font-size: 17px;
+}
+.chartinfo .chartdate {
+	text-shadow: 0;
+}
+
+.header {
+	height: 35px;
+	color: white;
+	background: -webkit-gradient(linear, 0 0%, 0 100%, from(#444444), color-stop(0.5, #282828), color-stop(0.51, #282828), to(#282828));
+	background: -moz-linear-gradient(top, #444444,#282828);
+/*	-moz-border-radius-topleft: 2px;
+	-moz-border-radius-topright: 2px;*/
+	border-top: 1px solid #191919;
+	border-bottom: 2px solid #9ED2D0;
+/*	border-top-left-radius:3px 3px;
+	border-top-right-radius:3px 3px;*/
+}
+.header .title {
+	float: left;
+	font-size: 21px;
+	text-shadow: #282828 0 1px 1px;
+	padding: 0 0 0 10px;
+}
+.header .pagination {
+	float: left;
 }
 #charts h1:hover {
 	cursor: pointer;
@@ -64,10 +106,10 @@ a {
 #logo {
 	font-size: 21px;
 	margin: 0 10px 0 0;
-	padding: 1px 5px 1px 5px;
+	padding: 3px 5px 1px 5px;
 }
 #tagline {
-	padding: 7px 5px 5px 0;
+	padding: 10px 5px 5px 0;
 }
 #body {
 	line-height: 1.4;
@@ -111,17 +153,15 @@ a {
 	text-align:left;
 	width:1050px;
 }
-#player_wrapper {
-	height: 0;
-}
 #player_fixed {
 	position: fixed;
-	/*width: 300px;*/
-	/*top: 178px;*/
+	width: 300px;
 	top: 50px;
 	left: 30px;
 	z-index:100;
+/*	float: left;
 	width: 320px;
+	margin: 0 0 0 30px;*/
 }
 #player_playlist {
 	margin: 5px 0 0 0;
@@ -130,6 +170,7 @@ a {
 .content_wrapper {
 	margin: 0 0 0 385px;
 	float: left;
+	width: 1015px;
 }
 
 #container, #body {
@@ -151,24 +192,24 @@ a {
 	width:100%;
 }
 
-#charts ul, #player_fixed ol {
+#topdownloads ul, #charts ul, #player_fixed ol {
 	padding: 0;
 	margin: 0;
 	list-style: none;
 	border-top: 1px solid #ccc;
 	font-size: 0.9em;
 }
-#charts ul li, #player_fixed ol li{
-	margin: 0px;
+#topdownloads ul li, #charts ul li, #player_fixed ol li{
+	margin: 3px 0 0 0;
 	padding: 10px 0px;
 	border-bottom: 1px solid #ccc;
 	height: 50px;
 }
-#charts ul li {
-	width: 375px;
-	height: 67px;
+#topdownloads ul li, #charts ul li {
+	width: 385px;
+	height: 65px;
 }
-#charts ul li div.track_artist {
+#topdownloads ul li, #charts ul li div.track_artist {
 	font-size: 13px;
 	color: #999999;
 	margin: 3px 0 0 0;
@@ -188,7 +229,7 @@ a {
 	margin: 5px 0;
 }
 
-#charts ul li a, #player_fixed ol li a { 
+#topdownloads ul li a, #charts ul li a, #player_fixed ol li a { 
 	color: #000; 
 	text-indent: -3.3ex; 
 	padding: 0;
@@ -196,7 +237,8 @@ a {
 }
 li.playing {
 	/*background-color: #b3ffba;*/
-	background: #B2FFD1;
+	background: -webkit-linear-gradient(top, #BEFFE8, #B2FFD1);
+	background: -moz-linear-gradient(top, #BEFFE8, #B2FFD1);
 	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); 
 }
 #player_fixed ol li.playing:before { 
@@ -220,10 +262,13 @@ li.playing {
 
 #player_fixed ol li div.queue_button,
 #charts ul li div.queue_button,
+#topdownloads ul li div.queue_button,
 #player_fixed ol li div.play_button,
-#charts ul li div.play_button, 
+#charts ul li div.play_button,
+#topdownloads ul li div.play_button,
 #player_fixed ol li div.download,
-#charts ul li div.download  {
+#charts ul li div.download,
+#topdownloads ul li div.download  {
 	float: left;
 	cursor: pointer;
 	margin: 8px 5px 0 0;
@@ -244,13 +289,32 @@ ul li div.play_button, ol li div.play_button {
 	font-size: 20px;
 }
 */
-#charts ul li div.track_info {
+#topdownloads ul li div.track_info, #charts ul li div.track_info {
 	float: left;
-	margin: 0 0 0 140px;
+	margin: 0 0 0 15px;
+	width:235px;
 }
 #player_fixed ol li div.track_info {
 	float: left;
-	margin: 0 0 0 100px;
+	margin: 0 0 0 15px;
+	width:230px;
+}
+#topdownloads ul li div.track_image, #charts ul li div.track_image {
+	padding: 3px 0 0 13px;
+	float: left;
+}
+#topdownloads ul li span.track_position, #charts ul li span.track_position {
+	float: left;
+	padding: 5px 0 0 15px;
+	font-size: 38px;
+	color: #c6c6c6;
+}
+#player_fixed ol li span.track_position {
+	display: none;
+}
+#player_fixed ol li div.track_image {
+	float: left;
+	padding: 0 0 0 15px;
 }
 
 /*ol li div.download, ul li div.download {
@@ -269,24 +333,31 @@ ul li div.download {
 	padding: 5px 0 0 0;
 }
 #charts ul li .track_detail {
-	height: 35px;
+	height: 65px;
 }
 .pagination {
 	float: left;
 	height: 30px;
-	margin: 0 0 0 15px;
-	clear: both;
+}
+.pagination.charts {
+	margin: 8px 0 0 195px;
+}
+.pagination.topdownloads {
+	margin: 8px 0 0 102px;
+}
+.pagination .disabled {
+	color: #E0DAE0;
 }
 .pagination a, .pagination span, .pagination em {
 	display:inline;
-	-moz-border-radius: 4px 4px 4px 4px;
+/*	-moz-border-radius: 4px 4px 4px 4px;*/
 	-moz-box-shadow: 0 1px 2px #CCCCCC, 0 1px 1px white inset;
 	-webkit-box-shadow:#CCCCCC 0 1px 2px, white 0 1px 1px inset;
 	background-color:#F9F8F9;
 	background-image:-webkit-linear-gradient(top, #F9F8F9, #EDE8ED);
 	border-bottom-color:#D2CBD2;
-	border-bottom-left-radius:4px 4px;
-	border-bottom-right-radius:4px 4px;
+/*	border-bottom-left-radius:4px 4px;
+	border-bottom-right-radius:4px 4px;*/
 	border-bottom-style:solid;
 	border-bottom-width:1px;
 	border-left-color:#D2CBD2;
@@ -296,8 +367,8 @@ ul li div.download {
 	border-right-style:solid;
 	border-right-width:1px;
 	border-top-color:#D2CBD2;
-	border-top-left-radius:4px 4px;
-	border-top-right-radius:4px 4px;
+/*	border-top-left-radius:4px 4px;
+	border-top-right-radius:4px 4px;*/
 	border-top-style:solid;
 	border-top-width:1px;
 	box-shadow:#CCCCCC 0 1px 2px, white 0 1px 1px inset;
@@ -339,7 +410,7 @@ ul li div.download {
 	/*-webkit-box-shadow:white 0 0 1px 0;*/
 	background-attachment:initial;
 	background-clip:initial;
-	background-color:#9ED2D0;
+	background-color:#709B9A;
 	background-image:initial;
 	background-origin:initial;
 	border-bottom-left-radius:10px 10px;
@@ -365,17 +436,24 @@ ul li div.download {
 }
 
 ul .tags span {
-	margin: 5px 0 0 0;
+	margin: 5px 0 0 0;	
+}
+ul li.odd {
+	background: #F1F1F1;
+}
+ul li.even {
+	background: #F7F7F7;
 }
 
 #topbar {
-	background-color:#282828;
+	background: -webkit-gradient(linear, 0 0%, 0 100%, from(#444444), color-stop(0.5, #282828), color-stop(0.51, #282828), to(#282828));
+	background: -moz-linear-gradient(top,#444444,#282828);
 /*	background-image:-webkit-gradient(linear, 0 100%, 0 0%, from(#282828), to(#282828));*/
 	border-bottom-color:#9ED2D0;
 	border-bottom-style:solid;
 	border-bottom-width:2px;
 	color:#F0F0F0;
-	height:28px;
+	height:35px;
 	margin-bottom:15px;
 	margin-left:0;
 	margin-right:0;
@@ -387,7 +465,7 @@ ul .tags span {
 
 #topbar #lastupdate {
 	float: right;
-	padding: 5px 0;
+	padding: 10px 0 0 0;
 	margin: 0 10px;
 }
 #topnav {
