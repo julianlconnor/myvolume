@@ -421,7 +421,7 @@ ul li div.download {
 	-moz-box-shadow: 0 0 1px 0 white;
 	/*box-shadow:white 0 0 1px 0;*/
 	color:white;
-	cursor:pointer;
+/*	cursor:pointer;*/
 	display:inline;
 	float:left;
 	font-size:11px;
