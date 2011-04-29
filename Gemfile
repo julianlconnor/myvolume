@@ -6,6 +6,7 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise' 	# User login
+gem 'mysql'
 gem 'json'		# API Calls
 gem 'mongrel'	# Web Server
 gem 'pg'		# PostgreSQL
