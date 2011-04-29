@@ -1,10 +1,8 @@
 body { 
 	color: #666; 
-	font-family: Century Gothic; 
 }
 
 body, p, ol, ul, td {
-  font-family: Century Gothic;
   font-size:   13px;
 }
 
