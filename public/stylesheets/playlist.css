@@ -69,9 +69,9 @@ img {
 	text-shadow: #282828 0 1px 1px;
 	padding: 0 0 0 10px;
 }
-.header .pagination {
-	float: left;
-}
+/*.header .pagination {
+	float: right;
+}*/
 #charts h1:hover {
 	cursor: pointer;
 }
@@ -336,14 +336,14 @@ ul li div.download {
 	height: 65px;
 }
 .pagination {
-	float: left;
+	float: right;
 	height: 30px;
 }
 .pagination.charts {
-	margin: 8px 0 0 195px;
+	padding: 8px 10px 0 0;
 }
 .pagination.topdownloads {
-	margin: 8px 0 0 102px;
+	padding: 8px 10px 0 0;
 }
 .pagination .disabled {
 	color: #E0DAE0;
