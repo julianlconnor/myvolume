@@ -56,6 +56,7 @@ img {
 	color: white;
 	background: -webkit-gradient(linear, 0 0%, 0 100%, from(#444444), color-stop(0.5, #282828), color-stop(0.51, #282828), to(#282828));
 	background: -moz-linear-gradient(top, #444444,#282828);
+	box-shadow: rgba(0, 0, 0, 0.292969) 1px 1px 8px;
 /*	-moz-border-radius-topleft: 2px;
 	-moz-border-radius-topright: 2px;*/
 	border-top: 1px solid #191919;
@@ -224,7 +225,7 @@ a {
 #player_fixed ol li {
 	width: 320px;
 	height: 67px;
-	margin: 5px 0;
+	margin: 0 0 5px 0;
 }
 
 #topdownloads ul li a, #charts ul li a, #player_fixed ol li a { 
