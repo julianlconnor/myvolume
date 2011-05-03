@@ -195,7 +195,6 @@ a {
 	padding: 0;
 	margin: 0;
 	list-style: none;
-	border-top: 1px solid #ccc;
 	font-size: 0.9em;
 }
 #topdownloads ul {
@@ -236,6 +235,9 @@ a {
 	height: 67px;
 	margin: 0 0 5px 0;
 	border: 1px solid #DEDEDE;
+}
+#player_fixed ol {
+	margin: 7px 0 0 0;
 }
 
 #topdownloads ul li a, #charts ul li a, #player_fixed ol li a { 
