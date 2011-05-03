@@ -191,18 +191,27 @@ a {
 	width:100%;
 }
 
-#topdownloads ul, #charts ul, #player_fixed ol {
+#charts ul, #player_fixed ol {
 	padding: 0;
 	margin: 0;
 	list-style: none;
 	border-top: 1px solid #ccc;
 	font-size: 0.9em;
 }
-#topdownloads ul li, #charts ul li, #player_fixed ol li{
+#topdownloads ul {
+	margin: 6px 0 0 0;
+	padding: 0;
+	list-style: none;
+}
+#charts ul li, #player_fixed ol li{
 	margin: 3px 0 0 0;
 	padding: 10px 0px;
-	border-bottom: 1px solid #ccc;
+	border: 1px solid #DEDEDE;
 	height: 50px;
+}
+#topdownloads ul li {
+	padding: 15px 0px;
+	border: 1px solid #DEDEDE;
 }
 #topdownloads ul li, #charts ul li {
 	width: 385px;
@@ -223,9 +232,10 @@ a {
 	text-decoration: underline;
 }*/
 #player_fixed ol li {
-	width: 320px;
+	width: 318px;
 	height: 67px;
 	margin: 0 0 5px 0;
+	border: 1px solid #DEDEDE;
 }
 
 #topdownloads ul li a, #charts ul li a, #player_fixed ol li a { 
@@ -295,7 +305,7 @@ ul li div.play_button, ol li div.play_button {
 }
 #player_fixed ol li div.track_info {
 	float: left;
-	margin: 0 0 0 15px;
+	margin: 0 0 0 13px;
 	width:230px;
 }
 #topdownloads ul li div.track_image, #charts ul li div.track_image {
@@ -438,10 +448,12 @@ ul .tags span {
 	margin: 5px 0 0 0;	
 }
 ul li.odd {
-	background: #F1F1F1;
+	background: -moz-linear-gradient(top,#F7F7F7,#DDDDDD);
+	background: -webkit-linear-gradient(top, #F7F7F7, #DDDDDD);
 }
 ul li.even {
-	background: #F7F7F7;
+	background: -moz-linear-gradient(top,#F7F7F7,#DDDDDD);
+	background: -webkit-linear-gradient(top, #F7F7F7, #DDDDDD);
 }
 
 #topbar {
