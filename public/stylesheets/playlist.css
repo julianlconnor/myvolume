@@ -80,6 +80,7 @@ em {
 	font-size: 1em; 
 	font-style: normal; 
 	color: #999; 
+	text-shadow: none;
 }
 a { 
 	color: #888; 
@@ -203,7 +204,7 @@ a {
 	list-style: none;
 }
 #charts ul li, #player_fixed ol li{
-	margin: 3px 0 0 0;
+	margin: 0 0 3px 0;
 	padding: 10px 0px;
 	border: 1px solid #DEDEDE;
 	height: 50px;
@@ -213,7 +214,7 @@ a {
 	border: 1px solid #DEDEDE;
 }
 #topdownloads ul li, #charts ul li {
-	width: 385px;
+	width: 382px;
 	height: 65px;
 }
 #topdownloads ul li, #charts ul li div.track_artist {
