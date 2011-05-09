@@ -1,6 +1,6 @@
 class CreateTopDownloads < ActiveRecord::Migration
   def self.up
-    create_table (:top_downloads, :primary_key => :rank) do |t|
+    create_table :top_downloads do |t|
       t.integer :rank
       t.references :song
       t.integer :difference

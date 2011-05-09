@@ -6,7 +6,7 @@ Myvolume::Application.routes.draw do
   resources :songs
 
   devise_for :users
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

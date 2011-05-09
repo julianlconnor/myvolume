@@ -1,0 +1,58 @@
+#loginform {
+	width: 550px;
+	height: 315px;
+	padding: 10px;
+	margin: 90px auto 45px auto;
+}
+#loginform form {
+	float: left;
+	width: 540px;
+}
+#loginform input {
+	float:right;
+	margin-bottom:0;
+	margin-left:0;
+	margin-right:15px;
+	margin-top:15px;
+	width:350px;
+	height: 40px;
+	color: #999999;
+}
+#loginform p {
+	color:#666666;
+	float:left;
+	font-size: 20px;
+	font-weight:bold;
+	letter-spacing:0;
+	padding-bottom:9px;
+	padding-left:10px;
+	padding-right:0;
+	padding-top:25px;
+}
+
+.devise_box {
+	background: -webkit-linear-gradient(top, #BDEBE9, #ADDAD8);
+	background: -moz-linear-gradient(top, #BDEBE9, #ADDAD8);;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #86B2B1;
+	box-shadow: #CCCCCC 0 1px 1px;
+	-webkit-box-shadow: #C0C0C0 0 1px 1px;
+	color: #FFF;
+	text-shadow: #367B83 0 1px 1px;
+}
+
+.devise_form {
+	float: left;
+	padding: 5px;
+	clear: both;
+}
+.devise_form_header {
+	text-align: center;
+}
+
+.clear {
+	clear: both;
+	display: block;
+}
+

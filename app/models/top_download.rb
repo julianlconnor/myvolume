@@ -18,7 +18,7 @@ class TopDownload < ActiveRecord::Base
       if song_object.nil?
         # Create the song
         song_object = Song.new(:name => track["name"], :mix_name => track["mixName"], :sample_url => track["sampleUrl"], :beatport_id => track["id"],
-                               :length => track["length"], :release_date => track["releaseDate"], :publish_date => track["publishDate"])
+                               :length => track["length"], :release_date => track["releaseDate"], :publish_date => track["publishDate"], :rank => track["position"])
         song_object.save
         # Iterate through song genre associations
         track["genres"].each do |genre|
@@ -76,8 +76,10 @@ class TopDownload < ActiveRecord::Base
       # Now we have a song object no matter what, see if it's in the download spot
       # Check to see if that song exists in the topdownloads
       top_download_object = TopDownload.first(:conditions => {:song_id => song_object.id})
-      if top_download_object.nil?
-        # Song doesn't exist in the charts, replace the object at that position with its new information
+      if top_download_object.nil? and song_object.rank.nil?
+        # Song doesn't exist in the charts, and its rank is null, truly new
+        # Replace the object at that position with its new information
+        song_object.rank = track["position"]
         top_download_object = TopDownload.first(:conditions => {:rank => track["position"]})
         if top_download_object.nil?
           # The object truly doesn't exist (first run through)
@@ -86,10 +88,22 @@ class TopDownload < ActiveRecord::Base
           top_download_object.song_id = song_object.id
           top_download_object.difference = 0
         end
-        top_download_object.save
+      elsif top_download_object.nil?
+        # Song doesn't exist but has a rank of what it was previously
+        # Occurs when a song is overwritten while fetching new tracks
+        #Meaning, a song moved (up or down) into this song's position
+        top_download_object = TopDownload.first(:conditions => {:rank => track["position"]})
+        if top_download_object.nil?
+          # The object truly doesn't exist (first run through)
+          top_download_object = TopDownload.new(:rank => track["position"], :song_id => song_object.id, :difference => 0)
+        else
+          top_download_object.song_id = song_object.id
+          top_download_object.difference = song_object.rank - track["position"]
+          song_object.rank = track["position"]
+        end
       else
         # Song already exists
-        prior_rank = top_download_object.rank
+        previous_rank = top_download_object.rank
         # replace the object at that position with its new information
         top_download_object = TopDownload.first(:conditions => {:rank => track["position"]})
         if top_download_object.nil?
@@ -97,10 +111,12 @@ class TopDownload < ActiveRecord::Base
           top_download_object = TopDownload.new(:rank => track["position"], :song_id => song_object.id, :difference => 0)
         else
           top_download_object.song_id = song_object.id
-          top_download_object.difference = prior_rank - track["position"]
+          top_download_object.difference = previous_rank - track["position"]
+          song_object.rank = track["position"]
         end
-        top_download_object.save
       end
+      top_download_object.save
+      song_object.save
     end
     
   end

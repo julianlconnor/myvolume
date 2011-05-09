@@ -18,8 +18,8 @@ img {
 .chartheader {
 	background: -webkit-linear-gradient(top, #BDEBE9, #ADDAD8);
 	background: -moz-linear-gradient(top, #BDEBE9, #ADDAD8);;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
 	border: 1px solid #86B2B1;
 	box-shadow: #CCCCCC 0 1px 1px;
 	-webkit-box-shadow: #C0C0C0 0 1px 1px;
@@ -56,7 +56,11 @@ img {
 	color: white;
 	background: -webkit-gradient(linear, 0 0%, 0 100%, from(#444444), color-stop(0.5, #282828), color-stop(0.51, #282828), to(#282828));
 	background: -moz-linear-gradient(top, #444444,#282828);
-	box-shadow: rgba(0, 0, 0, 0.292969) 1px 1px 8px;
+	-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	-moz-border-radius:4px; 
+	border-radius:4px;
 /*	-moz-border-radius-topleft: 2px;
 	-moz-border-radius-topright: 2px;*/
 	border-top: 1px solid #191919;
@@ -170,7 +174,7 @@ a {
 .content_wrapper {
 	margin: 0 0 0 385px;
 	float: left;
-	width: 1015px;
+	width: 900px;
 }
 
 #container, #body {
