@@ -10,7 +10,16 @@
 		<li>
 	<% end %>
 	<div class="track_detail">
-		<span class="track_position"><%= track.rank.to_s.rjust(2, '0') %></span>
+		<div class="numbers">
+			<div class="track_position"><%= track.rank.to_s.rjust(2, '0') %></div>
+			<% if track.difference == 0 %>
+				<div class="delta"><%= track.difference %></div>
+			<% elsif track.difference > 0 %>
+				<div class="delta green"><%= "+#{track.difference}" %></div>
+			<% else %>
+				<div class="delta red"><%= track.difference %></div>
+			<% end %>
+		</div>
 		<div class="track_image">
 			<a href="<%= track.song.song_thumbnail.large %>" class="lightbox"><%= image_tag track.song.song_thumbnail.medium %></a>
 		</div>

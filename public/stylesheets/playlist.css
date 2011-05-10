@@ -214,12 +214,12 @@ a {
 	height: 50px;
 }
 #topdownloads ul li {
-	padding: 15px 0px;
+	padding: 10px 0 0 0;
 	border: 1px solid #DEDEDE;
 }
 #topdownloads ul li, #charts ul li {
-	width: 382px;
-	height: 65px;
+	width: 385px;
+	height: 70px;
 }
 #topdownloads ul li, #charts ul li div.track_artist {
 	font-size: 13px;
@@ -316,14 +316,31 @@ ul li div.play_button, ol li div.play_button {
 	width:230px;
 }
 #topdownloads ul li div.track_image, #charts ul li div.track_image {
-	padding: 3px 0 0 13px;
+	padding: 0 0 0 13px;
 	float: left;
 }
-#topdownloads ul li span.track_position, #charts ul li span.track_position {
+#topdownloads ul li div.track_position, #charts ul li span.track_position {
 	float: left;
-	padding: 5px 0 0 15px;
-	font-size: 38px;
+	padding: 0 0 0 15px;
+	line-height: 40px;
+	font-size: 40px;
 	color: #c6c6c6;
+}
+#topdownloads ul li div.delta {
+	float: right;
+	clear: both;
+}
+.red {
+	color: red;
+}
+.green {
+	color: green;
+}
+.gray {
+	color: gray;
+}
+#topdownloads .numbers {
+	float: left;
 }
 #player_fixed ol li span.track_position {
 	display: none;
