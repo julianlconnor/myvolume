@@ -29,7 +29,7 @@ img {
 	border-bottom-style:solid;
 	border-bottom-width:5px;*/
 	height: 160px;
-	width: 382px;
+	width: 385px;
 	margin: 5px 0 5px 0;
 	clear: both;
 }
@@ -209,7 +209,7 @@ a {
 }
 #charts ul li, #player_fixed ol li{
 	margin: 0 0 3px 0;
-	padding: 10px 0px;
+	padding: 10px 0 1px 0;
 	border: 1px solid #DEDEDE;
 	height: 50px;
 }
