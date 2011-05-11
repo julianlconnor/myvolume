@@ -342,7 +342,7 @@ ul li div.play_button, ol li div.play_button {
 #topdownloads .numbers {
 	float: left;
 }
-#player_fixed ol li span.track_position {
+#player_fixed ol li div.numbers {
 	display: none;
 }
 #player_fixed ol li div.track_image {
