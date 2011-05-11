@@ -23,7 +23,9 @@
 	<% @charts[i].songs.each_with_index do |song,i| %>
 		<li class="<%= cycle('even','odd')%>">
 		<div class="track_detail">
-			<span class="track_position"><%= (i+1).to_s.rjust(2, '0') %></span>
+			<div class="numbers">
+				<div class="track_position"><%= (i+1).to_s.rjust(2, '0') %></div>
+			</div>
 			<div class="track_image">
 				<% if song.song_thumbnail.nil? %>
 					<%- image_tag Song.first.song_thumbnail.medium %>

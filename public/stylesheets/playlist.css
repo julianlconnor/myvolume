@@ -319,12 +319,16 @@ ul li div.play_button, ol li div.play_button {
 	padding: 0 0 0 13px;
 	float: left;
 }
-#topdownloads ul li div.track_position, #charts ul li span.track_position {
+#topdownloads ul li div.track_position, #charts ul li div.track_position {
 	float: left;
 	padding: 0 0 0 15px;
 	line-height: 40px;
 	font-size: 40px;
 	color: #c6c6c6;
+}
+#charts ul li div.track_position {
+	padding: 10px 0 0 15px;
+	line-height: 35px;
 }
 #topdownloads ul li div.delta {
 	float: right;
