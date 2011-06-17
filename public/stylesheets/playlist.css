@@ -337,6 +337,7 @@ ul li div.play_button, ol li div.play_button {
 	float: right;
 	clear: both;
 }
+
 .red {
 	color: red;
 }
@@ -473,6 +474,13 @@ ul li div.download {
 	padding-left:4px;
 	padding-right:4px;
 	padding-top:3px;
+}
+
+.tags .heart {
+  float: right;
+  font-size: 35px;
+  line-height: 35px;
+  margin-right: 10px;
 }
 
 ul .tags span {
