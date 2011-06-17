@@ -8,6 +8,9 @@ class Song < ActiveRecord::Base
   has_many :genre_memberships
   has_many :genres, :through => :genre_memberships
   
+  has_many :favorites
+  has_many :users, :through => :Favorites
+  
   has_one :song_thumbnail
   belongs_to :label
   
