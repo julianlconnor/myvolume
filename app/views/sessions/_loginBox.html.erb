@@ -1,0 +1,22 @@
+<div id="loginbox">
+	<h1 class="box">Log In</h1>
+	<div class="box">
+		<%= form_tag sessions_path, :id => "ajaxSessionForm" do %>
+			<table>
+				<tr>
+					<td><%= label_tag :email %></td>
+					<td><%= text_field_tag :email, params[:email], :class => "registrationInput" %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag :password %></td>
+					<td><%= password_field_tag :password, params[:password], :class => "registrationInput" %></td>
+				</tr>
+			</table>
+			<%= submit_tag "Sign in", :class => "submit input" %>
+		<% end %>
+		<span class="links">
+			<span>Not a member?</span>
+			<span class="registerToggle">Sign Up</span>
+		</span>
+	</div>
+</div>

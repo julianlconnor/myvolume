@@ -1,0 +1,18 @@
+<div id="user_box">
+	<h1 class="form_header box">Sign Into myvolu.me</h1>
+	<div class="box">
+		<%= form_tag sessions_path do %>
+			<table>
+				<tr>
+					<td><%= label_tag :email %></td>
+					<td><%= text_field_tag :email, params[:email] %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag :password %></td>
+					<td><%= password_field_tag :password %></td>
+				</tr>
+			</table>
+			<%= submit_tag "Sign in", :class => "submit input" %>
+		<% end %>
+	</div>
+</div>

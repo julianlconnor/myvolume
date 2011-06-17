@@ -1,24 +1,26 @@
-<div id="loginform" class="devise_box">
-	<h1 class="devise_form_header">Sign Into myvolu.me</h1>
-		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :id => "loginform") do |f| %>
-					<p><%= f.label :email %></p>
-					<div>
-						<span><%= f.text_field :email %></span>
-					</div>
-					<div class="clear"></div>
-					<p><%= f.label :password %></p>
-					<div>
-						<span><%= f.password_field :password %></span>
-					</div>
-					<div class="clear"></div>
-				<% if devise_mapping.rememberable? -%>
-					<p><%= f.label :remember_me %></p>
-					<div>
-						<span><%= f.check_box :remember_me %></span>
-					</div>
-					<div class="clear"></div>
-		  		<% end -%>
-				<%= f.submit "Sign in" %>
+<h1 class="devise_form_header devise_box">Sign Into myvolu.me</h1>
+	<div class="devise_box">
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :id => "loginform" }) do |f| %>
+			<p><%= f.label :email %></p>
+			<div>
+				<span><%= f.text_field :email %></span>
+			</div>
+			<div class="clear"></div>
+			<p><%= f.label :password %></p>
+			<div>
+				<span><%= f.password_field :password %></span>
+			</div>
+			<div class="clear"></div>
+			<% if devise_mapping.rememberable? -%>
+				<p><%= f.label :remember_me %></p>
+				<div>
+					<span><%= f.check_box :remember_me %></span>
+				</div>
+				<div class="clear"></div>
+			<% end -%>
+			<%= f.submit "Sign in", :class => "submit devise_input" %>
 		<% end %>
-</div>
+	</div>
+<div class="clear"></div>
+
 <%= render :partial => "devise/shared/links" %>

@@ -2,7 +2,7 @@ body {
 	color: #666; 
 }
 
-body, p, ol, ul, td {
+body, p, ol, ul {
   font-size:   13px;
 }
 
@@ -32,18 +32,53 @@ div.field, div.actions {
   color: green;
 }
 
+#flash {
+	float: left;
+	height: 12px;
+	width: 350px;
+	text-align: center;
+	padding: 9px 5px 10px 5px;
+	margin: 0 0 0 235px;
+	background: #FCFC68;
+	border: 1px solid #E5E55E;
+	z-index: 90;
+	color: black;
+	border-bottom-left-radius:5px 5px;
+	border-bottom-right-radius:5px 5px;
+	border-top-left-radius:5px 5px;
+	border-top-right-radius:5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+}
+.close_flash {
+	cursor: pointer;
+}
+.error_messages {
+	width: 200px;
+	color: black;
+}
+.error_messages h2 {
+	margin: 0;
+	padding: 5px 0 0 15px;
+}
+.error_messages ul {
+	margin: 0;
+	padding: 5px 0 0 32px;
+}
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
+  padding: 1px;
+  background-color: black;
   display: table;
+}
+td.field_with_errors {
+	padding: 0;
 }
 
 #error_explanation {
   width: 450px;
   border: 2px solid red;
-  padding: 7px;
+  padding: 2px;
   padding-bottom: 0;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   background-color: #f0f0f0;
 }
 

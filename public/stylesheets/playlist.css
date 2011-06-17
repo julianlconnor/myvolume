@@ -7,7 +7,7 @@ img {
 	display: inline;
 	border: 0;
 }
-#charts, #topdownloads {
+#charts, #topdownloads, #rightbar {
 	float: left;
 	margin: 0 45px 0 0;
 }
@@ -114,6 +114,9 @@ a {
 	margin: 0 10px 0 0;
 	padding: 3px 5px 1px 5px;
 }
+#logo a {
+	color: white;
+}
 #tagline {
 	padding: 10px 5px 5px 0;
 }
@@ -174,7 +177,7 @@ a {
 .content_wrapper {
 	margin: 0 0 0 385px;
 	float: left;
-	width: 900px;
+	width: 1165px;
 }
 
 #container, #body {
@@ -502,7 +505,7 @@ ul li.even {
 	width:100%;
 }
 
-#topbar #lastupdate {
+#topbar #lastupdate, #topbar #usernav {
 	float: right;
 	padding: 10px 0 0 0;
 	margin: 0 10px;

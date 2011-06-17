@@ -1,0 +1,63 @@
+<%= link_to image_tag("fbconnect.png"), "/auth/facebook" %>
+<div id="user_box">
+	<h1 class="form_header box">Sign Up For myvolu.me</h1>
+	<div class="box">
+		<%= form_for @user do |f| %>
+		<% if @user.errors.any? %>
+		    <div class="error_messages">
+		      <h2>Form is invalid</h2>
+		      <ul>
+		        <% for message in @user.errors.full_messages %>
+		          <li><%= message %></li>
+		        <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+			<table>
+				<tr>
+					<td><%= f.label :alias %></td>
+					<td><%= f.text_field :alias, :class => "registrationInput" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :email %></td>
+					<td><%= f.text_field :email, :class => "registrationInput" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :password %></td>
+					<td><%= f.password_field :password, :class => "registrationInput" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label "Confirm" %></td>
+					<td><%= f.password_field :password_confirmation, :class => "registrationInput" %></td>
+				</tr>
+			</table>
+			<%= submit_tag "Sign in", :class => "submit input" %>
+		<% end %>
+		<span class="links">
+			<span>Need to Log In??</span>
+			<span class="registerToggle">Log In</span>
+		</span>
+	</div>
+</div>
+<div id="loginbox" style="display:none;">
+	<h1 class="box">Log In</h1>
+	<div class="box">
+		<%= form_tag sessions_path, :id => "ajaxSessionForm" do %>
+			<table>
+				<tr>
+					<td><%= label_tag :email %></td>
+					<td><%= text_field_tag :email, params[:email], :class => "registrationInput" %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag :password %></td>
+					<td><%= password_field_tag :password, params[:password], :class => "registrationInput" %></td>
+				</tr>
+			</table>
+			<%= submit_tag "Sign in", :class => "submit input" %>
+		<% end %>
+		<span class="links">
+			<span>Not a member?</span>
+			<span class="registerToggle">Sign Up</span>
+		</span>
+	</div>
+</div>

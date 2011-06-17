@@ -91,7 +91,7 @@ class Chart < ActiveRecord::Base
             artist_object = Artist.first(:conditions => {:name => artist["name"]})
             # If it doesn't exist
             if artist_object.nil?
-              artist_object = Artist.new(:name => artist["name"], :beatport_id => artist["id"],
+              artist_object = Artist.new(:name => artist["name"], :beatport_id => artist["id"], :type => artist["type"],
                                          :last_publish_date => artist["lastPublishDate"],
                                          :bio => artist["biography"])
               artist_object.save

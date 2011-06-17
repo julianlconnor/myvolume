@@ -5,7 +5,10 @@ gem 'rails', '3.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'devise' 	# User login
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'cancan'
+gem 'omniauth'
+gem 'faraday'	# Handle FB OmniAuth SSL
 gem 'haml'
 gem 'mysql'
 gem 'json'		# API Calls

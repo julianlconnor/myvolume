@@ -1,0 +1,40 @@
+<div id="user_box" style="display:none;">
+	<h1 class="form_header box">Sign Up For myvolu.me</h1>
+	<div class="box">
+		<%= form_for @user do |f| %>
+		<% if @user.errors.any? %>
+		    <div class="error_messages">
+		      <h2>Form is invalid</h2>
+		      <ul>
+		        <% for message in @user.errors.full_messages %>
+		          <li><%= message %></li>
+		        <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+			<table>
+				<tr>
+					<td><%= f.label :alias %></td>
+					<td><%= f.text_field :alias, :class => "registrationInput" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :email %></td>
+					<td><%= f.text_field :email, :class => "registrationInput" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :password %></td>
+					<td><%= f.password_field :password, :class => "registrationInput" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label "Confirm" %></td>
+					<td><%= f.password_field :password_confirmation, :class => "registrationInput" %></td>
+				</tr>
+			</table>
+			<%= submit_tag "Sign in", :class => "submit input" %>
+		<% end %>
+		<span class="links">
+			<span>Need to Log In??</span>
+			<span class="registerToggle">Log In</span>
+		</span>
+	</div>
+</div>

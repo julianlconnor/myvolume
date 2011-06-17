@@ -6,10 +6,13 @@
 	</div>
 	<div class="content_wrapper">
 		<div id="charts">
-			<%= render 'charts' %>
+			<%= render 'home/charts' %>
 		</div>
 		<div id="topdownloads">
-			<%= render 'topDownloads' %>
+			<%= render 'home/topDownloads' %>
+		</div>
+		<div id="rightbar">
+			<%= render 'home/sessionAjaxSwitch'%>
 		</div>
 	</div>
 </div>
@@ -182,6 +185,11 @@
 				audio.load($('.track_info a', next).attr('data-src'));
 				audio.play();
 			}
+		});
+		// Handles the toggle for logging in and registration
+		$('span.registerToggle').live('click',function(e) {
+			$("#loginbox").slideToggle("slow");
+			$("#user_box").slideToggle("slow");
 		});
 
 	// Remove track from player playlist

@@ -1,5 +1,5 @@
 class ChartsController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   #attr_accessible 
   # GET /charts
   # GET /charts.xml

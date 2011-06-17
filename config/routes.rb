@@ -1,11 +1,13 @@
 Myvolume::Application.routes.draw do
+
   resources :charts
-
   resources :artists
-
   resources :songs
-
-  devise_for :users
+  resources :users
+  resources :sessions
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,6 +61,7 @@ Myvolume::Application.routes.draw do
   root :to => "home#index"
   
   match "home/top_downloads"
+  match '/auth/facebook/callback', :to => 'sessions#create'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   # GET /songs
   # GET /songs.xml
   def index

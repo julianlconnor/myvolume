@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505163920) do
+ActiveRecord::Schema.define(:version => 20110615203518) do
 
   create_table "artist_thumbnails", :force => true do |t|
     t.integer  "artist_id"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20110505163920) do
     t.datetime "updated_at"
   end
 
+  add_index "artist_thumbnails", ["artist_id"], :name => "index_artist_thumbnails_on_artist_id"
+
   create_table "artists", :force => true do |t|
     t.string   "name"
     t.datetime "last_publish_date"
@@ -30,10 +32,26 @@ ActiveRecord::Schema.define(:version => 20110505163920) do
     t.datetime "updated_at"
   end
 
+  add_index "artists", ["id"], :name => "index_artists_on_id"
+
+  create_table "authorizations", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "alias"
+    t.string   "avatar_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authorizations", ["uid"], :name => "index_authorizations_on_uid"
+
   create_table "chart_genre_memberships", :force => true do |t|
     t.integer "genre_id"
     t.integer "chart_id"
   end
+
+  add_index "chart_genre_memberships", ["chart_id"], :name => "index_chart_genre_memberships_on_chart_id"
+  add_index "chart_genre_memberships", ["genre_id"], :name => "index_chart_genre_memberships_on_genre_id"
 
   create_table "chart_memberships", :force => true do |t|
     t.integer  "song_id"
@@ -43,6 +61,9 @@ ActiveRecord::Schema.define(:version => 20110505163920) do
     t.datetime "updated_at"
   end
 
+  add_index "chart_memberships", ["chart_id"], :name => "index_chart_memberships_on_chart_id"
+  add_index "chart_memberships", ["song_id"], :name => "index_chart_memberships_on_song_id"
+
   create_table "chart_thumbnails", :force => true do |t|
     t.integer  "chart_id"
     t.string   "small"
@@ -51,6 +72,8 @@ ActiveRecord::Schema.define(:version => 20110505163920) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "chart_thumbnails", ["chart_id"], :name => "index_chart_thumbnails_on_chart_id"
 
   create_table "charts", :force => true do |t|
     t.string   "name"
@@ -72,6 +95,9 @@ ActiveRecord::Schema.define(:version => 20110505163920) do
     t.datetime "updated_at"
   end
 
+  add_index "genre_memberships", ["genre_id"], :name => "index_genre_memberships_on_genre_id"
+  add_index "genre_memberships", ["song_id"], :name => "index_genre_memberships_on_song_id"
+
   create_table "genres", :force => true do |t|
     t.string   "name"
     t.string   "slug"
@@ -87,6 +113,9 @@ ActiveRecord::Schema.define(:version => 20110505163920) do
     t.datetime "updated_at"
   end
 
+  add_index "memberships", ["artist_id"], :name => "index_memberships_on_artist_id"
+  add_index "memberships", ["song_id"], :name => "index_memberships_on_song_id"
+
   create_table "song_thumbnails", :force => true do |t|
     t.integer  "song_id"
     t.string   "small"
@@ -95,6 +124,8 @@ ActiveRecord::Schema.define(:version => 20110505163920) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "song_thumbnails", ["song_id"], :name => "index_song_thumbnails_on_song_id"
 
   create_table "songs", :force => true do |t|
     t.string   "name"
@@ -120,38 +151,25 @@ ActiveRecord::Schema.define(:version => 20110505163920) do
     t.datetime "updated_at"
   end
 
+  add_index "sub_genres", ["genre_id"], :name => "index_sub_genres_on_genre_id"
+
   create_table "top_downloads", :force => true do |t|
     t.integer "rank"
     t.integer "song_id"
     t.integer "difference"
   end
 
+  add_index "top_downloads", ["song_id"], :name => "index_top_downloads_on_song_id"
+
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
-    t.string   "reset_password_token"
-    t.string   "remember_token"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.integer  "failed_attempts",                     :default => 0
-    t.string   "unlock_token"
-    t.datetime "locked_at"
-    t.string   "authentication_token"
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "alias"
   end
 
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
 
 end
