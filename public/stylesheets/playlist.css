@@ -477,6 +477,7 @@ ul li div.download {
 }
 
 .tags .heart {
+  color: #999999;
   float: right;
   font-size: 35px;
   line-height: 35px;
