@@ -1,4 +1,4 @@
-1308773060
+1308773796
 Ability	/home/panfia/Documents/myvolume/myvolu.me/app/models/ability.rb	class Ability
 AddAliasToUser	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110614163724_add_alias_to_user.rb	class AddAliasToUser 
 AddIndexesAcrossTheBoard	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615203518_add_indexes_across_the_board.rb	class AddIndexesAcrossTheBoard 
@@ -19,6 +19,8 @@ ArtistsControllerTest	/home/panfia/Documents/myvolume/myvolu.me/test/functional/
 ArtistsHelper	/home/panfia/Documents/myvolume/myvolu.me/app/helpers/artists_helper.rb	module ArtistsHelper
 ArtistsHelperTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/helpers/artists_helper_test.rb	class ArtistsHelperTest 
 Authorization	/home/panfia/Documents/myvolume/myvolu.me/app/models/authorization.rb	class Authorization 
+AuthorizationFavorite	/home/panfia/Documents/myvolume/myvolu.me/app/models/authorization_favorite.rb	class AuthorizationFavorite 
+AuthorizationFavoriteTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/authorization_favorite_test.rb	class AuthorizationFavoriteTest 
 AuthorizationTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/authorization_test.rb	class AuthorizationTest 
 BrowsingTest	/home/panfia/Documents/myvolume/myvolu.me/test/performance/browsing_test.rb	class BrowsingTest 
 Chart	/home/panfia/Documents/myvolume/myvolu.me/app/models/chart.rb	class Chart 
@@ -35,12 +37,14 @@ ChartsHelper	/home/panfia/Documents/myvolume/myvolu.me/app/helpers/charts_helper
 ChartsHelperTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/helpers/charts_helper_test.rb	class ChartsHelperTest 
 CreateArtistThumbnails	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110406214737_create_artist_thumbnails.rb	class CreateArtistThumbnails 
 CreateArtists	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330210220_create_artists.rb	class CreateArtists 
+CreateAuthorizationFavorites	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110622181039_create_authorization_favorites.rb	class CreateAuthorizationFavorites 
 CreateAuthorizations	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615171324_create_authorizations.rb	class CreateAuthorizations 
 CreateChartGenreMemberships	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110418183941_create_chart_genre_memberships.rb	class CreateChartGenreMemberships 
 CreateChartMemberships	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110401181811_create_chart_memberships.rb	class CreateChartMemberships 
 CreateChartThumbnails	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110403204002_create_chart_thumbnails.rb	class CreateChartThumbnails 
 CreateCharts	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330211024_create_charts.rb	class CreateCharts 
 CreateCronWatchers	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110418205709_create_cron_watchers.rb	class CreateCronWatchers 
+CreateFavorites	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110617220344_create_favorites.rb	class CreateFavorites 
 CreateGenreMemberships	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110401181819_create_genre_memberships.rb	class CreateGenreMemberships 
 CreateGenres	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330211527_create_genres.rb	class CreateGenres 
 CreateMemberships	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330210009_create_memberships.rb	class CreateMemberships 
@@ -51,6 +55,8 @@ CreateTopDownloads	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110428
 CreateUsers	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213933_create_users.rb	class CreateUsers 
 CronWatcher	/home/panfia/Documents/myvolume/myvolu.me/app/models/cron_watcher.rb	class CronWatcher 
 CronWatcherTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/cron_watcher_test.rb	class CronWatcherTest 
+Favorite	/home/panfia/Documents/myvolume/myvolu.me/app/models/favorite.rb	class Favorite 
+FavoriteTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/favorite_test.rb	class FavoriteTest 
 Genre	/home/panfia/Documents/myvolume/myvolu.me/app/models/genre.rb	class Genre 
 GenreMembership	/home/panfia/Documents/myvolume/myvolu.me/app/models/genre_membership.rb	class GenreMembership 
 GenreMembershipTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/genre_membership_test.rb	class GenreMembershipTest 
@@ -117,10 +123,13 @@ down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213933_create_
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110614163724_add_alias_to_user.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615171324_create_authorizations.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615203518_add_indexes_across_the_board.rb	  def self.down
+down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110617220344_create_favorites.rb	  def self.down
+down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110622181039_create_authorization_favorites.rb	  def self.down
 edit	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/artists_controller.rb	  def edit
 edit	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/charts_controller.rb	  def edit
 edit	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/songs_controller.rb	  def edit
 encrypt_password	/home/panfia/Documents/myvolume/myvolu.me/app/models/user.rb	  def encrypt_password
+favorite	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/users_controller.rb	  def favorite
 fetch_chart_detail	/home/panfia/Documents/myvolume/myvolu.me/app/models/chart.rb	  def self.fetch_chart_detail
 fetch_charts	/home/panfia/Documents/myvolume/myvolu.me/app/models/chart.rb	  def self.fetch_charts
 fetch_genres	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/api_controller.rb	  def fetch_genres
@@ -165,6 +174,8 @@ up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213933_create_us
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110614163724_add_alias_to_user.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615171324_create_authorizations.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615203518_add_indexes_across_the_board.rb	  def self.up
+up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110617220344_create_favorites.rb	  def self.up
+up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110622181039_create_authorization_favorites.rb	  def self.up
 update	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/artists_controller.rb	  def update
 update	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/charts_controller.rb	  def update
 update	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/songs_controller.rb	  def update

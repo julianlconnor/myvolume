@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110622180523) do
+ActiveRecord::Schema.define(:version => 20110622181039) do
 
   create_table "artist_thumbnails", :force => true do |t|
     t.integer  "artist_id"

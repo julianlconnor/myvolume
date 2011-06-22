@@ -32,7 +32,7 @@ div.field, div.actions {
   color: green;
 }
 
-#flash {
+.flash {
 	float: left;
 	height: 12px;
 	width: 350px;
