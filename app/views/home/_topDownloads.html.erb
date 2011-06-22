@@ -42,7 +42,11 @@
 					</div>
 				</div>
 				<span><%= track.song.genres.first.name %></span>
-        		<%= link_to "❤", "/favorite/#{track.song.id}", :class => "heart"%><!-- <div class="heart">&#x2764;</div> -->
+				<% if is_favorite(track.song.id) %>
+        			<%= link_to "❤", "/favorite/#{track.song.id}", :class => "heart active"%><!-- <div class="heart">&#x2764;</div> -->
+				<% else %>
+					<%= link_to "❤", "/favorite/#{track.song.id}", :class => "heart"%>
+				<% end %>
 			</div>
 		</div>
 	</div>

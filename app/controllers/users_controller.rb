@@ -9,9 +9,9 @@ class UsersController < ApplicationController
       if session[:uid]
         # Handle an authorization favorite
         # Check to see if that record already exists
-        favorite = Authorization_Favorite.find_by_song_id_and_authorization_id(params[:id],current_user.id)
+        favorite = AuthorizationFavorite.find_by_song_id_and_authorization_id(params[:id],current_user.id)
         if !favorite
-          favorite = Authorization_Favorite.new(:song_id => params[:id], :authorization_id => current_user.id)
+          favorite = AuthorizationFavorite.new(:song_id => params[:id], :authorization_id => current_user.id)
           if favorite.save
             flash.now.alert = "Successfully added to your favorites."
           else
