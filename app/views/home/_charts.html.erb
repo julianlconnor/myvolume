@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<span><%= song.genres.first.name %></span>
-          <div class="heart">&#x2764;</div>
+          			<%= link_to "❤", "/favorite/#{song.id}", :class => "heart"%>
 				</div>
 			</div>
 		</div>

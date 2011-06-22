@@ -1,0 +1,9 @@
+$("#flashSpace").html("<%= escape_javascript(render('layouts/flash')) %>");
+temp = $(".justclicked");
+<% if @error == 1 -%>
+	temp.html("❤");
+<% elsif @error == 0 -%>
+	temp.html("❤");
+	temp.addClass("active");
+<% end %>
+//temp.removeClass("justclicked");

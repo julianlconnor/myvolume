@@ -1,4 +1,8 @@
 class Authorization < ActiveRecord::Base
+  
+  has_many :authorization_favorites
+  has_many :songs, :through => :authorization_favorites
+  
   validates_presence_of :uid, :provider
   validates_uniqueness_of :uid, :scope => :provider
   

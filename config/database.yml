@@ -1,20 +1,23 @@
 development:
-  adapter: mysql
-  database: myvolume_dev
-  username: root
-  password:
-  host: localhost
+    adapter: postgresql
+    encoding: utf8
+    database: myvolume_development
+    username: postgres
+    password: jkcjlc123
+    template: template0 # Required for UTF8 encoding
   
 test:
-  adapter: mysql
-  database: myvolume_dev
-  username: root
-  password:
-  host: localhost
+    adapter: postgresql
+    encoding: utf8
+    database: myvolume_development
+    username: postgres
+    password: jkcjlc123
+    template: template0 # Required for UTF8 encoding
   
 production:
-  adapter: mysql
-  database: myvolume_dev
-  username: root
-  password:
-  host: localhost
+    adapter: postgresql
+    encoding: utf8
+    database: myvolume_development
+    username: postgres
+    password: jkcjlc123
+    template: template0 # Required for UTF8 encoding

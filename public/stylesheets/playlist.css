@@ -476,12 +476,15 @@ ul li div.download {
 	padding-top:3px;
 }
 
-.tags .heart {
-  color: #999999;
-  float: right;
-  font-size: 35px;
-  line-height: 35px;
-  margin-right: 10px;
+.heart {
+	color: #999999;
+	float: right;
+	font-size: 35px;
+	line-height: 35px;
+	margin-right: 10px;
+}
+.heart .active {
+	color: red;
 }
 
 ul .tags span {
