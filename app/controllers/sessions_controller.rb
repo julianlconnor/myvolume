@@ -27,6 +27,8 @@ class SessionsController < ApplicationController
     # respond_to do |format|
     #   format.js
     # end
+    @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
+    @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
   end
   
   def refresh
