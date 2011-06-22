@@ -1,4 +1,4 @@
-1308341727
+1308773060
 Ability	/home/panfia/Documents/myvolume/myvolu.me/app/models/ability.rb	class Ability
 AddAliasToUser	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110614163724_add_alias_to_user.rb	class AddAliasToUser 
 AddIndexesAcrossTheBoard	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615203518_add_indexes_across_the_board.rb	class AddIndexesAcrossTheBoard 
@@ -51,8 +51,6 @@ CreateTopDownloads	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110428
 CreateUsers	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213933_create_users.rb	class CreateUsers 
 CronWatcher	/home/panfia/Documents/myvolume/myvolu.me/app/models/cron_watcher.rb	class CronWatcher 
 CronWatcherTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/cron_watcher_test.rb	class CronWatcherTest 
-DeviseCreateUsers	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110311005629_devise_create_users.rb	class DeviseCreateUsers 
-DropUsers	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213715_drop_users.rb	class DropUsers 
 Genre	/home/panfia/Documents/myvolume/myvolu.me/app/models/genre.rb	class Genre 
 GenreMembership	/home/panfia/Documents/myvolume/myvolu.me/app/models/genre_membership.rb	class GenreMembership 
 GenreMembershipTest	/home/panfia/Documents/myvolume/myvolu.me/test/unit/genre_membership_test.rb	class GenreMembershipTest 
@@ -100,7 +98,6 @@ destroy	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/artists_contro
 destroy	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/charts_controller.rb	  def destroy
 destroy	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/sessions_controller.rb	  def destroy
 destroy	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/songs_controller.rb	  def destroy
-down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110311005629_devise_create_users.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330203038_create_songs.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330210009_create_memberships.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330210220_create_artists.rb	  def self.down
@@ -116,7 +113,6 @@ down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110418183941_create_
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110418205709_create_cron_watchers.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110428034129_create_top_downloads.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110505163920_add_rank_to_song.rb	  def self.down
-down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213715_drop_users.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213933_create_users.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110614163724_add_alias_to_user.rb	  def self.down
 down	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615171324_create_authorizations.rb	  def self.down
@@ -150,7 +146,6 @@ show	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/charts_controller
 show	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/songs_controller.rb	  def show
 test_homepage	/home/panfia/Documents/myvolume/myvolu.me/test/performance/browsing_test.rb	  def test_homepage
 top_downloads	/home/panfia/Documents/myvolume/myvolu.me/app/controllers/home_controller.rb	  def top_downloads
-up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110311005629_devise_create_users.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330203038_create_songs.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330210009_create_memberships.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110330210220_create_artists.rb	  def self.up
@@ -166,7 +161,6 @@ up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110418183941_create_ch
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110418205709_create_cron_watchers.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110428034129_create_top_downloads.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110505163920_add_rank_to_song.rb	  def self.up
-up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213715_drop_users.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110607213933_create_users.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110614163724_add_alias_to_user.rb	  def self.up
 up	/home/panfia/Documents/myvolume/myvolu.me/db/migrate/20110615171324_create_authorizations.rb	  def self.up
