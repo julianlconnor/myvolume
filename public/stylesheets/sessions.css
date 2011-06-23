@@ -92,8 +92,7 @@ tr {
 }
 
 .clear {
-	clear: both;
-	display: block;
+  clear: both;  
 }
 
 span.registerToggle {

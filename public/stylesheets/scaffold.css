@@ -41,6 +41,7 @@ div.field, div.actions {
 	background: #FCFC68;
 	border: 1px solid #E5E55E;
 	z-index: 90;
+  position: relative;
 	color: black;
 	border-bottom-left-radius:5px 5px;
 	border-bottom-right-radius:5px 5px;

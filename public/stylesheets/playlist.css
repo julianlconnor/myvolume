@@ -3,6 +3,7 @@ body {
 	font-family: 'Century Gothic', 'century gothic', 'arial', 'verdana', 'lucida grande', 'lucida sans', 'bitstream vera sans'; 
 	margin: 0;
 }
+
 img {
 	display: inline;
 	border: 0;
@@ -530,9 +531,12 @@ ul li.even {
 	width:100%;
 }
 
-#topbar #lastupdate, #topbar #usernav {
-	float: right;
+#right {
+  position: absolute;
+  right: 0;
 	padding: 10px 0 0 0;
+}
+#topbar #lastupdate, #topbar #usernav {
 	margin: 0 10px;
 }
 #topnav {
