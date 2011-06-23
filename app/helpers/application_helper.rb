@@ -15,4 +15,11 @@ module ApplicationHelper
       end
     end
   end
+  def generateQuery(song)
+    if song.mix_name == "Original Mix"
+      "#{song.name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}"
+    else
+      "#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}"
+    end
+  end
 end

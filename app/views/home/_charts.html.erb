@@ -48,7 +48,7 @@
 							<%= image_tag("add_icon.png") %>
 						</div>
 						<div class="download">
-							<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
+							<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{generateQuery(song)}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
 						</div>
 					</div>
 					<span><%= song.genres.first.name %></span>

@@ -476,15 +476,28 @@ ul li div.download {
 	padding-top:3px;
 }
 
-.heart {
-	color: #999999;
-	float: right;
-	font-size: 35px;
-	line-height: 35px;
-	margin-right: 10px;
+#topdownloads ul li a.heart,
+#charts ul li a.heart,
+#player_fixed ol li a.heart {
+	text-indent: 0 !important;
+	color: #999999 !important;
+	float: right !important;
+	font-size: 25px !important;
+	line-height: 35px !important;
+	padding-right: 5px;
 }
-.active {
-	color: red;
+#player_fixed ol li a.heart {
+	padding-right: 10px !important;
+}
+#topdownloads ul li a.heart::hover,
+#charts ul li a.heart::hover,
+#player_fixed ol li a.heart::hover {
+	color: red !important;
+}
+#topdownloads ul li a.active,
+#charts ul li a.active,
+#player_fixed ol li a.active {
+	color: red !important;
 }
 
 ul .tags span {

@@ -13,14 +13,19 @@ class UsersController < ApplicationController
         if !favorite
           favorite = AuthorizationFavorite.new(:song_id => params[:id], :authorization_id => current_user.id)
           if favorite.save
-            flash.now.alert = "Successfully added to your favorites."
+            flash.now.alert = "Successfully added #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
+            favorite.song.favorite_count += 1
+            favorite.song.save
           else
             @error = 1
-            flash.now.alert = "Unable to add that track to your favorites."
+            flash.now.alert = "Unable to add #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
           end
         else
           @error = 1
-          flash.now.alert = "That track is already one of your favorites."
+          flash.now.alert = "Successfully removed #{favorite.song.name} (#{favorite.song.mix_name}) from your favorites."
+          favorite.song.favorite_count -= 1
+          favorite.song.save
+          favorite.destroy
         end
       elsif session[:user_id]
         # Handle a user favorite
@@ -28,14 +33,19 @@ class UsersController < ApplicationController
         if !favorite
           favorite = Favorite.new(:song_id => params[:id], :user_id => current_user.id)
           if favorite.save
-            flash.now.alert = "Successfully added to your favorites."
+            flash.now.alert = "Successfully added #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
+            favorite.song.favorite_count += 1
+            favorite.song.save
           else
             @error = 1
-            flash.now.alert = "Unable to add that track to your favorites."
+            flash.now.alert = "Unable to add #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
           end
         else
           @error = 1
-          flash.now.alert = "That track is already one of your favorites."
+          flash.now.alert = "Successfully removed #{favorite.song.name} (#{favorite.song.mix_name}) from your favorites."
+          favorite.song.favorite_count -= 1
+          favorite.song.save
+          favorite.destroy
         end
       end
     else

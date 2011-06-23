@@ -24,9 +24,6 @@ class SessionsController < ApplicationController
         # render "new"
       end
     end
-    # respond_to do |format|
-    #   format.js
-    # end
     @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
     @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
   end
@@ -39,9 +36,8 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:uid] = nil
     flash.now.alert = "You have been Logged Out!"
-    # respond_to do |format|
-    #   format.js
-    # end
+    @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
+    @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
   end
 
 end

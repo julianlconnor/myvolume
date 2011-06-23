@@ -7,8 +7,8 @@ require 'mysql'
 class HomeController < ApplicationController
   def index
     #Genre.fetch_genres
-    #Chart.fetch_charts
-    #TopDownload.fetch_top_downloads
+    # Chart.fetch_charts
+    #    TopDownload.fetch_top_downloads
     # @charts = Chart.order("publish_date desc").limit(10)
     @user = User.new
     # if current_user
