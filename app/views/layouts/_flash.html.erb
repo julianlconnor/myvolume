@@ -1,10 +1,12 @@
 <% if notice or alert %>
+  <div id="flash">
 		<span class="notice"><%= notice %></span>
 		<span class="alert"><%= alert %></span>
-		<!-- <span class="close_flash">[x]</span> -->    
+		<!-- <span class="close_flash">[x]</span> -->   
+  </div>
 <% end %>
 <script>
 	$(function() {
-		//$('#flash').delay(5000).fadeOut();
+		$('#flash').delay(5000).fadeOut();
 	});
 </script>

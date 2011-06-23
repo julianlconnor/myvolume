@@ -518,9 +518,12 @@ ul li.even {
 	width:100%;
 }
 
-#topbar #lastupdate, #topbar #usernav {
-	float: right;
+#right {
+  position: absolute;
+  right: 0;
 	padding: 10px 0 0 0;
+}
+#topbar #lastupdate, #topbar #usernav {
 	margin: 0 10px;
 }
 #topnav {

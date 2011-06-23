@@ -25,17 +25,18 @@
 	<div id="topbar">
 		<div id="logo"><%= link_to "myvolu.meα", root_path  %></div>
     <div id="tagline">An easy way to discover new music.</div>
-    <div id="flashSpace" class="flash">
+    <div id="flashSpace">
 			<%= render 'layouts/flash' %>
     </div>
 		<!-- <ul id="topnav">
 			<li class="highlighted"><%= link_to "Charts", charts_path %></li>
 		</ul> -->
-    <div id="lastupdate"><%= CronWatcher.last.last_update.strftime("Last Updated at %I:%M%p on %m/%d/%Y ♥") %></div>
-		<div id="usernav">
-			<%= render 'home/userNav' %>
-		</div>
-    <div class = "clear"></div>
+    <div id="right">
+      <span id="usernav">
+        <%= render 'home/userNav' %>
+      </span>
+      <span id="lastupdate"><%= CronWatcher.last.last_update.strftime("Last Updated at %I:%M%p on %m/%d/%Y ♥") %></span>   
+    </div>
 	</div>
 	<div id="container">
 		<div id="header">
