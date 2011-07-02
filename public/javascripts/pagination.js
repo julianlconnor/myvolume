@@ -37,4 +37,19 @@ $(function() {
 		$.get(this.href,null,null,"script");
 		return false;
 	});
+	// jQuery to handle playing a mostFavorited Track
+	$('.lovedElement .track_icons a.play_button').live('click',function(e) {
+		$(this).addClass("justclicked");
+		$(this).html("<img src='/images/favorite_ajax_loader.gif'/>");
+		$.get(this.href,null,null,"script");
+		return false;
+	});
+	$('ul li .track_info .tags .track_icons div.play_button a').live('click',function(e) {
+		$(this).addClass("justclicked");
+		$(this).html("<img src='/images/favorite_ajax_loader.gif'/>");
+		$.get(this.href,null,null,"script");
+		return false;
+	});
+	
+	
 });

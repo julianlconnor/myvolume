@@ -1,5 +1,6 @@
 class ArtistsController < ApplicationController
   #before_filter :authenticate_user!
+  load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
   # GET /artists
   # GET /artists.xml
   def index

@@ -1,5 +1,4 @@
 $("#topbar #usernav").html("<%= escape_javascript(render('home/userNav')) %>");
 $("#flashSpace").html("<%= escape_javascript(render('layouts/flash')) %>");
-$("#topdownloads").html("<%= escape_javascript(render('home/topDownloads')) %>");
-$("#charts").html("<%= escape_javascript(render('home/charts')) %>");
+$("a.heart").removeClass("active");
 $("#rightbar").html("<%= escape_javascript(render('home/sessionAjaxSwitch')) %>");

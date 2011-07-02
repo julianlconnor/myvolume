@@ -1,6 +1,7 @@
 class ChartsController < ApplicationController
   #before_filter :authenticate_user!
   #attr_accessible 
+  load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
   # GET /charts
   # GET /charts.xml
   def index

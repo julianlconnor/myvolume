@@ -1,0 +1,30 @@
+var temp = $("a.justclicked");
+temp.html('<img src="/images/player_play.png">');
+$('ol li.playing').find('.play_button').html("<img src='/images/player_play.png'>");
+var playing = $(".playing").removeClass('playing');
+var string = '<li class="<%= @song.id%> playing"><div class="track_detail"><div class="track_image"><%= image_tag @song.song_thumbnail.medium %></div>';
+string += '<div class="track_info"><div><% track_title = "#{@song.name} (#{@song.mix_name})"%><a href="#" data-src="<%= @song.sample_url %>"><%= truncate(track_title, :length => 32) %></a></div>';
+string += '<div class="track_artist"><%= "#{truncate(@song.artist, :length => 28, :seperator => ' ')}"%></div><div class="tags">';
+string += '<div class="track_icons"><div class="play_button"><%= image_tag("player_pause.png") %></div><div class="queue_button"><%= image_tag("minus.png") %></div><div class="download"><%= link_to image_tag("dl_icon.png"), "#{generateQuery(@song)}", :target => "_blank" %></div></div>';
+string += '<span><%= @song.genres.first.name %></span><% if is_favorite(@song.id) %><%= link_to "❤", "/favorite/#{@song.id}", :class => "#{@song.id} heart active"%><% else %><%= link_to "❤", "/favorite/#{@song.id}", :class => "heart"%><% end %>';
+string += '</div></div></div></li>';
+if ( $("#player_playlist li").length > 6 )
+	$("#player_playlist li:last").remove();
+$("ol#player_playlist").prepend(string);
+$(document).ready(playAudio('<%= "#{@song.sample_url}"%>'));
+
+// $.getScript('/javascripts/audio.js', function(){
+// 
+// 
+//    alert("http://geo-samples.beatport.com/items/volumes/volume7/items/1000000/900000/50000/8000/400/80/1958488.LOFI.mp3");
+//    audio.load('<%= "#{@song.sample_url}" %>');
+//    audio.play();
+// 
+// });
+
+
+
+
+
+
+

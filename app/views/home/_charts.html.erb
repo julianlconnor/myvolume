@@ -42,17 +42,21 @@
 				<div class="tags">
 					<div class="track_icons">
 						<div class="play_button">
-							<%= image_tag("player_play.png") %>
+							<a href="<%= "/playtrack/#{song.id}" %>" data-src="<%= song.sample_url %>"><%= image_tag("player_play.png") %></a>
 						</div>
 						<div class="queue_button">
 							<%= image_tag("add_icon.png") %>
 						</div>
 						<div class="download">
-							<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{generateQuery(song)}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
+							<%= link_to image_tag("dl_icon.png"), "#{generateQuery(song)}", :target => "_blank" %>
 						</div>
 					</div>
 					<span><%= song.genres.first.name %></span>
-          			<%= link_to "❤", "/favorite/#{song.id}", :class => "heart"%>
+          			<% if is_favorite(song.id) %>
+	        			<%= link_to "❤", "/favorite/#{song.id}", :class => "#{song.id} heart active"%><!-- <div class="heart">&#x2764;</div> -->
+					<% else %>
+						<%= link_to "❤", "/favorite/#{song.id}", :class => "#{song.id} heart"%>
+					<% end %>
 				</div>
 			</div>
 		</div>

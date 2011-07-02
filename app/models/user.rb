@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
+  
   attr_accessor :password
+  
   before_save :encrypt_password
+  
+  belongs_to :role
   
   has_many :favorites
   has_many :songs, :through => :favorites
@@ -17,6 +21,14 @@ class User < ActiveRecord::Base
       user
     else
       nil
+    end
+  end
+  
+  def has_role?(role_sym)
+    if role.name.to_sym == role_sym
+      true
+    else
+      false
     end
   end
   

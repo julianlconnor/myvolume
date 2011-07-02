@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   def index
     #Genre.fetch_genres
     # Chart.fetch_charts
-    #    TopDownload.fetch_top_downloads
+    # TopDownload.fetch_top_downloads
     # @charts = Chart.order("publish_date desc").limit(10)
     @user = User.new
     # if current_user
@@ -16,6 +16,12 @@ class HomeController < ApplicationController
     # end
     @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
     @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
+    @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
+  end
+  
+  def playtrack
+    @song = Song.find(params[:id])
+    #debugger
   end
   
   def top_downloads

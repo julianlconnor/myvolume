@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
   def favorite
     @error = 0
+    @user = User.new
     @song_id = params[:id]
     if current_user
       if session[:uid]
@@ -52,6 +53,7 @@ class UsersController < ApplicationController
       flash.now.alert = "You must log in or register to favorite tracks. :)"
       @error = 1
     end
+    @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
   end
   def create
     @user = User.new(params[:user])

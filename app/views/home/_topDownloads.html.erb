@@ -32,20 +32,20 @@
 			<div class="tags">
 				<div class="track_icons">
 					<div class="play_button">
-						<%= image_tag("player_play.png") %>
+						<a href="<%= "/playtrack/#{track.song.id}" %>" data-src="<%= track.song.sample_url %>"><%= image_tag("player_play.png") %></a>
 					</div>
 					<div class="queue_button">
 						<%= image_tag("add_icon.png") %>
 					</div>
 					<div class="download">
-						<%= link_to image_tag("dl_icon.png"), "http://www.google.com/search?q=#{track.song.name.gsub('&','').gsub(' ','+')}+#{track.song.mix_name.gsub('&','').gsub(' ','+')}+#{track.song.artist.gsub('&','').gsub(' ','+')}+site:zippyshare.com+OR+site:mediafire.com", :target => "_blank" %>
+						<%= link_to image_tag("dl_icon.png"), "#{generateQuery(track.song)}", :target => "_blank" %>
 					</div>
 				</div>
 				<span><%= track.song.genres.first.name %></span>
 				<% if is_favorite(track.song.id) %>
-        			<%= link_to "❤", "/favorite/#{track.song.id}", :class => "heart active"%><!-- <div class="heart">&#x2764;</div> -->
+        			<%= link_to "❤", "/favorite/#{track.song.id}", :class => "#{track.song.id} heart active"%><!-- <div class="heart">&#x2764;</div> -->
 				<% else %>
-					<%= link_to "❤", "/favorite/#{track.song.id}", :class => "heart"%>
+					<%= link_to "❤", "/favorite/#{track.song.id}", :class => "#{track.song.id} heart"%>
 				<% end %>
 			</div>
 		</div>

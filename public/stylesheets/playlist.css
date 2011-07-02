@@ -10,7 +10,7 @@ img {
 }
 #charts, #topdownloads, #rightbar {
 	float: left;
-	margin: 0 45px 0 0;
+	margin: 0 25px 0 0;
 }
 #charts h1, #topdownloads h1 { 
 	font-size: 1em;
@@ -296,7 +296,7 @@ li.playing {
 
 #player_fixed ol li div.download,
 #player_fixed ol li div.queue_button,
-#player_fixed ol li div.play_button {
+#player_fixed ol li a.play_button {
 	margin: 8px 5px 0 0;
 }
 
@@ -316,7 +316,7 @@ ul li div.play_button, ol li div.play_button {
 }
 #player_fixed ol li div.track_info {
 	float: left;
-	margin: 0 0 0 13px;
+	margin: 0 0 0 10px;
 	width:230px;
 }
 #topdownloads ul li div.track_image, #charts ul li div.track_image {
@@ -488,7 +488,7 @@ ul li div.download {
 	padding-right: 5px;
 }
 #player_fixed ol li a.heart {
-	padding-right: 10px !important;
+	padding-right: 5px !important;
 }
 #topdownloads ul li a.heart::hover,
 #charts ul li a.heart::hover,
@@ -573,4 +573,48 @@ ul li.even {
 }
 .scrubber {
 	width: 150px !important;
+}
+
+.mostLoved {
+	width: 265px;
+}
+.lovedElement {
+	padding: 3px;
+	font-size: 12px;
+	margin: 5px 0 0 0;
+	background: -moz-linear-gradient(top,#F7F7F7,#DDDDDD);
+	background: -webkit-linear-gradient(top, #F7F7F7, #DDDDDD);
+	border: 1px solid #DEDEDE;
+}
+.lovedElement .num {
+	color:#C6C6C6;
+	font-size: 26px;
+	padding: 2px 0;
+	float: left;
+}
+.lovedElement .heart {
+	font-size: 22px;
+	float: left;
+	padding: 4px 4px 2px 1px;
+}
+.lovedElement .track_icons {
+	float: left;
+	padding: 5px 5px 0 0;
+}
+.lovedElement .track_icons .play_button, .lovedElement .track_icons .download {
+	cursor: pointer;
+}
+.lovedElement .heart.active {
+	color: red;
+}
+.lovedElement .track_info {
+	float: left;
+	width: 175px;
+}
+.lovedElement .name {
+}
+.lovedElement .mixName {
+}
+.lovedElement .artist {
+	font-size: 10px;
 }

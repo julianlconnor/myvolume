@@ -17,9 +17,9 @@ module ApplicationHelper
   end
   def generateQuery(song)
     if song.mix_name == "Original Mix"
-      "#{song.name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}"
+      "http://www.google.com/search?q=site:zippyshare.com+OR+site:mediafire.com+#{song.name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}"
     else
-      "#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}"
+      "http://www.google.com/search?q=site:zippyshare.com+OR+site:mediafire.com+#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}"
     end
   end
 end

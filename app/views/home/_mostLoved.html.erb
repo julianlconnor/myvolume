@@ -1,0 +1,27 @@
+<div id="user_box" class="mostLoved">
+	<h1 class="form_header box">Most Loved This Month</h1>
+	<% @mostLoved.each do |song| %>
+		<div class="lovedElement">
+			<div class="num"><%= (song.favorite_count).to_s.rjust(2, '0') %></div>
+			<% if is_favorite(song.id) %>
+				<div class="heart"><%= link_to "❤", "/favorite/#{song.id}", :class => "heart active"%></div>
+			<% else %>
+				<div class="heart"><%= link_to "❤", "/favorite/#{song.id}", :class => "heart"%></div>
+			<% end %>
+			<div class="track_icons">
+				<a class="play_button" href="<%= "/playtrack/#{song.id}" %>" data-src="<%= song.sample_url %>">
+					<%= image_tag("player_play.png") %>
+				</a>
+				<div class="download">
+					<%= link_to image_tag("dl_icon.png"), "#{generateQuery(song)}", :target => "_blank" %>
+				</div>
+			</div>
+			<div class="track_info">
+				<div class="name"><a href="#" data-src="<%= song.sample_url %>"><%= "#{song.name}" %></a></div>
+				<div class="mixName"><%= "(#{song.mix_name})" %></div>
+				<div class="artist"><%= "#{truncate(song.artist, :length => 30, :separator => '&')}" %></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	<% end %>
+</div>

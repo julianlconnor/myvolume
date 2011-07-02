@@ -83,6 +83,46 @@
         loadingClass: 'loading',
         errorClass: 'error'
       },
+      // The css used by the default player. This is is dynamically injected into a `<style>` tag in the top of the head.
+      css: '\
+        .audiojs audio { position: absolute; left: -1px; } \
+        .audiojs { width: 460px; height: 36px; background: #404040; overflow: hidden; font-family: monospace; font-size: 12px; \
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #444), color-stop(0.5, #555), color-stop(0.51, #444), color-stop(1, #444)); \
+          background-image: -moz-linear-gradient(center top, #444 0%, #555 50%, #444 51%, #444 100%); \
+          -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); -moz-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); \
+          -o-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3); } \
+        .audiojs .play-pause { width: 25px; height: 40px; padding: 4px 6px; margin: 0px; float: left; overflow: hidden; border-right: 1px solid #000; } \
+        .audiojs p { display: none; width: 25px; height: 40px; margin: 0px; cursor: pointer; } \
+        .audiojs .play { display: block; } \
+        .audiojs .scrubber { position: relative; float: left; width: 280px; background: #5a5a5a; height: 14px; margin: 10px; border-top: 1px solid #3f3f3f; border-left: 0px; border-bottom: 0px; overflow: hidden; } \
+        .audiojs .progress { position: absolute; top: 0px; left: 0px; height: 14px; width: 0px; background: #ccc; z-index: 1; \
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ccc), color-stop(0.5, #ddd), color-stop(0.51, #ccc), color-stop(1, #ccc)); \
+          background-image: -moz-linear-gradient(center top, #ccc 0%, #ddd 50%, #ccc 51%, #ccc 100%); } \
+        .audiojs .loaded { position: absolute; top: 0px; left: 0px; height: 14px; width: 0px; background: #000; \
+          background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #222), color-stop(0.5, #333), color-stop(0.51, #222), color-stop(1, #222)); \
+          background-image: -moz-linear-gradient(center top, #222 0%, #333 50%, #222 51%, #222 100%); } \
+        .audiojs .time { float: left; height: 36px; line-height: 36px; margin: 0px 0px 0px 6px; padding: 0px 6px 0px 12px; border-left: 1px solid #000; color: #ddd; text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); } \
+        .audiojs .time em { padding: 0px 2px 0px 0px; color: #f9f9f9; font-style: normal; } \
+        .audiojs .time strong { padding: 0px 0px 0px 2px; font-weight: normal; } \
+        .audiojs .error-message { float: left; display: none; margin: 0px 10px; height: 36px; width: 400px; overflow: hidden; line-height: 36px; white-space: nowrap; color: #fff; \
+          text-overflow: ellipsis; -o-text-overflow: ellipsis; -icab-text-overflow: ellipsis; -khtml-text-overflow: ellipsis; -moz-text-overflow: ellipsis; -webkit-text-overflow: ellipsis; } \
+        .audiojs .error-message a { color: #eee; text-decoration: none; padding-bottom: 1px; border-bottom: 1px solid #999; white-space: wrap; } \
+        \
+        .audiojs .play { background: url("$1") -2px -1px no-repeat; } \
+        .audiojs .loading { background: url("$1") -2px -31px no-repeat; } \
+        .audiojs .error { background: url("$1") -2px -61px no-repeat; } \
+        .audiojs .pause { background: url("$1") -2px -91px no-repeat; } \
+        \
+        .playing .play, .playing .loading, .playing .error { display: none; } \
+        .playing .pause { display: block; } \
+        \
+        .loading .play, .loading .pause, .loading .error { display: none; } \
+        .loading .loading { display: block; } \
+        \
+        .error .time, .error .play, .error .pause, .error .scrubber, .error .loading { display: none; } \
+        .error .error { display: block; } \
+        .error .play-pause p { cursor: auto; } \
+        .error .error-message { display: block; }',
       // The default event callbacks:
       trackEnded: function(e) {},
       flashError: function() {
@@ -241,6 +281,7 @@
 
     // Attaches useful event callbacks to an `audiojs` instance.
     attachEvents: function(wrapper, audio) {
+      if (!audio.settings.createPlayer) return;
       var player = audio.settings.createPlayer,
           playPause = getByClass(player.playPauseClass, wrapper),
           scrubber = getByClass(player.scrubberClass, wrapper),
@@ -325,6 +366,9 @@
         audio.element.ppause();
         audio.settings.pause.apply(audio);
       }
+      audio['setVolume'] = function(v) {
+        audio.element.setVolume(v);
+      }
       audio['loadStarted'] = function() {
         // Load the mp3 specified by the audio element into the swf.
         audio.swfReady = true;
@@ -379,24 +423,27 @@
       // **Dynamic CSS injection**  
       // Takes a string of css, inserts it into a `<style>`, then injects it in at the very top of the `<head>`. This ensures any user-defined styles will take precedence.
       injectCss: function(audio, string) {
-        var head = document.getElementsByTagName('head')[0],
-            firstchild = head.firstChild,
-            style = document.createElement('style'),
-            css = string.replace(/\$1/g, audio.settings.imageLocation);
 
-        if (!head) return;
         // If an `audiojs` `<style>` tag already exists, then append to it rather than creating a whole new `<style>`.
         var prepend = '',
-            styles = document.getElementsByTagName('style');
+            styles = document.getElementsByTagName('style'),
+            css = string.replace(/\$1/g, audio.settings.imageLocation);
 
         for (var i = 0, ii = styles.length; i < ii; i++) {
           var title = styles[i].getAttribute('title');
           if (title && ~title.indexOf('audiojs')) {
             style = styles[i];
+            if (style.innerHTML === css) return;
             prepend = style.innerHTML;
             break;
           }
         };
+
+        var head = document.getElementsByTagName('head')[0],
+            firstchild = head.firstChild,
+            style = document.createElement('style');
+
+        if (!head) return;
 
         style.setAttribute('type', 'text/css');
         style.setAttribute('title', 'audiojs');
@@ -496,27 +543,34 @@
       },
 
       // **DOMready function**  
-      // As seen here: <http://webreflection.blogspot.com/2007/09/whats-wrong-with-new-iecontentloaded.html>.
-      ready: (function(ie) {
-        var d = document;
-        return ie ? function(c){
-          var n = d.firstChild,
-              f = function(){
-                try{ c(n.doScroll('left')) }
-                catch(e){ setTimeout(f, 10) }
-              };
-              f()
-        } :
-        /webkit|safari|khtml/i.test(navigator.userAgent) ? function(c){
-          var f = function(){
-            /loaded|complete/.test(d.readyState) ? c() : setTimeout(f, 10)
-          };
-          f();
-        } :
-        function(c){
-          d.addEventListener('DOMContentLoaded', c, false);
+      // As seen here: <https://github.com/dperini/ContentLoaded/>.
+      ready: (function() { return function(fn) {
+        var win = window, done = false, top = true,
+        doc = win.document, root = doc.documentElement,
+        add = doc.addEventListener ? 'addEventListener' : 'attachEvent',
+        rem = doc.addEventListener ? 'removeEventListener' : 'detachEvent',
+        pre = doc.addEventListener ? '' : 'on',
+        init = function(e) {
+          if (e.type == 'readystatechange' && doc.readyState != 'complete') return;
+          (e.type == 'load' ? win : doc)[rem](pre + e.type, init, false);
+          if (!done && (done = true)) fn.call(win, e.type || e);
+        },
+        poll = function() {
+          try { root.doScroll('left'); } catch(e) { setTimeout(poll, 50); return; }
+          init('poll');
+        };
+        if (doc.readyState == 'complete') fn.call(win, 'lazy');
+        else {
+          if (doc.createEventObject && root.doScroll) {
+            try { top = !win.frameElement; } catch(e) { }
+            if (top) poll();
+          }
+          doc[add](pre + 'DOMContentLoaded', init, false);
+          doc[add](pre + 'readystatechange', init, false);
+          win[add](pre + 'load', init, false);
         }
-      })(/*@cc_on 1@*/)
+      }
+      })()
 
     }
   }
@@ -609,6 +663,9 @@
       this.playing = false;
       this.element.pause();
       this.settings.pause.apply(this);
+    },
+    setVolume: function(v) {
+      this.element.volume = v;
     },
     trackEnded: function(e) {
       this.skipTo.apply(this, [0]);

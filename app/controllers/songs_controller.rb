@@ -1,6 +1,7 @@
 class SongsController < ApplicationController
   #before_filter :authenticate_user!
   # GET /songs
+  load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
   # GET /songs.xml
   def index
     @songs = Song.all

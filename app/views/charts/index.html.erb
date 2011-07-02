@@ -10,8 +10,12 @@
 <% @charts.each do |chart| %>
   <tr>
     <td><%= link_to 'Show', chart %></td>
-    <td><%= link_to 'Edit', edit_chart_path(chart) %></td>
-    <td><%= link_to 'Destroy', chart, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% if can? :update, chart %>
+    	<td><%= link_to 'Edit', edit_chart_path(chart) %></td>
+	<% end %>
+	<% if can? :destroy, chart %>
+    	<td><%= link_to 'Destroy', chart, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>

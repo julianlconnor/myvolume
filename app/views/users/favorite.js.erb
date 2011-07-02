@@ -1,10 +1,11 @@
 $("#flashSpace").html("<%= escape_javascript(render('layouts/flash')) %>");
-temp = $(".justclicked");
+$("#rightbar").html("<%= escape_javascript(render('home/sessionAjaxSwitch')) %>")
+var temp = $(".heart.justclicked");
+temp.html("❤")
+var hearts = $("a.<%= @song_id %>");
 <% if @error == 1 -%>
-	temp.html("❤");
-	temp.removeClass("active");
+	hearts.removeClass("active");
 <% elsif @error == 0 -%>
-	temp.html("❤");
-	temp.addClass("active");
+	hearts.addClass("active");
 <% end %>
-//temp.removeClass("justclicked");
+temp.removeClass("justclicked");
