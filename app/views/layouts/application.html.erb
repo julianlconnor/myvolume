@@ -38,8 +38,7 @@
     <div id="right">
       <span id="usernav">
         <%= render 'home/userNav' %>
-      </span>
-      <span id="lastupdate"><%= CronWatcher.last.last_update.strftime("Last Updated at %I:%M%p on %m/%d/%Y ♥") %></span>   
+      </span> 
     </div>
 	</div>
 	<div id="container">
@@ -52,6 +51,7 @@
 				©2011 mumbls
 				<strong> ~ !_!</strong>
 				</p>
+				<div id="lastupdate"><%= CronWatcher.last.last_update.strftime("Last Updated at %I:%M%p on %m/%d/%Y ♥") %></div>  
 			</div>
 		</div>
 	</div>
