@@ -92,6 +92,13 @@
 		var chart_id = $(this).attr("id");
 		$("." + chart_id).slideToggle("slow");
 	});
+	
+	$(window).scroll(function(){
+		var x = 0 - ($(this).scrollLeft() / 15);
+				$("#player_fixed").offset({
+					left: x + 30
+				});
+	});
 
 	// Load in a track on click from right div playlists
 	$('ul li div.play_button').live('click',function(e) {
