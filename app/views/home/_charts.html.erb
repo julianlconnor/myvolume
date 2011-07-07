@@ -5,7 +5,9 @@
 <% for i in 0 ... @charts.size %>
 <div id="<%= @charts[i].id %>" class="chartheader">
 	<div class="chartimage">
-		<%= image_tag @charts[i].chart_thumbnail.large %>
+		<% if @charts[i].chart_thumbnail.large %>
+			<%= image_tag @charts[i].chart_thumbnail.large %>
+		<% end %>
 	</div>
 	<div class="chartinfo">
 		<h1 class="<%= cycle('even','odd') %>">
