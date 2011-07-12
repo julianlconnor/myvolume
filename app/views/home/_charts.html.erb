@@ -11,7 +11,7 @@
 	</div>
 	<div class="chartinfo">
 		<h1 class="<%= cycle('even','odd') %>">
-			<div class="charttitle"><%= truncate(@charts[i].name, :length => 40, :seperator => ' ') %></div>
+			<div class="charttitle"><%= truncate(@charts[i].name, :length => 38, :seperator => ' ') %></div>
 			<div class="chartdate"><em><%= @charts[i].publish_date.to_date.to_formatted_s(:long_ordinal) %></em></div>
 			<div class="tags">
 			<% @charts[i].genres.each do |genre| %>
