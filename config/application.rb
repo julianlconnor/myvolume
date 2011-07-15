@@ -32,7 +32,7 @@ module Myvolume
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
-    if Rails.env.development?
+    if Rails.env.development? or Rails.env.production?
       OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     end
 
