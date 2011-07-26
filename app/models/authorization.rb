@@ -26,7 +26,6 @@ class Authorization < ActiveRecord::Base
       authorization.provider = auth["provider"]
       authorization.uid = auth["uid"]
       authorization.alias = auth["user_info"]["nickname"]
-      authorization.name = auth["user_info"]["name"]
       authorization.email = auth["user_info"]["email"]
       authorization.avatar_url = auth["user_info"]["image"]
     end
