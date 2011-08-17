@@ -17,9 +17,15 @@ module ApplicationHelper
   end
   def generateQuery(song)
     if song.mix_name == "Original Mix"
-      "http://www.google.com/search?q=site:zippyshare.com+OR+site:mediafire.com+#{song.name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}"
+      "http://www.google.com/search?q=site:zippyshare.com+OR+site:mediafire.com+OR+site:oron.com+#{song.name.gsub('&','').gsub(' ','+')}+#{song.artist.gsub('&','').gsub(' ','+')}"
     else
-      "http://www.google.com/search?q=site:zippyshare.com+OR+site:mediafire.com+#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}"
+      "http://www.google.com/search?q=site:zippyshare.com+OR+site:mediafire.com+OR+site:oron.com+#{song.name.gsub('&','').gsub(' ','+')}+#{song.mix_name.gsub('&','').gsub(' ','+')}"
+    end
+  end
+  def avatar_url(user)
+    if !user.nil?
+      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+      "http://gravatar.com/avatar/#{gravatar_id}.png?s=50"
     end
   end
 end

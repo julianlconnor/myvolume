@@ -23,11 +23,12 @@ class Authorization < ActiveRecord::Base
   
   def self.create_with_omniauth(auth)
     create! do |authorization|
-      authorization.provider = auth["provider"]
-      authorization.uid = auth["uid"]
-      authorization.alias = auth["user_info"]["nickname"]
-      authorization.email = auth["user_info"]["email"]
-      authorization.avatar_url = auth["user_info"]["image"]
+      authorization.provider = auth["provider"] if !auth["provider"].nil?
+      authorization.uid = auth["uid"] if !auth["uid"].nil?
+      authorization.alias = auth["user_info"]["nickname"] if !auth["user_info"]["nickname"].nil?
+      authorization.name = auth["user_info"]["name"] if !auth["user_info"]["name"].nil?
+      authorization.email = auth["user_info"]["email"] if !auth["user_info"]["email"].nil?
+      authorization.avatar_url = auth["user_info"]["image"] if !auth["user_info"]["image"].nil?
     end
     # authorization = Authorization.new(  :provider   =>  auth["provider"],
     #                                     :uid        =>  auth["uid"],

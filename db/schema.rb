@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110623174618) do
+ActiveRecord::Schema.define(:version => 20110725030518) do
 
   create_table "artist_thumbnails", :force => true do |t|
     t.integer  "artist_id"
@@ -48,7 +48,10 @@ ActiveRecord::Schema.define(:version => 20110623174618) do
     t.string   "avatar_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id",    :default => 2
+    t.integer  "role_id",        :default => 2
+    t.string   "email"
+    t.string   "name"
+    t.integer  "favorite_count", :default => 0, :null => false
   end
 
   add_index "authorizations", ["uid"], :name => "index_authorizations_on_uid"
@@ -190,7 +193,8 @@ ActiveRecord::Schema.define(:version => 20110623174618) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "alias"
-    t.integer  "role_id",       :default => 2
+    t.integer  "role_id",        :default => 2
+    t.integer  "favorite_count", :default => 0, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

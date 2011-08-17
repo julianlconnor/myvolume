@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def favorite
+    debugger
     @error = 0
     @user = User.new
     @song_id = params[:id]
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
           if favorite.save
             flash.now.alert = "Successfully added #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
             favorite.song.favorite_count += 1
+            current_user.favorite_count += 1
             favorite.song.save
           else
             @error = 1
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
           @error = 1
           flash.now.alert = "Successfully removed #{favorite.song.name} (#{favorite.song.mix_name}) from your favorites."
           favorite.song.favorite_count -= 1
+          current_user.favorite_count -= 1
           favorite.song.save
           favorite.destroy
         end
@@ -36,6 +39,7 @@ class UsersController < ApplicationController
           if favorite.save
             flash.now.alert = "Successfully added #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
             favorite.song.favorite_count += 1
+            current_user.favorite_count += 1
             favorite.song.save
           else
             @error = 1
@@ -45,6 +49,7 @@ class UsersController < ApplicationController
           @error = 1
           flash.now.alert = "Successfully removed #{favorite.song.name} (#{favorite.song.mix_name}) from your favorites."
           favorite.song.favorite_count -= 1
+          current_user.favorite_count -= 1
           favorite.song.save
           favorite.destroy
         end

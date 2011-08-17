@@ -1,11 +1,11 @@
 class AddNameAndEmailToAuthorization < ActiveRecord::Migration
   def self.up
-    add_column :authorization, :email, :string
-    add_column :authorization, :name, :string
+    add_column :authorizations, :email, :string
+    add_column :authorizations, :name, :string
   end
 
   def self.down
-    remove_column :authorization, :email
-    remove_column :authorization, :name
+    remove_column :authorizations, :email
+    remove_column :authorizations, :name
   end
 end

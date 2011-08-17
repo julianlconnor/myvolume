@@ -44,9 +44,19 @@ $(function() {
 		$.get(this.href,null,null,"script");
 		return false;
 	});
+	// Favoriting a song in the player_playlist
 	$('ul li .track_info .tags .track_icons div.play_button a').live('click',function(e) {
 		$(this).addClass("justclicked");
 		$(this).html("<img src='/images/favorite_ajax_loader.gif'/>");
+		$.get(this.href,null,null,"script");
+		return false;
+	});
+	// Ajax for viewing a track
+	$('.showtrack').live('click',function(e) {
+		$.get(this.href,null,null,"script");
+		return false;
+	});
+	$('.showhome').live('click',function(e) {
 		$.get(this.href,null,null,"script");
 		return false;
 	});

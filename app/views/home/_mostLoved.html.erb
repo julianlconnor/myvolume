@@ -1,4 +1,33 @@
-<div id="user_box" class="mostLoved">
+<div id="activeUsers" class="mostLoved">
+	<h1 class="form_header box">Most Active Users</h1>
+	<% if !@mostActive.nil? && @mostActive.length > 0 %>
+  	<% @mostActive.each do |user| %>
+  		<% if user.class == User %>
+  			<div class="activeUser">
+  				<div class="user_info">
+  					<div class="num"><%= (user.favorite_count).to_s.rjust(2, '0') %></div>
+  					<div class="heart active">❤</div>
+  					<div class="avatar"><%= image_tag avatar_url(user) %></div>
+  				</div>
+  				<div class="alias"><%= user.alias %></div>
+  				<div class="clear"></div>
+  			</div>
+  		<% elsif user.class == Authorization %>
+  			<div class="activeUser">
+  				<div class="user_info">
+  					<div class="num"><%= (user.favorite_count).to_s.rjust(2, '0') %></div>
+  					<div class="heart active">❤</div>
+  					<div class="avatar"><%= image_tag avatar_url(user) %></div>
+  				</div>
+  				<div class="alias"><%= user.alias %></div>
+  				<div class="clear"></div>
+  			</div>
+  		<% end %>
+  	<% end %>
+  <% end %>
+</div>
+
+<div class="mostLoved">
 	<h1 class="form_header box">Most Loved This Month</h1>
 	<% @mostLoved.each do |song| %>
 		<div class="lovedElement">

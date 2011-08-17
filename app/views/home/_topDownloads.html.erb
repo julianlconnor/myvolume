@@ -26,7 +26,7 @@
 		<div class="track_info">
 			<div>
 				<% track_title = "#{track.song.name} (#{track.song.mix_name})"%>
-				<a href="#" data-src="<%= track.song.sample_url %>"><%= truncate(track_title, :length => 32) %></a>
+				<a class="showtrack" href="/songs/<%= track.song.id %>" data-src="<%= track.song.sample_url %>"><%= truncate(track_title, :length => 32) %></a>
 			</div>
 			<div class="track_artist"><%= "#{truncate(track.song.artist, :length => 28, :seperator => ' ')}"%></div>
 			<div class="tags">
