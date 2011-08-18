@@ -2,17 +2,17 @@
 	<h1 class="form_header box">Most Active Users</h1>
 	<% if !@mostActive.nil? && @mostActive.length > 0 %>
   	<% @mostActive.each do |user| %>
-  		<% if user.class == User %>
+  		<% if user.class == User and user.favorite_count > 0 %>
   			<div class="activeUser">
   				<div class="user_info">
   					<div class="num"><%= (user.favorite_count).to_s.rjust(2, '0') %></div>
   					<div class="heart active">❤</div>
   					<div class="avatar"><%= image_tag avatar_url(user) %></div>
   				</div>
-  				<div class="alias"><%= user.alias %></div>
+  				<div class="alias"><%= link_to user.alias, "/users/#{user.id}"%></div>
   				<div class="clear"></div>
   			</div>
-  		<% elsif user.class == Authorization %>
+  		<% elsif user.class == Authorization and user.favorite_count > 0 %>
   			<div class="activeUser">
   				<div class="user_info">
   					<div class="num"><%= (user.favorite_count).to_s.rjust(2, '0') %></div>
