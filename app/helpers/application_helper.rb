@@ -24,7 +24,7 @@ module ApplicationHelper
   end
   def avatar_url(user)
     if !user.nil?
-      gravatar_id = Digest::MD5.hexdigest(user.email.downcase) if !user.email.downcase.nil?
+      gravatar_id = Digest::MD5.hexdigest(user.email.downcase) if !user.email.nil?
       "http://gravatar.com/avatar/#{gravatar_id}.png?s=50"
     end
   end
