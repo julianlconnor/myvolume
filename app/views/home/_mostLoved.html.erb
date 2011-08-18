@@ -9,7 +9,7 @@
   					<div class="heart active">❤</div>
   					<div class="avatar"><%= image_tag avatar_url(user) %></div>
   				</div>
-  				<div class="alias"><%= link_to user.alias, "/users/#{user.id}"%></div>
+  				<div class="alias"><%= link_to user.alias, "#"%></div>
   				<div class="clear"></div>
   			</div>
   		<% elsif user.class == Authorization and user.favorite_count > 0 %>
@@ -19,7 +19,7 @@
   					<div class="heart active">❤</div>
   					<div class="avatar"><%= image_tag avatar_url(user) %></div>
   				</div>
-  				<div class="alias"><%= user.alias %></div>
+  				<div class="alias"><%= link_to user.alias, "#"%></div>
   				<div class="clear"></div>
   			</div>
   		<% end %>
