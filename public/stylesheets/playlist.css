@@ -504,6 +504,9 @@ ul li div.download {
 ul .tags span {
 	margin: 5px 0 0 0;	
 }
+ul, ul li {
+  clear: left;
+}
 ul li.odd {
 	background: -moz-linear-gradient(top,#F7F7F7,#DDDDDD);
 	background: -webkit-linear-gradient(top, #F7F7F7, #DDDDDD);
