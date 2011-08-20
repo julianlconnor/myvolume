@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
+  def index
+    redirect_to :root
+  end
   def new
     @user = User.new
   end
@@ -59,7 +63,24 @@ class UsersController < ApplicationController
       @error = 1
     end
     @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
+    @mostActive = mergeActiveAuthUsers()
   end
+  
+  def mergeActiveAuthUsers
+    @u = User.find(:all, :limit=>5, :order => "favorite_count DESC")
+    @a = Authorization.find(:all, :limit => 5, :order => "favorite_count DESC")
+    @a = @a + @u
+    @a = @a.sort {|x,y| x.favorite_count <=> y.favorite_count}.reverse
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+  
+  def showAuth
+    @auth = Authorization.find(params[:id])
+  end
+  
   def create
     @user = User.new(params[:user])
     if @user.save
