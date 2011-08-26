@@ -5,7 +5,7 @@
 <% for i in 0 ... @charts.size %>
 <div id="<%= @charts[i].id %>" class="chartheader">
 	<div class="chartimage">
-		<% if @charts[i].chart_thumbnail.large %>
+		<% if !@charts[i].chart_thumbnail.large.nil? %>
 			<%= image_tag @charts[i].chart_thumbnail.large %>
 		<% end %>
 	</div>
@@ -23,7 +23,7 @@
 </div>
 <ul class="<%= @charts[i].id %>" style="display:none;">
 	<% @charts[i].songs.each_with_index do |song,i| %>
-		<li class="<%= cycle('even','odd')%>">
+		<li class="<%= cycle('even','odd')%> clearfix">
 		<div class="track_detail">
 			<div class="numbers">
 				<div class="track_position"><%= (i+1).to_s.rjust(2, '0') %></div>
