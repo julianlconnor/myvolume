@@ -1,6 +1,6 @@
 <div class="header">
 	<span class="title">Top Downloads</span>
-	<%= will_paginate @topdownloads, :params => { :controller => "home", :action => "top_downloads" }, :class => "pagination topdownloads", :prev_label => 'Previous', :next_label => 'Next', :page_links => false %>
+  <%= will_paginate @topdownloads, :params => { :controller => "home", :method => "top_downloads_paginate" }, :class => "pagination topdownloads", :param_name => "top_download_page", :prev_label => 'Previous', :next_label => 'Next', :page_links => false %>
 </div>
 <ul>
 <% @topdownloads.each do |track| %>

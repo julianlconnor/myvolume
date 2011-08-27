@@ -1,6 +1,6 @@
 <div class="header">
 	<span class="title">Charts</span>
-	<%= will_paginate @charts, :class => "pagination charts", :prev_label => 'Previous', :next_label => 'Next', :page_links => false %>
+  <%= will_paginate @charts, :params => { :controller => "home", :method => "charts_paginate" }, :class => "pagination charts", :param_name => "chart_page", :prev_label => 'Previous', :next_label => 'Next', :page_links => false %>
 </div>
 <% for i in 0 ... @charts.size %>
   <% if @charts[i].chart_thumbnail and @charts[i].chart_thumbnail.large %>
