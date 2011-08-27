@@ -1,0 +1,72 @@
+#dsq-comments-title h3 {
+color:#1fafcb;
+}
+ 
+#disqus_thread {
+padding:12px;
+margin-bottom:-10px;
+}
+ 
+#disqus_thread h3 {
+color:#1fafcb;
+font-weight:bold;
+font-family: Helvetica, sans-serif;
+font-size:22px;
+padding-bottom:.5em;
+}
+ 
+#dsq-content div.dsq-options {
+background:none;
+padding-bottom:0px;
+}
+ 
+#dsq-comments li.dsq-comment {
+margin-top:12px
+margin-bottom:6px;
+margin-bottom:12px;
+padding:12px;
+background-image: url(images/post-bg.png);
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border:1px solid #BBBBBB;
+}
+ 
+#dsq-content div.dsq-post-area {
+padding:12px;
+background-image: url(images/post-bg.png);
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border:1px solid #BBBBBB;
+-webkit-box-shadow: 0px 0px 10px #AAAAAA;
+-moz-box-shadow: 0px 0px 10px #AAAAAA;
+}
+ 
+#dsq-content .dsq-comment-header {
+background:none;
+}
+ 
+.dsq-brlink {
+display:none;
+}
+ 
+#dsq-content .dsq-comment-message {
+background:transparent;
+padding:10px;
+color:#ffffff;
+}
+ 
+#dsq-content #dsq-authenticate .dsq-login-buttons {
+background:none;
+background-image:none;
+margin-bottom:0;
+}
+ 
+#dsq-content #dsq-form-area .dsq-textarea .dsq-textarea-wrapper,
+#dsq-content #dsq-form-area .dsq-post-fields .dsq-input-wrapper {
+border: 1px solid #ccc;
+}
+ 
+#dsq-new-post div.dsq-request-user-info {
+background:none;
+padding-bottom:0px;
+}

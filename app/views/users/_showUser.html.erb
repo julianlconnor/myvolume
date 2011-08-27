@@ -1,0 +1,55 @@
+
+<ul class="directory">
+	<li><%= link_to "Back", root_url, :class => "showhome" %></li>
+</ul>
+<table>
+  <tr>
+    <td><%= image_tag avatar_url(@user) %></td>
+    <td><h2><%= @user.alias %><h2></td>
+  </tr>
+</table>
+<h2>Favorites</h2>
+<ul id="favorites" class="<%= @user.id %>">
+	<% @user.favorites.each_with_index do |fav,i| %>
+		<li class="<%= cycle('even','odd')%> clearfix">
+		<div class="track_detail">
+			<div class="numbers">
+				<div class="track_position"><%= (i+1).to_s.rjust(2, '0') %></div>
+			</div>
+			<div class="track_image">
+				<% if fav.song.song_thumbnail.nil? %>
+					<%- image_tag Song.first.song_thumbnail.medium %>
+				<% else %>
+					<a href="<%= fav.song.song_thumbnail.large %>" class="lightbox"><%= image_tag fav.song.song_thumbnail.medium %></a>
+				<% end %>
+			</div>
+			<div class="track_info">
+				<div>
+					<% track_title = "#{fav.song.name} (#{fav.song.mix_name})"%>
+					<a href="#" data-src="<%= fav.song.sample_url %>"><%= truncate(track_title, :length => 32) %></a>
+				</div>
+				<div class="track_artist"><%= "#{truncate(fav.song.artist, :length => 28, :seperator => ' ')}"%></div>
+				<div class="tags">
+					<div class="track_icons">
+						<div class="play_button">
+							<a href="<%= "/playtrack/#{fav.song.id}" %>" data-src="<%= fav.song.sample_url %>"><%= image_tag("player_play.png") %></a>
+						</div>
+						<div class="queue_button">
+							<%= image_tag("add_icon.png") %>
+						</div>
+						<div class="download">
+							<%= link_to image_tag("dl_icon.png"), "#{generateQuery(fav.song)}", :target => "_blank" %>
+						</div>
+					</div>
+					<span><%= fav.song.genres.first.name %></span>
+          			<% if is_favorite(fav.song.id) %>
+	        			<%= link_to "❤", "/favorite/#{fav.song.id}", :class => "#{fav.song.id} heart active"%><!-- <div class="heart">&#x2764;</div> -->
+					<% else %>
+						<%= link_to "❤", "/favorite/#{fav.song.id}", :class => "#{fav.song.id} heart"%>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		</li> 
+	<% end %>
+</ul>

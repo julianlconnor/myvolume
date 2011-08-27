@@ -58,6 +58,7 @@ class UsersController < ApplicationController
           favorite.destroy
         end
       end
+      current_user.save
     else
       flash.now.alert = "You must log in or register to favorite tracks. :)"
       @error = 1

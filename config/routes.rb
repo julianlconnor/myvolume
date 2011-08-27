@@ -64,6 +64,7 @@ Myvolume::Application.routes.draw do
   match '/auth/facebook/callback', :to => 'sessions#create'
   match '/favorite/:id', :to => 'users#favorite'
   match '/playtrack/:id', :to => 'home#playtrack'
+  match '/auths/:id',   :to => 'users#showAuth'
 
   # See how all your routes lay out with "rake routes"
 

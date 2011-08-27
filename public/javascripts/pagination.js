@@ -60,6 +60,10 @@ $(function() {
 		$.get(this.href,null,null,"script");
 		return false;
 	});
+	$('#activeUsers .alias a').live('click',function(e) {
+	  $.get(this.href,null,null,"script");
+	  return false;
+	});
 	
 	
 });

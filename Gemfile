@@ -13,10 +13,9 @@ gem 'haml'
 gem 'mysql'
 gem 'json'		# API Calls
 gem 'mongrel'	# Web Server
-gem 'pg'		# PostgreSQL
-gem 'ruby-debug'# Debugger
+gem 'pg', '~> 0.11.0'		# PostgreSQL
 gem 'taps'		# Heroku
-gem 'will_paginate', '~> 3.0.beta'	# Pagination
+gem 'will_paginate'	# Pagination
 
 
 # Use unicorn as the web server

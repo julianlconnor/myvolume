@@ -206,7 +206,7 @@ a {
 	list-style: none;
 	font-size: 0.9em;
 }
-#topdownloads ul {
+#topdownloads ul, #favorites ul {
 	margin: 6px 0 0 0;
 	padding: 0;
 	list-style: none;
@@ -217,15 +217,15 @@ a {
 	border: 1px solid #DEDEDE;
 	height: 50px;
 }
-#topdownloads ul li {
+#topdownloads ul li, #favorites ul li {
 	padding: 10px 0 0 0;
 	border: 1px solid #DEDEDE;
 }
-#topdownloads ul li, #charts ul li {
+#topdownloads ul li, #charts ul li, #favorites ul li{
 	width: 385px;
 	height: 70px;
 }
-#topdownloads ul li, #charts ul li div.track_artist {
+#topdownloads ul li, #favorites ul li, #charts ul li div.track_artist {
 	font-size: 13px;
 	color: #999999;
 	margin: 3px 0 0 0;
@@ -249,7 +249,7 @@ a {
 	margin: 7px 0 0 0;
 }
 
-#topdownloads ul li a, #charts ul li a, #player_fixed ol li a { 
+#topdownloads ul li a, #favorites ul li a, #charts ul li a, #player_fixed ol li a { 
 	color: #000; 
 	text-indent: -3.3ex; 
 	padding: 0;
@@ -283,12 +283,15 @@ li.playing {
 #player_fixed ol li div.queue_button,
 #charts ul li div.queue_button,
 #topdownloads ul li div.queue_button,
+#favorites ul li div.queue_button,
 #player_fixed ol li div.play_button,
 #charts ul li div.play_button,
 #topdownloads ul li div.play_button,
+#favorites ul li div.play_button,
 #player_fixed ol li div.download,
 #charts ul li div.download,
-#topdownloads ul li div.download  {
+#topdownloads ul li div.download,
+#foavirtes ul li div.download {
 	float: left;
 	cursor: pointer;
 	margin: 8px 5px 0 0;
@@ -309,7 +312,7 @@ ul li div.play_button, ol li div.play_button {
 	font-size: 20px;
 }
 */
-#topdownloads ul li div.track_info, #charts ul li div.track_info {
+#topdownloads ul li div.track_info, #charts ul li div.track_info, #favorites ul li div.track_info{
 	float: left;
 	margin: 0 0 0 15px;
 	width:235px;
@@ -319,11 +322,11 @@ ul li div.play_button, ol li div.play_button {
 	margin: 0 0 0 10px;
 	width:230px;
 }
-#topdownloads ul li div.track_image, #charts ul li div.track_image {
+#topdownloads ul li div.track_image, #charts ul li div.track_image, #favorites ul li div.track_image {
 	padding: 0 0 0 13px;
 	float: left;
 }
-#topdownloads ul li div.track_position, #charts ul li div.track_position {
+#topdownloads ul li div.track_position, #charts ul li div.track_position, #favorites ul li div.track_position{
 	float: left;
 	padding: 0 0 0 15px;
 	line-height: 40px;
@@ -374,7 +377,7 @@ ul li div.download {
 	height: 35px;
 	padding: 5px 0 0 0;
 }
-#charts ul li .track_detail {
+#charts ul li .track_detail, #favorites ul li .track_detail {
 	height: 65px;
 }
 .pagination {
