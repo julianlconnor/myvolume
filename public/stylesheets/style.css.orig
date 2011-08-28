@@ -1,0 +1,72 @@
+body {
+  padding-top: 40px;
+}
+.login-box {
+  float: left;
+  width: 400px;
+  border-radius: 3px;
+}
+.register-box {
+  float: left;
+  width: 200px;
+}
+.center {
+  margin: 0 auto;
+  width: 800px;
+  padding-top: 40px;
+}
+.clear {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+/* Charts Structure */
+#charts {
+    margin-top: 30px;
+    border-bottom: 1px solid #ddd;
+}
+#charts h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.chart {
+    float: left;
+    width: 468px;
+    margin-bottom: 20px;
+}
+.chart .title {
+    color: #333;
+    font-weight: bold;
+}
+.chart .genres {
+    font-size: 11px;
+    width: 300px;
+}
+.chart_text, .chart img {
+    float: left;
+}
+.chart img {
+    margin-right: 10px;
+    box-shadow: 1px 1px 1px #888;
+    -webkit-box-shadow: 1px 1px 1px #888;
+    -moz-box-shadow: 1px 1px 1px #888;
+}
+/*.genre {
+    padding: 3px;
+}
+.genre.even {
+    color: #8ac0de;
+}
+.genre.odd {
+    color: #516c8a;
+}*/
+
+/*
+ *  #404a69 darkest blue
+ *  #516c8a darker blue
+ *  #8ac0de blue -- background
+ *  #bfd3de light blue
+ *  #ffac00 orange
+ *  #ffffff and of course white
+ */
+>>>>>>> 09ca7707a86535535281e3ca2e609133fdfe5752

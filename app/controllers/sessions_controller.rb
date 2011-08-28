@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
         flash.now.alert = "Invalid email or password"
       end
     end
-    render 'home/index'
+    redirect_to '/charts'
   end
   
   def refresh
