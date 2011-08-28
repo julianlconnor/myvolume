@@ -1,8 +1,0 @@
-<% if current_user %>
-  <% if current_user.alias %>
-    Hi <%= current_user.alias %>
-  <% elsif !current_user.email.nil? %>
-    Hi <%= current_user.email %>
-  <% end %>
-  <%= link_to "Log out", log_out_path, :id => "logout" %>
-<% end %>
