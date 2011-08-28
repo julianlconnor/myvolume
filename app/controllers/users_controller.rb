@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
+  #load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
   def index
     redirect_to :root
   end
