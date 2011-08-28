@@ -26,38 +26,36 @@
 	<!-- End Google Analytics -->
 </head>
 <body>
-	<div id="topbar">
-		<div id="logo"><%= link_to "myvolu.meα", root_path  %></div>
-    <div id="tagline">An easy way to discover new music.</div>
-    <div id="flashSpace">
-			<%= render 'layouts/flash' %>
-    </div>
-		<!-- <ul id="topnav">
-			<li class="highlighted"><%= link_to "Charts", charts_path %></li>
-		</ul> -->
-    <div id="right">
-      <span id="usernav">
-        <%= render 'home/userNav' %>
-      </span> 
-    </div>
-	</div>
+	<div class="topbar-wrapper" style="z-index: 5;"> 
+      <div class="topbar"> 
+        <div class="fill"> 
+          <div class="container"> 
+            <h3><a href="#">myvolu.me</a></h3> 
+            <ul> 
+              <li><a href="#">Charts</a></li> 
+              <li><a href="#">Top Downloads</a></li> 
+            </ul> 
+            <form action=""> 
+              <input type="text" placeholder="Search" /> 
+            </form> 
+            <ul class="nav secondary-nav"> 
+              <li class="menu"> 
+                <a href="#" class="menu">Sign In</a> 
+                <ul class="menu-dropdown"> 
+                  <li><a href="#">Secondary link</a></li> 
+                  <li><a href="#">Something else here</a></li> 
+                  <li class="divider"></li> 
+                  <li><a href="#">Another link</a></li> 
+                </ul> 
+              </li> 
+            </ul> 
+          </div> 
+        </div><!-- /fill --> 
+      </div><!-- /topbar --> 
+    </div><!-- /topbar-wrapper -->
 	<div id="container">
-		<div id="header">
-		</div>
 		<%= yield %>
-		<div id="footer">
-			<div class="content_wrapper">
-				<p id="copyright">
-				©2011 mumbls
-				<strong> ~ !_!</strong>
-				</p>
-				<div id="lastupdate"><%= CronWatcher.last.last_update.strftime("Last Updated at %I:%M%p on %m/%d/%Y ♥") %></div>  
-			</div>
-		</div>
 	</div>
-	
-
-
 </body>
 </html>
 <script>
