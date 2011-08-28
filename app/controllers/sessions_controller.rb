@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
-  
+  def index
+    if current_user
+      redirect_to(:controller => "charts", :method => "index")
+    end
+  end
   def new
+    @user = User.new
   end
   
   def create
@@ -22,9 +27,7 @@ class SessionsController < ApplicationController
         flash.now.alert = "Invalid email or password"
       end
     end
-    @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
-    @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
-    @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
+    render 'home/index'
   end
   
   def refresh
@@ -35,8 +38,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:uid] = nil
     flash.now.alert = "You have been Logged Out!"
-    @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
-    @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
+    redirect_to(root_path)
   end
 
 end

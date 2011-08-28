@@ -1,0 +1,32 @@
+<div class="center">
+  <div class="page-header">
+    <h3>Welcome to myvolu.me</h3>
+  </div>
+  <div class="login-box">
+    <%= form_tag sessions_path do %>
+    	<fieldset>
+    	  <div class="clearfix">
+    			<%= label_tag :email %>
+    			<div class="input">
+    			  <%= text_field_tag :email, params[:email] %>
+    			</div>
+    		</div>
+    		<div class="clearfix">
+    			<%= label_tag :password %>
+    			<div class="input">
+    			  <%= password_field_tag :password, params[:password] %>
+    			</div>
+    		</div>
+    		<div class="actions">
+    	    <%= submit_tag "Sign in", :class => "btn primary" %>
+    	  </div>
+    	</fieldset>
+    <% end %>
+  </div>
+  <div class="register-box">
+    <%= link_to "Connect using Facebook", "/auth/facebook", :class => "btn info" %>
+    <div class="clearfix">
+      <%= link_to "Register with myvolu.me", new_user_path, :class => "btn info" %>
+    </div>
+  </div>
+</div>

@@ -31,34 +31,38 @@
         <div class="fill"> 
           <div class="container"> 
             <h3><a href="#">myvolu.me</a></h3> 
-            <ul> 
-              <li><a href="#">Charts</a></li> 
-              <li><a href="#">Top Downloads</a></li> 
-            </ul> 
-            <form action=""> 
-              <input type="text" placeholder="Search" /> 
-            </form> 
-            <ul class="nav secondary-nav"> 
-              <li class="menu"> 
-                <a href="#" class="menu">Sign In</a> 
-                <ul class="menu-dropdown"> 
-                  <li><a href="#">Secondary link</a></li> 
-                  <li><a href="#">Something else here</a></li> 
-                  <li class="divider"></li> 
-                  <li><a href="#">Another link</a></li> 
-                </ul> 
-              </li> 
-            </ul> 
+            <% if current_user %>
+              <ul> 
+                <li><a href="#">Charts</a></li> 
+                <li><a href="#">Top Downloads</a></li> 
+              </ul> 
+              <form action=""> 
+                <input type="text" placeholder="Search" /> 
+              </form>
+              <ul class="nav secondary-nav"> 
+                <li class="menu"> 
+                  <a href="#" class="menu">Hey <%= proper_name(current_user) %></a> 
+                  <ul class="menu-dropdown"> 
+                    <li><a href="#">Profile</a></li> 
+                    <li class="divider"></li> 
+                    <li><%= link_to "Logout", log_out_path %></li> 
+                  </ul> 
+                </li> 
+              </ul>
+            <% end %>
           </div> 
         </div><!-- /fill --> 
       </div><!-- /topbar --> 
     </div><!-- /topbar-wrapper -->
-	<div id="container">
+	<div class="container">
 		<%= yield %>
 	</div>
 </body>
 </html>
 <script>
+  $('a.menu').live('click', function(e){
+    $(this).parent().toggleClass('open');
+  });
 	var a = audiojs.createAll({
 		trackEnded: function() {
 			var playing = $('ol li.playing');

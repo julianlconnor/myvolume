@@ -28,4 +28,13 @@ module ApplicationHelper
       "http://gravatar.com/avatar/#{gravatar_id}.png?s=50"
     end
   end
+  def proper_name(user)
+    if user.alias
+      return user.alias
+    elsif user.email
+      return user.email
+    else
+      return "myvolu.me user!"
+    end
+  end
 end

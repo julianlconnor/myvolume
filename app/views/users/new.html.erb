@@ -1,5 +1,7 @@
 <div id="user_box">
-	<h1 class="form_header box">Sign Up For myvolu.me</h1>
+  <div class="page-header">
+    <h3>Register for myvolu.me</h3>
+  </div>
 	<div class="box">
 		<%= form_for @user do |f| %>
 		<% if @user.errors.any? %>
@@ -12,25 +14,36 @@
 		      </ul>
 		    </div>
 		  <% end %>
-			<table>
-				<tr>
-					<td><%= f.label :alias %></td>
-					<td><%= f.text_field :alias %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :email %></td>
-					<td><%= f.text_field :email %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :password %></td>
-					<td><%= f.password_field :password %></td>
-				</tr>
-				<tr>
-					<td><%= f.label "Confirm" %></td>
-					<td><%= f.password_field :password_confirmation %></td>
-				</tr>
-			</table>
-			<%= submit_tag "Sign in", :class => "submit input" %>
+      <fieldset>
+        <div class="clearfix">
+					<%= f.label :alias %>
+          <div class="input">
+            <%= f.text_field :alias %>
+          </div>
+        </div>
+        <div class="clearfix">
+					<%= f.label :email %>
+          <div class="input">
+            <%= f.text_field :email %>
+          </div>
+        </div>
+        <div class="clearfix">
+					<%= f.label :password %>
+          <div class="input">
+            <%= f.password_field :password %>
+          </div>
+        </div>
+        <div class="clearfix">
+					<%= f.label :password_confirmation %>
+          <div class="input">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+      </fieldset>
+      <div class="actions">
+        <%= submit_tag "Register", :class => "btn primary" %>
+        <%= link_to "Back", root_path, :class => "btn" %>
+      </div>
 		<% end %>
 	</div>
 </div>
