@@ -11,9 +11,6 @@ class HomeController < ApplicationController
     # TopDownload.fetch_top_downloads
     # @charts = Chart.order("publish_date desc").limit(10)
     @user = User.new
-    # if current_user
-    #   favorite
-    # end
     @charts = Chart.paginate :page => params[:chart_page], :order => "publish_date desc"
     @topdownloads = TopDownload.paginate :page => params[:top_download_page], :order => "rank asc"
     @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
