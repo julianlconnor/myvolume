@@ -1,7 +1,11 @@
 <% if notice or alert %>
   <div id="flash">
-		<span class="notice"><%= notice %></span>
-		<span class="alert"><%= alert %></span>
+		<div class="alert-message info">
+		  <p><%= notice %></p>
+		</div>
+		<div class="alert-message warning">
+		  <p><%= alert %></p>
+		</div>
 		<!-- <span class="close_flash">[x]</span> -->   
   </div>
 <% end %>

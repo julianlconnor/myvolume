@@ -15,16 +15,16 @@ class SessionsController < ApplicationController
       auth = request.env['omniauth.auth']
       authorization = Authorization.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authorization.create_with_omniauth(auth)
       session[:uid] = authorization['id']
-      flash.now.alert = "You have been logged in via Facebook."
+      flash[:success] = "You have been logged in via Facebook."
       redirect_to root_url
     else
       # Regular authentication request
       user = User.authenticate(params[:email], params[:password])
       if user
         session[:user_id] = user.id
-        flash.now.alert = "You are now Logged in!"
+        flash[:success] = "You are now Logged in!"
       else
-        flash.now.alert = "Invalid email or password"
+        flash[:error] = "Invalid email or password"
       end
     end
     redirect_to '/charts'
@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
     @user = User.new
     session[:user_id] = nil
     session[:uid] = nil
-    flash.now.alert = "You have been Logged Out!"
+    flash[:success] = "You have been Logged Out!"
     redirect_to(root_path)
   end
 

@@ -55,6 +55,13 @@
       </div><!-- /topbar --> 
     </div><!-- /topbar-wrapper -->
 	<div class="container">
+    <% for name in flash_names %>
+        <% if flash[name] %>
+          <div class="alert-message <%= name %>">
+            <p><%= flash[name] %></p>
+          </div>
+        <% end %>
+    <% end %>
 		<%= yield %>
 	</div>
 </body>

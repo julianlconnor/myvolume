@@ -1,9 +1,15 @@
 class ChartsController < ApplicationController
-  #before_filter :authenticate_user!
   #attr_accessible 
-  load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
+  before_filter :authenticate
+  load_and_authorize_resource
   # GET /charts
   # GET /charts.xml
+  def authenticate
+    if !current_user
+      flash[:error] = "You must log in to see that page."
+      redirect_to root_path
+    end
+  end
   def index
     @charts = Chart.paginate :page => params[:chart_page], :order => "publish_date desc"
     @topdownloads = TopDownload.paginate :page => params[:top_download_page], :order => "rank asc"
