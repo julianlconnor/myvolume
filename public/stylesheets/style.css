@@ -1,9 +1,6 @@
 body {
     padding-top: 40px;
 }
-.container {
-    overflow: hidden;
-}
 .clear {
     clear: both;
     margin: 0;
@@ -24,6 +21,7 @@ body {
 }
 .chart_list {
     position: relative;
+    height: 245px;
 }
 .chart_outside {
     border-bottom: 1px solid #ddd;
