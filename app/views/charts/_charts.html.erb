@@ -1,0 +1,22 @@
+<h2>Charts</h2>
+  <!--<div class="chart_list">-->
+  <% @charts.each do |chart| %>
+    <div class="chart">
+      <%= image_tag chart.chart_thumbnail.medium %>
+      <div class="chart_text">
+        <div class="title">
+          <%= chart.name %>
+        </div>
+        <div class="genres">
+          <% chart.genres.each do |genre| %>
+            <span class="genre <%= cycle('even','odd') %>">
+              <%= genre.name %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+
+<%= will_paginate @charts, :class => "pagination charts", :param_name => "chart_page", :previous_label => 'Previous', :next_label => 'Next' %>

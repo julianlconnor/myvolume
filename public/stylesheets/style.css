@@ -54,9 +54,28 @@ body {
  *  #bfd3de light blue
  *  #ffac00 orange
  *  #ffffff and of course white
- */body {
-  padding-top: 40px;
+ */
+
+/* Pagination */
+.pagination {
+    float: right;
+    margin-top: 18px;
 }
+.pagination a, .pagination em, .pagination span {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+}
+.pagination a {
+    color: #2D6E90;
+    
+}
+.pagination a:hover {
+    border: 1px solid #8ac0de;
+    text-decoration: none;
+}
+.pagination em{
+}
+
 .login-box {
   float: left;
   width: 400px;

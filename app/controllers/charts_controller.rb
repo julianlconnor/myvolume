@@ -6,13 +6,17 @@ class ChartsController < ApplicationController
   # GET /charts.xml
   def index
     @charts = Chart.paginate :page => params[:chart_page], :order => "publish_date desc"
-    @topdownloads = TopDownload.paginate :page => params[:top_download_page], :order => "rank asc"
     @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
 
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.xml  { render :xml => @charts }
     end
+  end
+
+  def charts_paginate
+    @charts = Chart.paginate :page => params[:chart_page], :order => "publish_date desc"
   end
 
   # GET /charts/1

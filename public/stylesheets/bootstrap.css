@@ -1719,8 +1719,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 .pagination {
-  height: 36px;
-  margin: 18px 0;
+/*  height: 36px;
+  margin: 18px 0; */
 }
 .pagination ul {
   float: left;
