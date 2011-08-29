@@ -1,2 +1,3 @@
 $("#charts").html("<%= escape_javascript(render('charts/charts')) %>");
-$(".chart_list").css('left', -900).animate({left: '+=900'}, 1000, 'easeOutCirc', function() {});
+var width = $('.chart_list').width() * -1;
+$(".chart_list").css('left', width).animate({left: '+=' + width*-1}, 1000, 'easeOutCirc', function() {console.log(width);});
