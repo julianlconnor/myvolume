@@ -1,19 +1,8 @@
 body {
-  padding-top: 40px;
+    padding-top: 40px;
 }
-.login-box {
-  float: left;
-  width: 400px;
-  border-radius: 3px;
-}
-.register-box {
-  float: left;
-  width: 200px;
-}
-.center {
-  margin: 0 auto;
-  width: 800px;
-  padding-top: 40px;
+.container {
+    overflow: hidden;
 }
 .clear {
     clear: both;
@@ -22,8 +11,12 @@ body {
 }
 /* Charts Structure */
 #charts {
-    margin-top: 30px;
+<<<<<<< HEAD
+    margin-top: 12px;
     border-bottom: 1px solid #ddd;
+=======
+    margin-top: 30px;
+>>>>>>> e0b34e65cf62cbaef4b056215f95b01d2574d4a6
 }
 #charts h2 {
     margin-bottom: 20px;
@@ -33,6 +26,12 @@ body {
     float: left;
     width: 468px;
     margin-bottom: 20px;
+}
+.chart_list {
+    position: relative;
+}
+.chart_outside {
+    border-bottom: 1px solid #ddd;
 }
 .chart .title {
     color: #333;
@@ -69,4 +68,48 @@ body {
  *  #ffac00 orange
  *  #ffffff and of course white
  */
->>>>>>> 09ca7707a86535535281e3ca2e609133fdfe5752
+
+/* Pagination */
+.pagination {
+    float: right;
+    margin-top: 18px;
+    height: 25px;
+}
+.pagination a, .pagination em, .pagination span {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+}
+.pagination a {
+    color: #2D6E90;
+    
+}
+.pagination a:hover {
+    border: 1px solid #8ac0de;
+    text-decoration: none;
+}
+.pagination em{
+}
+
+.login-box {
+  margin: 0 auto;
+  width: 400px;
+  border-radius: 3px;
+}
+.register-box {
+  width: 400px;
+}
+.center {
+  margin: 0 auto;
+  width: 800px;
+}
+
+/* ALERT MESSAGE */
+.alert-message {
+  position: absolute;
+  top: 50px;
+  width: 910px;
+}
+form#new_user {
+  width: 400px;
+  margin: 0 auto;
+}

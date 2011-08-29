@@ -1,6 +1,6 @@
-<div class="chart_list">
 <h2>Charts</h2>
-  <!--<div class="chart_list">-->
+  <div class="chart_outside">
+  <div class="chart_list">
   <% @charts.each do |chart| %>
     <% if chart and chart.chart_thumbnail and chart.chart_thumbnail.medium %>
         <div class="chart">
@@ -23,6 +23,8 @@
       <% chart.destroy %>
     <% end %>
   <% end %>
+  </div><!-- /chart_list -->
   <div class="clear"></div>
-</div>
+  </div><!-- /chart_outside -->
 <%= will_paginate @charts, :class => "pagination charts", :param_name => "chart_page", :previous_label => 'Previous', :next_label => 'Next' %>
+  <div class="clear"></div>

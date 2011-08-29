@@ -1,6 +1,9 @@
 body {
     padding-top: 40px;
 }
+.container {
+    overflow: hidden;
+}
 .clear {
     clear: both;
     margin: 0;
@@ -8,8 +11,7 @@ body {
 }
 /* Charts Structure */
 #charts {
-    margin-top: 12px;
-    border-bottom: 1px solid #ddd;
+    margin-top: 30px;
 }
 #charts h2 {
     margin-bottom: 20px;
@@ -19,6 +21,12 @@ body {
     float: left;
     width: 468px;
     margin-bottom: 20px;
+}
+.chart_list {
+    position: relative;
+}
+.chart_outside {
+    border-bottom: 1px solid #ddd;
 }
 .chart .title {
     color: #333;
@@ -60,6 +68,7 @@ body {
 .pagination {
     float: right;
     margin-top: 18px;
+    height: 25px;
 }
 .pagination a, .pagination em, .pagination span {
     border: 1px solid #ddd;
