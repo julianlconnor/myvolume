@@ -1,7 +1,8 @@
 $(function() {
 	// jQuery to handle chart pagination
     $('#charts .pagination a').live('click', function(){
-        $('#charts .pagination').html("<img src='/images/ajax-loader.gif' style='margin-left: -20px;'>");  
+        //$('#charts .pagination').html("<img src='/images/ajax-loader.gif' style='margin-left: -20px;'>"); 
+        $(".chart_list").animate({left: '+=1600'}, 1500, 'easeOutCirc', function() {}); 
         $.get(this.href,null,null,"script");
         return false;
     });

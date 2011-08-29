@@ -1,1 +1,2 @@
 $("#charts").html("<%= escape_javascript(render('charts/charts')) %>");
+$(".chart_list").css('left', -900).animate({left: '+=900'}, 1000, 'easeOutCirc', function() {});
