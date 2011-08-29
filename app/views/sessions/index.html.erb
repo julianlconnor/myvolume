@@ -1,32 +1,29 @@
-<div class="center">
-  <div class="page-header">
-    <h3>Welcome to myvolu.me</h3>
-  </div>
-  <div class="login-box">
-    <%= form_tag sessions_path do %>
-    	<fieldset>
-    	  <div class="clearfix">
-    			<%= label_tag :email %>
-    			<div class="input">
-    			  <%= text_field_tag :email, params[:email] %>
-    			</div>
-    		</div>
-    		<div class="clearfix">
-    			<%= label_tag :password %>
-    			<div class="input">
-    			  <%= password_field_tag :password, params[:password] %>
-    			</div>
-    		</div>
-    		<div class="actions">
-    	    <%= submit_tag "Sign in", :class => "btn primary" %>
-    	  </div>
-    	</fieldset>
-    <% end %>
-  </div>
+<%= image_tag "myvolume_logo_72dpi.png" %>
+<div class="login-box well">
+  <%= form_tag sessions_path do %>
+  	<fieldset>
+  	  <div class="clearfix">
+  			<div class="input">
+  			  <%= text_field_tag :email, params[:email], :placeholder => "Email" %>
+  			</div>
+  		</div>
+  		<div class="clearfix">
+  			<div class="input">
+  			  <%= password_field_tag :password, params[:password], :placeholder => "Password" %>
+  			</div>
+  		</div>
+  		<div class="actions">
+  	    <%= submit_tag "Sign in", :class => "btn large info" %>
+  	  </div>
+  	</fieldset>
+  <% end %>
   <div class="register-box">
-    <%= link_to "Connect using Facebook", "/auth/facebook", :class => "btn info" %>
-    <div class="clearfix">
-      <%= link_to "Register with myvolu.me", new_user_path, :class => "btn info" %>
-    </div>
+    <table>
+      <tr>
+        <td><%= link_to "Connect using Facebook", "/auth/facebook", :class => "btn info" %></td>
+        <td><%= link_to "Register with myvolu.me", new_user_path, :class => "btn info" %></td>
+      </tr>
+    </table>
   </div>
 </div>
+

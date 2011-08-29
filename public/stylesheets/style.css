@@ -8,7 +8,7 @@ body {
 }
 /* Charts Structure */
 #charts {
-    margin-top: 30px;
+    margin-top: 12px;
     border-bottom: 1px solid #ddd;
 }
 #charts h2 {
@@ -77,15 +77,25 @@ body {
 }
 
 .login-box {
-  float: left;
+  margin: 0 auto;
   width: 400px;
   border-radius: 3px;
 }
 .register-box {
-  float: left;
-  width: 200px;
+  width: 400px;
 }
 .center {
   margin: 0 auto;
   width: 800px;
+}
+
+/* ALERT MESSAGE */
+.alert-message {
+  position: absolute;
+  top: 50px;
+  width: 910px;
+}
+form#new_user {
+  width: 400px;
+  margin: 0 auto;
 }

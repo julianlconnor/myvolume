@@ -23,11 +23,12 @@ class SessionsController < ApplicationController
       if user
         session[:user_id] = user.id
         flash[:success] = "You are now Logged in!"
+        redirect_to '/charts'
       else
         flash[:error] = "Invalid email or password"
+        redirect_to root_path
       end
     end
-    redirect_to '/charts'
   end
   
   def refresh

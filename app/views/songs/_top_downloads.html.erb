@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h3>Top Downloads</h3>
+</div>
+<table class="zebra-striped">
+    <tr>
+      <th>#</th>
+      <th>Change</th>
+      <th>Artwork</th>
+      <th>Track</th>
+      <th>Remix</th>
+      <th>Artist</th>
+    </tr>
+    <% @top_downloads.each_with_index do |f,i| %>
+    <tr>
+      <td><%= f.rank.to_s.rjust(2, '0') %></td>
+      <td><%= f.difference %></td>
+      <td><%= image_tag f.song.song_thumbnail.small %></td>
+      <td><%= f.song.name %></td>
+      <td><%= f.song.mix_name %></td>
+      <td><%= f.song.artist %></td>
+    </tr>
+    <% end %>
+  </table>
+  <%= will_paginate @top_downloads, :class => "pagination top-downloads", :param_name => "top_download_page", :previous_label => 'Previous', :next_label => 'Next' %>

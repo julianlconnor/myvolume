@@ -18,6 +18,9 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
   end
 
+  def top_downloads
+    @top_downloads = TopDownload.paginate :page => params[:top_download_page], :order => "rank asc"
+  end
   # GET /songs/new
   # GET /songs/new.xml
   def new

@@ -1,49 +1,45 @@
-<div id="user_box">
-  <div class="page-header">
-    <h3>Register for myvolu.me</h3>
-  </div>
-	<div class="box">
-		<%= form_for @user do |f| %>
-		<% if @user.errors.any? %>
-		    <div class="error_messages">
-		      <h2>Form is invalid</h2>
-		      <ul>
-		        <% for message in @user.errors.full_messages %>
-		          <li><%= message %></li>
-		        <% end %>
-		      </ul>
-		    </div>
-		  <% end %>
-      <fieldset>
-        <div class="clearfix">
-					<%= f.label :alias %>
-          <div class="input">
-            <%= f.text_field :alias %>
-          </div>
-        </div>
-        <div class="clearfix">
-					<%= f.label :email %>
-          <div class="input">
-            <%= f.text_field :email %>
-          </div>
-        </div>
-        <div class="clearfix">
-					<%= f.label :password %>
-          <div class="input">
-            <%= f.password_field :password %>
-          </div>
-        </div>
-        <div class="clearfix">
-					<%= f.label :password_confirmation %>
-          <div class="input">
-            <%= f.password_field :password_confirmation %>
-          </div>
-        </div>
-      </fieldset>
-      <div class="actions">
-        <%= submit_tag "Register", :class => "btn primary" %>
-        <%= link_to "Back", root_path, :class => "btn" %>
-      </div>
-		<% end %>
-	</div>
+<div class="page-header">
+  <%= image_tag "myvolume_logo_72dpi.png" %>
 </div>
+<div class="well">
+	<%= form_for @user do |f| %>
+	<% if @user.errors.any? %>
+	    <div class="error_messages">
+	      <h2>Form is invalid</h2>
+	      <ul>
+	        <% for message in @user.errors.full_messages %>
+	          <li><%= message %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+    <fieldset>
+      <div class="clearfix">
+        <div class="input">
+          <%= f.text_field :alias, :placeholder => "Alias" %>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="input">
+          <%= f.text_field :email, :placeholder => "Email" %>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="input">
+          <%= f.password_field :password, :placeholder => "Password" %>
+        </div>
+      </div>
+      <div class="clearfix">
+        <div class="input">
+          <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation" %>
+        </div>
+      </div>
+    </fieldset>
+    <div class="actions">
+      <%= submit_tag "Register", :class => "btn large primary" %>
+      <%= link_to "Back", root_path, :class => "btn large" %>
+    </div>
+	<% end %>
+</div>
+
+

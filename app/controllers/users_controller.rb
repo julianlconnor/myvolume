@@ -88,7 +88,7 @@ class UsersController < ApplicationController
       flash[:success] = "You have successfully registered. Please log-in."
       redirect_to root_path
     else
-      render "errors.js.erb"
+      render :action => "new"
     end
   end
 

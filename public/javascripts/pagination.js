@@ -6,7 +6,7 @@ $(function() {
         return false;
     });
 	// jQuery to handle download pagination
-	$('#topdownloads .pagination a').live('click', function(){
+	$('#top-downloads .pagination a').live('click', function(){
 		$('#topdownloads .pagination').html("<img src='/images/ajax-loader.gif' style='margin-left: -20px;'>");
 		$.get(this.href,null,null,"script");
 		return false;
