@@ -1,6 +1,10 @@
-<div class="chart_list">
+<<<<<<< HEAD
+<div id = "charts" class="clear">
+  <%= render "charts" %>
+</div>
+=======
+<div id = "charts">
 <h2>Charts</h2>
-  <!--<div class="chart_list">-->
   <% @charts.each do |chart| %>
     <div class="chart">
       <%= image_tag chart.chart_thumbnail.medium %>
@@ -21,4 +25,4 @@
   <% end %>
   <div class="clear"></div>
 </div>
-<%= will_paginate @charts, :class => "pagination charts", :param_name => "chart_page", :previous_label => 'Previous', :next_label => 'Next' %>
+>>>>>>> fab68ad15990e68a21e1033f64641d0e7b069251

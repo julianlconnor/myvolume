@@ -1,10 +1,9 @@
 $(function() {
 	// jQuery to handle chart pagination
     $('#charts .pagination a').live('click', function(){
-     $('#charts .pagination').html("<img src='/images/ajax-loader.gif' style='margin-left: -20px;'>");
-     $.get(this.href,null,null,"script");
-     console.log(this.href);
-     return false;
+        $('#charts .pagination').html("<img src='/images/ajax-loader.gif' style='margin-left: -20px;'>");  
+        $.get(this.href,null,null,"script");
+        return false;
     });
 	// jQuery to handle download pagination
 	$('#topdownloads .pagination a').live('click', function(){
