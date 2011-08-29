@@ -1,4 +1,8 @@
 module ApplicationHelper
+  
+  def flash_names
+    [:error,:success,:info,:warning]
+  end
   def is_favorite(s_id)
     flag = false
     if current_user

@@ -25,11 +25,11 @@ $(function() {
 		return false;
 	});
 	// jQuery to handle registration
-	$('#new_user').live('submit', function() {
-		$('#rightbar').html("<img src='/images/ajax-loader.gif' style='margin-left: -20px;'>");
-		$.post(this.action,$(this).serialize(),null,"script");
-		return false;
-	});
+ //$('#new_user').live('submit', function() {
+		//$('#rightbar').html("<img src='/images/ajax-loader.gif' style='margin-left: -20px;'>");
+		//$.post(this.action,$(this).serialize(),null,"script");
+		//return false;
+	//});
 	// jQuery to handle favorites
 	$('.heart').live('click', function() {
 		// $(this).html("<a href='/favorite/1265' class='heart'><img src='/images/favorite_ajax_loader.gif'/></a>");
