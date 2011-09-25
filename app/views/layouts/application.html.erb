@@ -25,7 +25,17 @@
 	</script>
 	<!-- End Google Analytics -->
 </head>
-<body>
+<body>    
+    <div class="alert">
+                <% for name in flash_names %>
+                    <% if flash[name] %>
+                        <div class="alert-message <%= name %>">
+                            <p><%= flash[name] %></p>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+	 
 	<div class="topbar-wrapper" style="z-index: 5;"> 
       <div class="topbar"> 
         <div class="fill"> 
@@ -50,23 +60,21 @@
                 </li> 
               </ul>
             <% end %>
-          </div> 
-        </div><!-- /fill --> 
+            </div>
+        </div><!-- /fill -->      
       </div><!-- /topbar --> 
     </div><!-- /topbar-wrapper -->
 	<div class="container">
-    <% for name in flash_names %>
-        <% if flash[name] %>
-          <div class="alert-message <%= name %>">
-            <p><%= flash[name] %></p>
-          </div>
-        <% end %>
-    <% end %>
-		<%= yield %>
+	    <%= yield %>
 	</div>
 </body>
 </html>
 <script>
+    $(function() {
+        $('.alert-message').delay(5000).slideUp(1000, function () {
+        });
+    });
+
   $('a.menu').live('click', function(e){
     $(this).parent().toggleClass('open');
   });

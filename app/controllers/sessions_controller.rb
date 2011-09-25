@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def index
+    @user = User.new
     if current_user
       redirect_to(:controller => "charts", :method => "index")
     end

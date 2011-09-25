@@ -1,32 +1,42 @@
-<div class="center">
-  <div class="page-header">
-    <h3>Welcome to myvolu.me</h3>
-  </div>
-  <div class="login-box">
-    <%= form_tag sessions_path do %>
-    	<fieldset>
-    	  <div class="clearfix">
-    			<%= label_tag :email %>
-    			<div class="input">
-    			  <%= text_field_tag :email, params[:email] %>
-    			</div>
-    		</div>
-    		<div class="clearfix">
-    			<%= label_tag :password %>
-    			<div class="input">
-    			  <%= password_field_tag :password, params[:password] %>
-    			</div>
-    		</div>
-    		<div class="actions">
-    	    <%= submit_tag "Sign in", :class => "btn primary" %>
-    	  </div>
-    	</fieldset>
-    <% end %>
-  </div>
-  <div class="register-box">
-    <%= link_to "Connect using Facebook", "/auth/facebook", :class => "btn info" %>
+  <div class="welcome">
+      <h4>Welcome to</h4>
+      <h1 class="myvolume">myvolu.me</h1>
+      <h4 class="tool">A fire music discovery tool</h4>
+    </div>
+    <div class="boxes"> 
+        <div class="login-box">
+            <%= render "login" %>
+        </div>
+      <div class="register-box">
     <div class="clearfix">
-      <%= link_to "Register with myvolu.me", new_user_path, :class => "btn info" %>
+        <div class="registerbutton"><%= link_to "Register with myvolu.me", new_user_path, :class => "register btn info" %></div>
+        <%= link_to "Connect using Facebook", "/auth/facebook", :class => "btn primary" %>
     </div>
   </div>
-</div>
+  </div>
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $('.register').live('click', function(event) {
+          event.preventDefault();
+          $('.login-box').slideUp(400, function() {
+              $('.login-box').html('<%= escape_javascript(render(:partial => 'users/new')) %>');
+              $('.login-box').slideDown(400, function() {
+                $('.registerbutton').html('<%= link_to "Login to myvolu.me", sessions_path, :class => "login btn info" %>');
+              });
+          });
+        });
+
+        $('.login').live('click', function(event) {
+            event.preventDefault();
+            $('.login-box').slideUp(400, function() {
+                $('.login-box').html('<%= escape_javascript(render(:partial => 'login')) %>');
+                console.log('done');
+                $('.login-box').slideDown(400, function() {
+                    $('.registerbutton').html('<%= link_to "Register with myvolu.me", new_user_path, :class => "register btn info" %>');
+                });
+            });
+        });
+
+      });
+  </script>
+
