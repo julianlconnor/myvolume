@@ -1,5 +1,6 @@
 $("#charts").html("<%= escape_javascript(render('charts/charts')) %>");
-var $list = $(".chart_list");
+var $list = $('.chart_outside');
+$list.css('left', -$list.outerWidth() + 'px');
 $list.animate({
-    marginLeft: parseInt($list.css('marginLeft'), 10) == 0, ? $list.outerWidth() : 0  
-});
+   left: parseInt($list.css('left'),10) == 0 ? -$list.outerWidth() :0
+});     
