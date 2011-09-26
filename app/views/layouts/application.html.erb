@@ -25,16 +25,26 @@
 	</script>
 	<!-- End Google Analytics -->
 </head>
-<body>
+<body>    
+    <div class="alert">
+                <% for name in flash_names %>
+                    <% if flash[name] %>
+                        <div class="alert-message <%= name %>">
+                            <p><%= flash[name] %></p>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+	 
 	<div class="topbar-wrapper" style="z-index: 5;"> 
       <div class="topbar"> 
         <div class="fill"> 
           <div class="container"> 
-            <h3><a href="/"><%= image_tag "myvolume_logo_white.png" %></a></h3> 
+            <h3><a href="#">myvolu.me</a></h3> 
             <% if current_user %>
               <ul> 
-                <li class="charts"><a href="/charts">Charts</a></li> 
-                <li class="top-downloads"><a href="/topdownloads">Top Downloads</a></li>
+                <li class="charts"><a href="#">Charts</a></li> 
+                <li class="top-downloads"><a href="#">Top Downloads</a></li> 
               </ul> 
               <form action=""> 
                 <input type="text" placeholder="Search" /> 
@@ -43,44 +53,31 @@
                 <li class="menu"> 
                   <a href="#" class="menu">Hey <%= proper_name(current_user) %></a> 
                   <ul class="menu-dropdown"> 
-                    <li><%= link_to "Profile", current_user %></li> 
+                    <li><a href="#">Profile</a></li> 
                     <li class="divider"></li> 
-                    <li><%= link_to "Logout", log_out_path %></li>
+                    <li><%= link_to "Logout", log_out_path %></li> 
                   </ul> 
                 </li> 
               </ul>
             <% end %>
-          </div> 
-        </div><!-- /fill --> 
+            </div>
+        </div><!-- /fill -->      
       </div><!-- /topbar --> 
     </div><!-- /topbar-wrapper -->
 	<div class="container">
-    <% for name in flash_names %>
-        <% if flash[name] %>
-          <div class="alert-message <%= name %>">
-            <p><%= flash[name] %></p>
-          </div>
-        <% end %>
-    <% end %>
-		<%= yield %>
+	    <%= yield %>
 	</div>
-	<footer>
-	  <div class="container">
-	    @mumbls
-	  </div>
-	</footer>
 </body>
 </html>
 <script>
-	$(function() {
-		$('.alert-message').delay(5000).fadeOut();
-	});
-</script>
-<script>
+    $(function() {
+        $('.alert-message').delay(5000).slideUp(1000, function () {
+        });
+    });
+
   $('a.menu').live('click', function(e){
     $(this).parent().toggleClass('open');
   });
-  
 	var a = audiojs.createAll({
 		trackEnded: function() {
 			var playing = $('ol li.playing');
