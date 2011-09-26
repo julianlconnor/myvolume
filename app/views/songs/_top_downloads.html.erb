@@ -13,7 +13,13 @@
     <% @top_downloads.each_with_index do |f,i| %>
     <tr>
       <td><%= f.rank.to_s.rjust(2, '0') %></td>
-      <td><%= f.difference %></td>
+      <% if f.difference > 0 %>
+        <td class="positive"><%= "+#{f.difference}" %></td>
+      <% elsif f.difference < 0 %>
+        <td class="negative"><%= "#{f.difference}" %></td>
+      <% else %>
+        <td><%= "#{f.difference}" %></td>
+      <% end %>
       <td><%= image_tag f.song.song_thumbnail.small %></td>
       <td><%= f.song.name %></td>
       <td><%= f.song.mix_name %></td>

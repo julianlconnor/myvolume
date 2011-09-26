@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
         flash[:success] = "You are now Logged in!"
         redirect_to '/charts'
       else
-        flash[:error] = "Invalid email or password"
+        flash[:error] = "Invalid email or password."
         redirect_to root_path
       end
     end

@@ -1644,6 +1644,12 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   background-color: #fddfde;
   border-color: #fbc7c6;
 }
+.negative {
+  color: #9d261d;
+}
+.positive {
+  color: #46a546;
+}
 .alert-message.block-message.success {
   background-color: #d1eed1;
   border-color: #bfe7bf;

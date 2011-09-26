@@ -80,6 +80,7 @@
   $('a.menu').live('click', function(e){
     $(this).parent().toggleClass('open');
   });
+  
 	var a = audiojs.createAll({
 		trackEnded: function() {
 			var playing = $('ol li.playing');

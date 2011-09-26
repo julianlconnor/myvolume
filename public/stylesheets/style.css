@@ -1,5 +1,5 @@
 body {
-    padding-top: 40px;
+    padding-top: 45px;
 }
 .clear {
     clear: both;
@@ -8,7 +8,6 @@ body {
 }
 /* Charts Structure */
 #charts {
-    margin-top: 30px;
 }
 #charts h2 {
     margin-bottom: 20px;
@@ -99,7 +98,7 @@ body {
 /* ALERT MESSAGE */
 .alert-message {
   position: absolute;
-  top: 50px;
+  top: 45px;
   width: 910px;
 }
 form#new_user {
