@@ -1,88 +1,122 @@
 body {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 .clear {
-    clear: both;
-    margin: 0;
-    padding: 0;
+  clear: both;
+  margin: 0;
+  padding: 0;
 }
 /* Charts Structure */
 #charts {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 #charts h2 {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+  border-bottom: solid 1px #ccc;
+  margin-bottom: 18px;
 }
 .chart {
-    float: left;
-    width: 468px;
-    margin-bottom: 20px;
+  border: solid 1px #fff;
+  float: left;
+  width: 400px;
+  padding: 10px;
+  transition: 0.1s linear all;
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  margin-right: 40px;
 }
 .chart_list {
-    position: relative;
-    height: 245px;
+  position: relative;
+  height: 245px;
 }
 .chart_outside {
-    border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
 }
-.chart .title {
-    color: #333;
-    font-weight: bold;
+.chart:hover {
+  border: solid 1px #ccc;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.09375) 0 1px 5px;
+}
+ .chart .title {
+  color: #333;
+  font-weight: bold;
 }
 .chart .genres {
-    font-size: 11px;
-    width: 300px;
+  font-size: 11px;
+  width: 315px;
+}
+.chart ul {
+  margin: 0;
+  padding: 0;
+}
+.chart ul li {
+  display: inline;
+  padding-right: 8px;
+  font-size: 1.1em;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.chart ul li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.chart ul li+li {
+  border-left: solid 1px #ccc;
+  padding-left: 8px;
+}
+.chart .title {
+  padding-bottom: 5px;
 }
 .chart_text, .chart img {
-    float: left;
+  float: left;
 }
 .chart img {
-    margin-right: 10px;
-    box-shadow: 1px 1px 1px #888;
-    -webkit-box-shadow: 1px 1px 1px #888;
-    -moz-box-shadow: 1px 1px 1px #888;
+  margin-right: 10px;
+  box-shadow: 1px 1px 1px #888;
+  -webkit-box-shadow: 1px 1px 1px #888;
+  -moz-box-shadow: 1px 1px 1px #888;
 }
 /*.genre {
-    padding: 3px;
+padding: 3px;
 }
-.genre.even {
-    color: #8ac0de;
+  .genre.even {
+  color: #8ac0de;
 }
-.genre.odd {
-    color: #516c8a;
+  .genre.odd {
+  color: #516c8a;
 }*/
 
-/*
- *  #404a69 darkest blue
- *  #516c8a darker blue
- *  #8ac0de blue -- background
- *  #bfd3de light blue
- *  #ffac00 orange
- *  #ffffff and of course white
- */
+  /*
+   *  #404a69 darkest blue
+   *  #516c8a darker blue
+   *  #8ac0de blue -- background
+   *  #bfd3de light blue
+   *  #ffac00 orange
+   *  #ffffff and of course white
+   */
 
-/* Pagination */
+  /* Pagination */
 .pagination {
-    float: right;
-    margin-top: 18px;
-    height: 25px;
+  float: right;
+  margin-right: 55px;
+  margin-top: 18px;
+  height: 25px;
 }
 .pagination a, .pagination em, .pagination span {
-    border: 1px solid #ddd;
-    padding: 5px 10px;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
 }
 .pagination a {
-    color: #2D6E90;
-    
+  color: #2D6E90;
+
 }
 .pagination a:hover {
-    border: 1px solid #8ac0de;
-    text-decoration: none;
+  border: 1px solid #8ac0de;
+  text-decoration: none;
 }
 .pagination em{
 }
 
+/* Sign in Screen */
 .login-box {
   margin-right: 30px;
   width: 300px;
@@ -149,6 +183,7 @@ body {
   width: 800px;
 }
 
+/* Bootstrap Overrides */
 label {
   float: left;
   text-align: left;
@@ -197,14 +232,16 @@ fieldset {
   padding-top: 0px;
 }
 
+/* Error Messages */
 .alert {
-    float: right;
-    padding-right: 45px;
-    position: relative;
-    bottom: 40px;
+  float: right;
+  padding-right: 45px;
+  position: relative;
+  bottom: 40px;
 }
 
 .alert-message {
-    padding-top: 50px;
-    height: 30px;
+  padding-top: 50px;
+  height: 30px;
 }
+

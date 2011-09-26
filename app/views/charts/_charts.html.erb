@@ -2,29 +2,28 @@
   <div class="chart_outside">
   <div class="chart_list">
   <% @charts.each do |chart| %>
-    <% if chart and chart.chart_thumbnail and chart.chart_thumbnail.medium %>
-        <div class="chart">
-        <%= image_tag chart.chart_thumbnail.medium %>
-        <div class="chart_text">
-          <div class="title">
-            <%= chart.name %>
-          </div>
-          <div class="genres">
-            <% chart.genres.each do |genre| %>
-              <span class="genre <%= cycle('even','odd') %>">
-                <%= genre.name %>
-              </span>
-            <% end %>
-          </div>
+    <div class="chart">
+      <%= image_tag chart.chart_thumbnail.medium %>
+      <div class="chart_text">
+        <div class="title">
+          <%= chart.name %>
         </div>
-        <div class="clear"></div>
+        <div class="genres">
+          <ul>
+          <% chart.genres.each do |genre| %>
+            <li class="genre <%= cycle('even','odd') %>">
+              <%= genre.name %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
       </div>
-    <% else %>
-      <% chart.destroy %>
-    <% end %>
+      <div class="clear"></div>
+    </div>
   <% end %>
   </div><!-- /chart_list -->
   <div class="clear"></div>
   </div><!-- /chart_outside -->
 <%= will_paginate @charts, :class => "pagination charts", :param_name => "chart_page", :previous_label => 'Previous', :next_label => 'Next' %>
   <div class="clear"></div>
+  

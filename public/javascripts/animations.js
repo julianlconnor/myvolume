@@ -1,21 +1,9 @@
-  <div class="welcome">
-      <h4>Welcome to</h4>
-      <h1 class="myvolume">myvolu.me</h1>
-      <h4 class="tool">A fire music discovery tool</h4>
-    </div>
-    <div class="boxes"> 
-        <div class="login-box">
-            <%= render "login" %>
-        </div>
-      <div class="register-box">
-    <div class="clearfix">
-        <div class="registerbutton"><%= link_to "Register with myvolu.me", new_user_path, :class => "register btn info" %></div>
-        <%= link_to "Connect using Facebook", "/auth/facebook", :class => "btn primary" %>
-    </div>
-  </div>
-  </div>
-<script type="text/javascript">
 $(function() {
+    alert('lol');
+    $('.alert-message').delay(5000).slideUp(1000, function () {
+      });
+
+    console.log("called");
     $('.register').live('click', function(event) {
       event.preventDefault();
       $('.login-box').slideUp(400, function() {
@@ -37,4 +25,4 @@ $(function() {
         });
       });
 })(jQuery);
-</script>
+

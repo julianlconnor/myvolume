@@ -1,4 +1,5 @@
 $("#charts").html("<%= escape_javascript(render('charts/charts')) %>");
-var width = $('.chart_list').width();
-var document_width = $(document).width() *-1 + width;
-$(".chart_list").css('left', width*-1).animate({left: '+=' + width}, 1000, 'easeOutCirc', function() {console.log(document_width);});
+var $list = $(".chart_list");
+$list.animate({
+    marginLeft: parseInt($list.css('marginLeft'), 10) == 0, ? $list.outerWidth() : 0  
+});
