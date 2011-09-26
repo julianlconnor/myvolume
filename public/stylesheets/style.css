@@ -8,6 +8,7 @@ body {
 }
 /* Charts Structure */
 #charts {
+  overflow: hidden;
   margin-top: 30px;
 }
 #charts h2 {
@@ -30,6 +31,7 @@ body {
 }
 .chart_outside {
   padding-bottom: 10px;
+  position: relative;
 }
 .chart:hover {
   border: solid 1px #ccc;
@@ -97,7 +99,6 @@ padding: 3px;
   /* Pagination */
 .pagination {
   float: right;
-  margin-right: 55px;
   margin-top: 18px;
   height: 25px;
 }

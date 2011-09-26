@@ -1,7 +1,7 @@
 class ChartsController < ApplicationController
   #attr_accessible 
   before_filter :authenticate
-  load_and_authorize_resource
+  load_and_authorize_resource :only => [:index]
   # GET /charts
   # GET /charts.xml
   def authenticate
@@ -36,7 +36,17 @@ class ChartsController < ApplicationController
       format.xml  { render :xml => @chart }
     end
   end
-
+  
+  def showSongs
+    @songs = Chart.find(params[:id]).songs
+    
+    respond_to do |format|
+      format.js
+      format.html # index.html.erb
+      format.xml  { render :xml => @songs }
+    end
+  end
+  
   # GET /charts/new
   # GET /charts/new.xml
   def new

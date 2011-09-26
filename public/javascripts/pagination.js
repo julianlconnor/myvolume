@@ -1,18 +1,32 @@
 $(function() {
+    
+    // jQuery to handle Chart click
+    $('.chart').live('mousedown', function() {   
+        var $chart = $(this);
+        $chart.css('position', 'relative');
+        $chart.css('left', '2px');
+        $chart.css('top', '2px');   
+    }).live('mouseup', function() {  
+        var $chart = $(this);
+        $chart.css('left', '0px');
+        $chart.css('top', '0px');   
+    }).live('click', function() {
+        var url = $(this).attr('name');
+        $.get(url, null, null, "script");
+        return false;
+    });
+    
+    
 	// jQuery to handle chart pagination
     $('#charts .pagination a').live('click', function(){
       var $list = $('.chart_outside');
+      $list.css('left', '0px');
       $list.animate({
-        marginLeft: parseInt($list.css('marginLeft'), 10) == 0 ? $list.outerWidth() : 0  
-      });      
+        left: parseInt($list.css('left'), 10) == 0 ? $list.outerWidth() : 0  
+      });     
       $.get(this.href,null,null,"script");
       return false;
     });
-
-
-
-
-
 
 	// jQuery to handle download pagination
 	$('#topdownloads .pagination a').live('click', function(){

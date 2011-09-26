@@ -1,0 +1,16 @@
+<% if !@songs.nil? %>
+<table>
+    <tr>
+        <th></th>
+        <th>Track</th>
+        <th>Mix Name</th>
+        <th>Artist</th>
+        <th>Genre</th>
+        <th># Loves</th>
+        <th>Art</th>
+    </tr>
+    <% @songs.each do |song| %>
+        <tr><%= song.name %></tr>
+    <% end %>
+</table>
+<% end %>

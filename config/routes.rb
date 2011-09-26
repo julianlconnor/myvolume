@@ -63,6 +63,7 @@ Myvolume::Application.routes.draw do
   match "home/top_downloads"
   match '/auth/facebook/callback', :to => 'sessions#create'
   match '/favorite/:id', :to => 'users#favorite'
+  match '/charts/:id/get', :to => 'charts#showSongs'
   match '/playtrack/:id', :to => 'home#playtrack'
   match '/auths/:id',   :to => 'users#showAuth'
 
