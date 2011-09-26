@@ -8,6 +8,7 @@ body {
 }
 /* Charts Structure */
 #charts {
+  height: 388px;
   overflow: hidden;
   margin-top: 30px;
 }
@@ -24,24 +25,31 @@ body {
   -webkit-transition: 0.1s linear all;
   -moz-transition: 0.1s linear all;
   margin-right: 40px;
+  margin-bottom: 5px;
 }
 .chart_list {
+  padding-left: 2px;
   position: relative;
-  height: 245px;
+  height: 260px;
 }
+
 .chart_outside {
   padding-bottom: 10px;
   position: relative;
 }
-.chart:hover {
+.chart:hover, .chart_list .active {
   border: solid 1px #ccc;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.09375) 0 1px 5px;
 }
- .chart .title {
+.chart_list .active {
+  box-shadow: rgba(82, 168, 236, 0.597656) 0 0 4px;
+}
+.chart .title {
   color: #333;
   font-weight: bold;
 }
+
 .chart .genres {
   font-size: 11px;
   width: 315px;
@@ -76,6 +84,45 @@ body {
   box-shadow: 1px 1px 1px #888;
   -webkit-box-shadow: 1px 1px 1px #888;
   -moz-box-shadow: 1px 1px 1px #888;
+}
+
+/* Chart Songs */
+#chart_songs {
+  margin-top: 10px;
+}
+#chart_songs th {
+  font-size: 1.2em;
+}
+#chart_songs table {
+  line-height: 20px;
+  padding-top: 5px;
+  border: solid 1px #ccc;
+  border-radius: 5px; 
+  box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
+  word-wrap: break-word;
+}
+#chart_songs th:last-child {
+  padding-right: 20px;
+}
+#chart_songs th.genres {
+  width: 120px;
+}
+#chart_songs th.favorite_count {
+  width: 68px;
+}
+#chart_title {
+  padding-left: 20px;
+}
+#chart_title h3 {
+  display: inline;
+  padding: 10px 20px 10px 20px;
+  border-top: solid 1px #ccc;
+  border-right: solid 1px #ccc;
+  border-left: solid 1px #ccc;
+  position: relative;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
+  top: 7px;
 }
 /*.genre {
 padding: 3px;

@@ -11,7 +11,12 @@ $(function() {
         $chart.css('left', '0px');
         $chart.css('top', '0px');   
     }).live('click', function() {
-        var url = $(this).attr('name');
+        var $chart = $(this);
+        $('.chart_list .active').removeClass('active');
+        $chart.addClass('active');
+        var $chart_title = $chart.attr('title');
+        var url = $chart.attr('name');
+        $('#chart_title').html('<h3>' + $chart_title + '</h3>');
         $.get(url, null, null, "script");
         return false;
     });

@@ -1,16 +1,23 @@
 <% if !@songs.nil? %>
-<table>
+<table class="zebra-striped">
     <tr>
         <th></th>
         <th>Track</th>
         <th>Mix Name</th>
         <th>Artist</th>
-        <th>Genre</th>
-        <th># Loves</th>
-        <th>Art</th>
+        <th class="genres">Genre</th>
+        <th class="favorite_count"># Loves</th>
+        <th>Download</th>
     </tr>
     <% @songs.each do |song| %>
-        <tr><%= song.name %></tr>
+      <tr>
+        <td><%= image_tag song.song_thumbnail.small %></td>
+        <td><%= song.name %></td>
+        <td><%= song.mix_name %></td>
+        <td><%= song.artist  %></td>
+        <td><%= song.genres.first.name  %></td>
+        <td><%= song.favorite_count  %></td>
+        <td><%= link_to 'Download', generateQuery(song) %></td>
     <% end %>
 </table>
 <% end %>
