@@ -9,11 +9,13 @@
           <%= chart.name %>
         </div>
         <div class="genres">
+          <ul>
           <% chart.genres.each do |genre| %>
-            <span class="genre <%= cycle('even','odd') %>">
+            <li class="genre <%= cycle('even','odd') %>">
               <%= genre.name %>
-            </span>
+            </li>
           <% end %>
+          </ul>
         </div>
       </div>
       <div class="clear"></div>
@@ -24,3 +26,4 @@
   </div><!-- /chart_outside -->
 <%= will_paginate @charts, :class => "pagination charts", :param_name => "chart_page", :previous_label => 'Previous', :next_label => 'Next' %>
   <div class="clear"></div>
+  
