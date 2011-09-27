@@ -2,7 +2,7 @@
   <div class="chart_outside">
   <div class="chart_list">
   <% @charts.each do |chart| %>
-    <div class="chart" <%= "name=/charts/#{chart.id}/get" %> >
+    <div class="chart" <%= "name=/charts/#{chart.id}/get" %> title="<%= chart.name %>">
       <%= image_tag chart.chart_thumbnail.medium %>
       <div class="chart_text">
         <div class="title">
