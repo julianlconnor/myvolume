@@ -52,7 +52,7 @@
                   <%= link_to image_tag("dl_icon.png"), "#{generateQuery(song)}", :target => "_blank" %>
                 </div>
               </div>
-              <% if !songs.genres.nil? %>
+              <% if !song.genres.nil? %>
                 <span><%= song.genres.first.name %></span>
               <% end %>
               <% if is_favorite(song.id) %>
