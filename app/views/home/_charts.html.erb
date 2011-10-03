@@ -53,7 +53,7 @@
                 </div>
               </div>
               <% if !song.genres.nil? and !song.genres.first.nil? and !song.genres.first.name.nil?%>
-                <span><%= song.genres.first %></span>
+                <span><%= song.genres.first.name %></span>
               <% end %>
               <% if is_favorite(song.id) %>
                     <%= link_to "❤", "/favorite/#{song.id}", :class => "#{song.id} heart active"%><!-- <div class="heart">&#x2764;</div> -->
