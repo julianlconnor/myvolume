@@ -33,6 +33,9 @@ $(function() {
       return false;
     });
 
+  // jQuery to handle chart song load
+    
+
 	// jQuery to handle download pagination
 	$('#top-downloads .pagination a').live('click', function(){
 		$('#topdownloads .pagination').html("<img src='/images/ajax-loader.gif' style='margin-left: -20px;'>");

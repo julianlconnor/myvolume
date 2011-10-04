@@ -1,1 +1,2 @@
-$("#chart_songs").html("<%= escape_javascript(render('charts/chart_songs')) %>");
+$("#chart_songs").hide();
+$("#chart_songs").html("<%= escape_javascript(render('charts/chart_songs')) %>").fadeIn();

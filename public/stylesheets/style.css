@@ -21,9 +21,9 @@ body {
   float: left;
   width: 400px;
   padding: 10px;
-  transition: 0.1s linear all;
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
+  transition: 0.2s linear all;
+  -webkit-transition: 0.2s linear all;
+  -moz-transition: 0.2s linear all;
   margin-right: 40px;
   margin-bottom: 5px;
 }
@@ -44,6 +44,9 @@ body {
 }
 .chart_list .active {
   box-shadow: rgba(82, 168, 236, 0.597656) 0 0 4px;
+}
+.chart_list .active .title {
+  font-size: 1.1em;
 }
 .chart .title {
   color: #333;
@@ -93,9 +96,11 @@ body {
 }
 #chart_songs th {
   font-size: 1.2em;
+  color: #555;
 }
 #chart_songs table {
-  line-height: 20px;
+/* edit bootstrap */
+  line-height: 25px !important;
   padding-top: 5px;
   border: solid 1px #ccc;
   border-radius: 5px; 
@@ -105,12 +110,29 @@ body {
 #chart_songs th:last-child {
   padding-right: 20px;
 }
+#chart_songs th.track {
+  width: 200px;
+}
+#chart_songs th.artist {
+    width: 200px;
+}
+#chart_songs th.mix_name {
+  width: 200px;
+}
 #chart_songs th.genres {
-  width: 120px;
+  width: 125px;
 }
 #chart_songs th.favorite_count {
-  width: 68px;
+  width: 50px;
 }
+#chart_songs th.favorite_count img {
+  position: relative;
+  top: 2px;
+}
+#chart_songs th.download {
+  width: 60px;
+}
+
 #chart_title {
   padding-left: 20px;
 }
