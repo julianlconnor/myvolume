@@ -89,6 +89,7 @@ body {
 /* Chart Songs */
 #chart_songs {
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 #chart_songs th {
   font-size: 1.2em;
@@ -123,6 +124,12 @@ body {
   border-radius: 5px 5px 0px 0px;
   box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
   top: 7px;
+}
+#chart_songs tr td.play {
+  cursor:pointer;
+}
+#chart_songs tr td.play:hover {
+  color: #B2FFD1
 }
 /*.genre {
 padding: 3px;

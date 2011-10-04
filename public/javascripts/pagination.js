@@ -16,7 +16,7 @@ $(function() {
         $chart.addClass('active');
         var $chart_title = $chart.attr('title');
         var url = $chart.attr('name');
-        $('#chart_title').html('<h3>' + $chart_title + '</h3>');
+        //$('#chart_title').html('<h3>' + $chart_title + '</h3>');
         $.get(url, null, null, "script");
         return false;
     });

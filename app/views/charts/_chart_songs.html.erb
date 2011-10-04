@@ -2,22 +2,24 @@
 <table class="zebra-striped">
     <tr>
         <th></th>
+        <th></th>
         <th>Track</th>
         <th>Mix Name</th>
         <th>Artist</th>
         <th class="genres">Genre</th>
         <th class="favorite_count"># Loves</th>
-        <th>Download</th>
+        <th></th>
     </tr>
     <% @songs.each do |song| %>
       <tr>
         <td><%= image_tag song.song_thumbnail.small %></td>
+        <td class="play" name="<%= song.sample_url %>">&#9654;</td>
         <td><%= song.name %></td>
         <td><%= song.mix_name %></td>
         <td><%= song.artist  %></td>
         <td><%= song.genres.first.name  %></td>
         <td><%= song.favorite_count  %></td>
-        <td><%= link_to 'Download', generateQuery(song) %></td>
+        <td><%= link_to image_tag('download.png'), generateQuery(song), :target => "_blank" %></td>
     <% end %>
 </table>
 <% end %>

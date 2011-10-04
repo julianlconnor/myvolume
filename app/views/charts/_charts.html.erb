@@ -6,7 +6,8 @@
       <%= image_tag chart.chart_thumbnail.medium %>
       <div class="chart_text">
         <div class="title">
-          <%= chart.name %>
+          <span class="label success">New</span>
+          <%= truncate(chart.name, :length => 40) %>
         </div>
         <div class="genres">
           <ul>
