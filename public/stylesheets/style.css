@@ -94,19 +94,33 @@ body {
   margin-top: 10px;
   margin-bottom: 20px;
 }
-#chart_songs th {
-  font-size: 1.2em;
+#chart_songs tr {
   color: #555;
+  vertical-align: center;
 }
+#chart_songs tr:hover {
+  cursor: pointer;
+  background: -webkit-linear-gradient(top, #BEFFE8, #B2FFD1);
+  background: -moz-linear-gradient(top, #BEFFE8, #B2FFD1);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); 
+}
+
 #chart_songs table {
 /* edit bootstrap */
-  line-height: 25px !important;
-  padding-top: 5px;
   border: solid 1px #ccc;
-  border-radius: 5px; 
   box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
   word-wrap: break-word;
+  background: whitesmoke;
 }
+#chart_songs table img {
+  position: relative;
+  box-shadow: 1px 1px 1px #888;
+  -webkit-box-shadow: 1px 1px 1px #888;
+  -moz-box-shadow: 1px 1px 1px #888;
+  top: 2px;
+}
+#chart_songs table img.thumb {
+
 #chart_songs th:last-child {
   padding-right: 20px;
 }
@@ -132,7 +146,10 @@ body {
 #chart_songs th.download {
   width: 60px;
 }
-
+#chart_songs td {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #ccc;
+}
 #chart_title {
   padding-left: 20px;
 }

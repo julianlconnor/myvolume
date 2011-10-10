@@ -1114,7 +1114,7 @@ table {
   font-size: 13px;
 }
 table th, table td {
-  padding: 4px 10px 9px;
+  padding: 4px 10px 4px;
   line-height: 18px;
   text-align: left;
   vertical-align: middle;
