@@ -25,8 +25,8 @@
 
       <!-- End Google Analytics -->
   </head>
-  <body>    
-      <div class="alert">
+  <body>
+    <div class="alert">
           <% for name in flash_names %>
               <% if flash[name] %>
                   <div class="alert-message <%= name %>">
@@ -36,8 +36,9 @@
           <% end %>
       </div>
 
+
       <div class="container">
-          <%= yield %>
+        <%= yield %>
       </div>
 
       <div id="jquery_jplayer_1" class="jp-jplayer"></div>

@@ -1,25 +1,18 @@
-        <h3>Login</h3>
     <%= form_tag sessions_path do %>
     <fieldset>
         <div class="clearfix">
-            <div class="clearfix">
-                <%= label_tag :email %>
-            </div>
     	<div class="input">
-    	    <%= text_field_tag :email, params[:email] %>
+        <%= text_field_tag :email, params[:email], :placeholder => "Email" %>
     	</div>
     	</div>
     	<div class="clearfix">
-            <div class="clearfix">
-    	        <%= label_tag :password %>
-            </div> 
             <div class="input">
-    	        <%= password_field_tag :password, params[:password] %>
+              <%= password_field_tag :password, params[:password], :placeholder => "Password" %>
     	    </div>
     	</div>
-    	<div class="actions">
-    	    <%= submit_tag "Sign in", :class => "btn info" %>
-    	</div>
+    	<div class="clearfix">
+    	    <%= submit_tag "Sign in", :class => "btn generic" %>
+      </div>
     	</fieldset>
     <% end %>
 

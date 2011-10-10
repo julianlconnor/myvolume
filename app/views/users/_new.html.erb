@@ -9,34 +9,21 @@
 		</ul>
 	    </div>
         <% end %>
-          <h3>Register</h3>
       <fieldset>
-        <div class="clearfix">
-	    <%= f.label :alias %>
-        </div>
             <div class="input">
-                <%= f.text_field :alias %>
+              <%= f.text_field :alias, :placeholder => "Username" %>
             </div>
-        <div class="clearfix">
-	    <%= f.label :email %>
-        </div>
             <div class="input">
-                <%= f.text_field :email %>
+              <%= f.text_field :email, :placeholder => "Email" %>
           </div>
-        <div class="clearfix">
-	    <%= f.label :password %>
-        </div>
             <div class="input">
-             <%= f.password_field :password %>
+              <%= f.password_field :password, :placeholder => "Password" %>
             </div>
-        <div class="clearfix">
-            <%= f.label :password_confirmation %>
-        </div>
             <div class="input">
-                <%= f.password_field :password_confirmation %>
+              <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation"%>
+            </div>
+            <div class="input">
+              <%= submit_tag "Register", :class => "btn generic submit" %>
             </div>
       </fieldset>
-      <div class="actions">
-        <%= submit_tag "Register", :class => "btn info" %>
-      </div>
     <% end %>
