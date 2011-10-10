@@ -1,12 +1,9 @@
 <% if !@songs.nil? %>
 <table>
     <% @songs.each do |song| %>
-      <tr class="play" name="<%= song.sample_url %>">
-        <td class="thumb"><%= image_tag song.song_thumbnail.small %></td>
-        <td><%= song.name %> (<%= song.mix_name %>)</td>
-        <td><%= song.artist  %></td>
-        <td><%= song.genres.first.name  %></td>
-        <td><%= link_to image_tag('download.png'), generateQuery(song), :target => "_blank" %></td>
+      <tr class="play <%= song.id %>" name="<%= song.sample_url %>" class="#{song.id}">
+          <%= render 'songs/song', :song => song %>
+      </tr>
     <% end %>
 </table>
 <% end %>

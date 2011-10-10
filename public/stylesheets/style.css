@@ -45,6 +45,40 @@ html[xmlns] .clearfix {
   zoom: 1;
   margin-bottom: 18px;
 }
+.heart, .playing .heart {
+  height: 32px;
+  width: 32px;
+  background: url("/images/heart.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.heart.active, .playing .heart.active {
+  background: url("/images/heartactive.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.heart:hover, .playing .heart:hover {
+  background: url("/images/hearthover.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.heart.active:hover, .playing .heart.active:hover {
+  background: url("/images/heartactivehover.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.download {
+  height: 32px;
+  width: 32px;
+  background: url("/images/download.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.download:hover {
+  background: url("/images/download-hover.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
 
 
 /* Charts Structure */
@@ -85,9 +119,6 @@ html[xmlns] .clearfix {
 }
 .chart_list .active {
   box-shadow: rgba(82, 168, 236, 0.597656) 0 0 4px;
-}
-.chart_list .active .title {
-  font-size: 1.1em;
 }
 .chart .title {
   color: #333;
@@ -317,6 +348,18 @@ input.submit {
 .alert {
   width: 200px;
   float: left;
+}
+table th, table td {
+  padding: 4px 10px 4px;
+  line-height: 18px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table tr.playing td {
+  background: -webkit-linear-gradient(top, #BEFFE8, #B2FFD1);
+  background: -moz-linear-gradient(top, #BEFFE8, #B2FFD1);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); 
 }
 
 .alert-message {

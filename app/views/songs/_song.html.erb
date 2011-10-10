@@ -1,0 +1,33 @@
+<td class="thumb">
+<% if !!song.song_thumbnail %>
+  <%= image_tag song.song_thumbnail.small %>
+<% end %>
+</td>
+
+<td>
+<% if !!song.name and !!song.mix_name %>
+  <%= song.name %> (<%= song.mix_name %>)
+<% end %>
+</td>
+
+<td>
+<% if !!song.artist %>
+  <%= song.artist  %>
+<% end %>
+</td>
+
+<td>
+<% if !!song.genres %>
+  <%= song.genres.first.name  %>
+<% end %>
+</td>
+
+
+<% if is_favorite(song.id) %>
+  <td class="heart active" url="/favorite/<%= song.id %>">
+<% else %>
+  <td class="heart" url="/favorite/<%= song.id %>">
+<% end %>
+</td>
+
+<td class="download" url="<%= generateQuery(song) %>"></td>

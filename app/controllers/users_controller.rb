@@ -63,8 +63,9 @@ class UsersController < ApplicationController
       flash[:error] = "You must log in or register to favorite tracks. :)"
       @error = 1
     end
-    @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
-    @mostActive = mergeActiveAuthUsers()
+    @song = Song.find(@song_id)
+    # @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
+    #     @mostActive = mergeActiveAuthUsers()
   end
   
   def mergeActiveAuthUsers
