@@ -36,34 +36,6 @@
           <% end %>
       </div>
 
-      <div class="topbar-wrapper" style="z-index: 5;"> 
-          <div class="topbar"> 
-              <div class="fill"> 
-                  <div class="container"> 
-                      <h3><a href="#">myvolu.me</a></h3> 
-                      <% if current_user %>
-                          <ul> 
-                              <li class="charts"><a href="#">Charts</a></li> 
-                              <li class="top-downloads"><a href="#">Top Downloads</a></li> 
-                          </ul> 
-                          <form action=""> 
-                              <input type="text" placeholder="Search" /> 
-                          </form>
-                          <ul class="nav secondary-nav"> 
-                              <li class="menu"> 
-                              <a href="#" class="menu">Hey <%= proper_name(current_user) %></a> 
-                              <ul class="menu-dropdown"> 
-                                  <li><a href="#">Profile</a></li> 
-                                  <li class="divider"></li> 
-                                  <li><%= link_to "Logout", log_out_path %></li> 
-                              </ul> 
-                              </li> 
-                          </ul>
-                      <% end %>
-                  </div>
-              </div><!-- /fill -->      
-          </div><!-- /topbar --> 
-      </div><!-- /topbar-wrapper -->
       <div class="container">
           <%= yield %>
       </div>
