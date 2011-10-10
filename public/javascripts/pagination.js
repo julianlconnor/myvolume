@@ -21,6 +21,18 @@ $(function() {
         return false;
     });
     
+    $('.heart, .download').live('mousedown', function() {   
+        var $chart = $(this);
+        $chart.css('background-position', '55% 65%');  
+    }).live('mouseup', function() {  
+        var $chart = $(this);
+         $chart.css('background-position', '50% 50%');    
+    });
+    
+    // $('.download').live('click', function(){
+    //     window.open($(this).attr('url'));
+    // })
+    
     
 	// jQuery to handle chart pagination
     $('#charts .pagination a').live('click', function(){
@@ -63,9 +75,8 @@ $(function() {
 	// jQuery to handle favorites
 	$('.heart').live('click', function() {
 		// $(this).html("<a href='/favorite/1265' class='heart'><img src='/images/favorite_ajax_loader.gif'/></a>");
-		$(this).addClass("justclicked")
-		$(this).html("<img src='/images/favorite_ajax_loader.gif'/>");
-		$.get(this.href,null,null,"script");
+		console.log($(this).attr('url'));
+		$.get($(this).attr('url'),null,null,"script");
 		return false;
 	});
 	// jQuery to handle playing a mostFavorited Track
