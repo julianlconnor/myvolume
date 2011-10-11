@@ -1,4 +1,8 @@
+
 <div id="chart_wrapper" class="clearfix">
+  <div id = "chart_pagination">
+    <%= render 'charts/pagination' %>
+  </div>
 <div id = "charts">
   <%= render "charts" %>
 </div>
@@ -7,4 +11,4 @@
 </div>
 </div>
 
-<%= will_paginate @charts, :class => "pagination charts", :param_name => "chart_page", :previous_label => 'Previous', :next_label => 'Next' %>
+

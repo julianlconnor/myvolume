@@ -2,14 +2,6 @@
   <h3>Top Downloads</h3>
 </div>
 <table class="zebra-striped">
-    <tr>
-      <th>#</th>
-      <th>Change</th>
-      <th>Artwork</th>
-      <th>Track</th>
-      <th>Remix</th>
-      <th>Artist</th>
-    </tr>
     <% @top_downloads.each_with_index do |f,i| %>
     <tr>
       <td><%= f.rank.to_s.rjust(2, '0') %></td>

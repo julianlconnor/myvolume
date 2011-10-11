@@ -1,4 +1,5 @@
 $("#charts").html("<%= escape_javascript(render('charts/charts')) %>");
+$("#chart_pagination").html("<%= escape_javascript(render('charts/pagination')) %>");
 var $list = $('.chart_outside');
 $list.css('left', -$list.outerWidth() + 'px');
 $list.animate({
