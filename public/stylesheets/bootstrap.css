@@ -225,24 +225,24 @@ table {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn.generic, .alert-message.generic {
-  background-color: #3F73A6;
+  background-color: #333;
   background-repeat: repeat-x;
-  background-image: linear-gradient(bottom, #3F73A6, #71A2D3);
-  background-image: -o-linear-gradient(bottom, #3F73A6, #71A2D3);
-  background-image: -moz-linear-gradient(bottom, #3F73A6, #71A2D3);
-  background-image: -webkit-linear-gradient(bottom, #3F73A6, #71A2D3);
-  background-image: -ms-linear-gradient(bottom, #3F73A6, #71A2D3);
+  background-image: linear-gradient(bottom, #333, #555);
+  background-image: -o-linear-gradient(bottom, #333, #555);
+  background-image: -moz-linear-gradient(bottom, #333, #555);
+  background-image: -webkit-linear-gradient(bottom, #333, #555);
+  background-image: -ms-linear-gradient(bottom, #333, #555);
   background-image: -webkit-gradient(
     linear,
     left bottom,
     left top,
-    color-stop(0%, #3F73A6),
-    color-stop(100%, #71A2D3)
+    color-stop(0%, #333),
+    color-stop(100%, #555)
   );
 
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #3F73A6 #3F73A6 #22697d;
+  border-color: #333 #333 #555;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 .btn.info, .alert-message.info {

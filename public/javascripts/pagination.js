@@ -17,6 +17,11 @@ $(function() {
         var $chart_title = $chart.attr('title');
         var url = $chart.attr('name');
         //$('#chart_title').html('<h3>' + $chart_title + '</h3>');
+        var $list = $('#chart_songs');
+        $list.css('left', '0px');
+        $list.animate({
+          left: parseInt($list.css('left'), 10) == 0 ? $list.outerWidth() : 0  
+      });
         $.get(url, null, null, "script");
         return false;
     });
@@ -35,15 +40,11 @@ $(function() {
     
     
 	// jQuery to handle chart pagination
-    $('#charts .pagination a').live('click', function(){
-      var $list = $('.chart_outside');
-      $list.css('left', '0px');
-      $list.animate({
-        left: parseInt($list.css('left'), 10) == 0 ? $list.outerWidth() : 0  
-      });     
+    $('#charts .pagination a').live('click', function(){    
       $.get(this.href,null,null,"script");
       return false;
     });
+    
 
   // jQuery to handle chart song load
     
