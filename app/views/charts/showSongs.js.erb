@@ -1,6 +1,2 @@
-$("#chart_songs").html("<%= escape_javascript(render('charts/chart_songs')) %>");
-var $list = $('#chart_songs');
-$list.css('left', -$list.outerWidth() + 'px');
-$list.animate({
-   left: parseInt($list.css('left'),10) == 0 ? -$list.outerWidth() :0
-}); 
+$("#chart_songs").hide();
+$("#chart_songs").html("<%= escape_javascript(render('charts/chart_songs')) %>").fadeIn();

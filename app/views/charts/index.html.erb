@@ -7,3 +7,5 @@
   <%= render "chart_songs" %>
 </div>
 </div>
+
+<%= will_paginate @charts, :class => "pagination charts", :param_name => "chart_page", :previous_label => 'Previous', :next_label => 'Next' %>
