@@ -121,10 +121,11 @@ html[xmlns] .clearfix {
 }
 .chart_text {
   width: 200px;
+  font-size: 1.1em;
 }
 .chart img {
   position: relative;
-  top: 4px;
+  top: 2px;
   margin-right: 10px;
   box-shadow: 1px 1px 1px #888;
   -webkit-box-shadow: 1px 1px 1px #888;
@@ -140,14 +141,12 @@ html[xmlns] .clearfix {
 .chart_list .active {
   background: whitesmoke;
 }
+.chart .top {
+  padding-bottom: 10px;
+}
 .chart .title {
   color: #333;
   font-weight: bold;
-  padding-bottom: 8px;
-}
-.chart .genres {
-  font-size: 11px;
-  width: 200px;
 }
 .chart .genre {
   padding: 2px 4px;
@@ -156,6 +155,7 @@ html[xmlns] .clearfix {
   margin-bottom: 4px;
   margin-right: 2px;
   background: #eee;
+  font-size: .85em;
   border-radius: 4px;
   -moz-border-radius: 4px;
 }
