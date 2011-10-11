@@ -40,7 +40,7 @@ $(function() {
     
     
 	// jQuery to handle chart pagination
-    $('#charts .pagination a').live('click', function(){    
+    $('.pagination a').live('click', function(){    
       $.get(this.href,null,null,"script");
       return false;
     });
