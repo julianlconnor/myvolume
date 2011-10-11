@@ -219,7 +219,7 @@ html[xmlns] .clearfix {
   color: #333;
   font-weight: bold;
 }
-.chart .genre {
+#chart_songs div.genre, span.genre {
   padding: 2px 4px;
   border: 1px solid #ccc;
   display: inline-block;
@@ -229,6 +229,9 @@ html[xmlns] .clearfix {
   font-size: .85em;
   border-radius: 4px;
   -moz-border-radius: 4px;
+}
+#chart_songs div.genre {
+  font-size: 1em;
 }
 /* Chart Songs Table */
 #chart_songs {
@@ -278,7 +281,7 @@ html[xmlns] .clearfix {
   width: 210px;
 }
 #chart_songs td.genre {
-  width: 65px;
+  width: 85px;
   font-size: .85em;
 }
 #chart_title {

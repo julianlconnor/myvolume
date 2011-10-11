@@ -21,12 +21,14 @@
 <% if !!song.genres %>
   <% if song.genres.first.id == 15 %>
     <% @s = song.genres.first.name.split(' / ') %>
-    <div>
+    <div class="genre">
       <%= @s[0] %>
     </div>
+    <div class="genre">
     <%= @s[-1] %>
+    </div>
   <% else %>
-    <%= song.genres.first.name  %>
+    <div class="genre"><%= song.genres.first.name  %></div>
   <% end %>
 <% end %>
 </td>
