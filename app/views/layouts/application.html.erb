@@ -26,20 +26,35 @@
       <!-- End Google Analytics -->
   </head>
   <body>
-      <div class="alert">
-          <% for name in flash_names %>
-              <% if flash[name] %>
-                  <div class="alert-message <%= name %>">
-                      <p><%= flash[name] %></p>
-                  </div>
-              <% end %>
-          <% end %>
-      </div>
-      <div class="topbar">
-        <div class="topbar-inner">
-          <%= image_tag('myvolume-logo.png') %>
+      <% if current_user %>
+        <div class="alert">
+            <% for name in flash_names %>
+                <% if flash[name] %>
+                    <div class="alert-message <%= name %>">
+                        <p><%= flash[name] %></p>
+                    </div>
+                <% end %>
+            <% end %>
         </div>
-      </div>
+        <div class="topbar">
+          <div class="topbar-inner">
+            <div class="container clearfix">
+              <div class="logo">
+                <a href="/"><%= image_tag('myvolume-logo.png') %></a>
+              </div>
+              <ul class="nav">
+                <li class="charts"><a href="#">charts</a></li>
+                <li class="topdownloads"><a href="#">top downloads</a></li>
+              </ul>
+              <ul class="secondary-nav">
+                <li class="avatar"><img src="<%= avatar_url(current_user) %>" height="26px"/></li>
+                <li><a href="#"><%= proper_name(current_user) %></a></li>
+                <li><a href="/log_out">Log Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
       
 
 
