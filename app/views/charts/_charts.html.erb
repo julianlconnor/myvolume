@@ -1,12 +1,15 @@
   <div class="chart_list">
   <% @charts.each do |chart| %>
     <div class="chart clearfix" <%= "name=/charts/#{chart.id}/get" %> title="<%= chart.name %>">
+    <div class="clearfix top">
       <%= image_tag chart.chart_thumbnail.small %>
       <div class="chart_text">
         <div class="title">
           <span class="label success">New</span>
           <%= truncate(chart.name, :length => 40) %>
         </div>
+      </div><!-- /chart_text -->
+    </div>
         <div class="genres">
           <% chart.genres.each do |genre| %>
             <span class="genre">
@@ -18,7 +21,7 @@
             </span>
           <% end %>
         </div>
-      </div>
+   
     </div>
   <% end %>
   </div><!-- /chart_list -->
