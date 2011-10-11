@@ -26,7 +26,7 @@
       <!-- End Google Analytics -->
   </head>
   <body>
-    <div class="alert">
+      <div class="alert">
           <% for name in flash_names %>
               <% if flash[name] %>
                   <div class="alert-message <%= name %>">
@@ -35,6 +35,12 @@
               <% end %>
           <% end %>
       </div>
+      <div class="topbar">
+        <div class="topbar-inner">
+          <%= image_tag('myvolume-logo.png') %>
+        </div>
+      </div>
+      
 
 
       <div class="container">
