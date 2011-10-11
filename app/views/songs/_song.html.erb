@@ -6,19 +6,28 @@
 
 <td>
 <% if !!song.name and !!song.mix_name %>
-  <%= song.name %> (<%= song.mix_name %>)
+  <div><%= song.name %></div>
+  <div class="mix_name">(<%= song.mix_name %>)</div>
 <% end %>
 </td>
 
-<td>
+<td class="artist">
 <% if !!song.artist %>
   <%= song.artist  %>
 <% end %>
 </td>
 
-<td>
+<td class="genre">
 <% if !!song.genres %>
-  <%= song.genres.first.name  %>
+  <% if song.genres.first.id == 15 %>
+    <% @s = song.genres.first.name.split(' / ') %>
+    <div>
+      <%= @s[0] %>
+    </div>
+    <%= @s[-1] %>
+  <% else %>
+    <%= song.genres.first.name  %>
+  <% end %>
 <% end %>
 </td>
 

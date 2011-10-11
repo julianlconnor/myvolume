@@ -8,13 +8,15 @@
           <%= truncate(chart.name, :length => 40) %>
         </div>
         <div class="genres">
-          <ul>
           <% chart.genres.each do |genre| %>
-            <li class="genre <%= cycle('even','odd') %>">
-              <%= genre.name %>
-            </li>
+            <span class="genre">
+              <% if genre.name.length > 12 %>
+                <%= truncate(genre.name, :length => 12, :separator => ' ', :omission => '') %>
+              <% else %>
+                <%= genre.name %>
+              <% end %>
+            </span>
           <% end %>
-          </ul>
         </div>
       </div>
     </div>
