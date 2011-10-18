@@ -56,19 +56,19 @@ html[xmlns] .clearfix {
   zoom: 1;
   margin-bottom: 18px;
 }
-.heart, .playing .heart {
+.heart, .playing .heart, .playing:hover .heart {
   height: 32px;
   width: 32px;
   background: url("/images/heart.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
-.heart.active, .playing .heart.active {
+.heart.active, .playing .heart.active, .playing:hover .heart.active {
   background: url("/images/heartactive.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
-.heart:hover, .playing .heart:hover {
+.heart:hover {
   background: url("/images/hearthover.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -78,14 +78,14 @@ html[xmlns] .clearfix {
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
-.download {
+.download, .playing .download, .playing:hover .download {
   height: 32px;
   width: 32px;
   background: url("/images/download.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
-.download:hover {
+.download:hover, .playing .download:hover, .playing:hover .download:hover {
   background: url("/images/download-hover.png");
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -215,6 +215,7 @@ html[xmlns] .clearfix {
 }
 .chart:hover, .chart_list .active {
   cursor: pointer;
+  border: 1px solid #999;
   -webkit-box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
   -moz-box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
   box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
@@ -222,6 +223,8 @@ html[xmlns] .clearfix {
 }
 .chart_list .active {
   background: whitesmoke;
+  background: -webkit-linear-gradient(top, #BEFFE8, #B2FFD1);
+  border: 1px solid #bbb;
 }
 .chart .top {
   padding-bottom: 10px;
@@ -231,18 +234,23 @@ html[xmlns] .clearfix {
   font-weight: bold;
 }
 #chart_songs div.genre, span.genre {
-  padding: 2px 4px;
-  border: 1px solid #ccc;
+  padding: 2px 6px;
+  background: #2D6D90;
+  text-shadow: 0 -1px 0 #0F425E;
+  color: #eee;
+  border: 1px solid #2D6D90;
   display: inline-block;
   margin-bottom: 4px;
   margin-right: 2px;
-  background: #eee;
-  font-size: .85em;
+  font-size: .9em;
   border-radius: 4px;
   -moz-border-radius: 4px;
 }
+#chart_songs div.genre:hover, span.genre:hover {
+  background: #2CA062;
+}
 #chart_songs div.genre {
-  font-size: 1em;
+  font-size: 1.1em;
 }
 /* Chart Songs Table */
 #chart_songs {
@@ -255,12 +263,7 @@ html[xmlns] .clearfix {
   color: #555;
   vertical-align: center;
 }
-#chart_songs tr:hover {
-  cursor: pointer;
-  background: -webkit-linear-gradient(top, #BEFFE8, #B2FFD1);
-  background: -moz-linear-gradient(top, #BEFFE8, #B2FFD1);
-  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); 
-}
+
 
 #chart_songs table {
 /* edit bootstrap */
@@ -432,7 +435,10 @@ table th, table td {
   vertical-align: middle;
   border-bottom: 1px solid #ddd;
 }
-table tr.playing td {
+table tr:hover {
+  cursor: pointer;
+}
+table tr.playing, table tr:hover  {
   background: -webkit-linear-gradient(top, #BEFFE8, #B2FFD1);
   background: -moz-linear-gradient(top, #BEFFE8, #B2FFD1);
   text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); 
