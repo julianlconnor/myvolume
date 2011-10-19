@@ -298,7 +298,8 @@ html[xmlns] .clearfix {
   width: 85px;
   font-size: .85em;
 }
-#chart_title {
+#chart_songs div.song_name {
+  font-weight: bold;
 }
 #chart_title h3 {
   display: inline;

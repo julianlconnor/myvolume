@@ -34,9 +34,9 @@ $(function() {
          $chart.css('background-position', '50% 50%');    
     });
     
-    // $('.download').live('click', function(){
-    //     window.open($(this).attr('url'));
-    // })
+     $('.download').live('click', function(){
+         window.open($(this).attr('url'));
+     })
     
     
 	// jQuery to handle chart pagination
