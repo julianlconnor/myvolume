@@ -36,6 +36,7 @@ $(function() {
     
      $('.download').live('click', function(){
          window.open($(this).attr('url'));
+         return false;
      })
     
     

@@ -111,15 +111,20 @@
       supplied: "mp3"
     });
     
-    $(".play").live("click", function(){
+    $(".play").live("click", function(e){
       var sample_url = $(this).attr('name');
+      
+        $(".playing").removeClass("playing");
+        $(this).addClass("playing");
 
-      $(".playing").removeClass("playing");
-      $(this).addClass("playing");
-
-      $("#jquery_jplayer_1").jPlayer("setMedia", {
-        mp3: sample_url
-      }).jPlayer("play");
+        $("#jquery_jplayer_1").jPlayer("setMedia", {
+          mp3: sample_url
+        }).jPlayer("play");
     });
+  });
+  $(document).ready(function(){
+    var first_chart = $(".chart:first");
+    first_chart.toggleClass("active");
+    $.get(first_chart.attr("name"),null,null,"script");
   });
 </script>
