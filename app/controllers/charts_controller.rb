@@ -16,7 +16,7 @@ class ChartsController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html # index.html.erb
+      format.html
       format.xml  { render :xml => @charts }
     end
   end

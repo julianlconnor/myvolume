@@ -37,7 +37,17 @@ $(function() {
      $('.download').live('click', function(){
          window.open($(this).attr('url'));
          return false;
-     })
+     });
+     /* Top Downloads AJAX */
+     $('li.topdownloads').live('click', function(){
+       $.get('/topdownloads',null,null,"script");
+       return false;
+     });
+     /* Charts AJAX */
+     $('li.charts').live('click', function(){
+       $.get('/charts',null,null,"script");
+       return false;
+     });
     
     
 	// jQuery to handle chart pagination

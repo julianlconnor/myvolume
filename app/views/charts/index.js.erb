@@ -1,5 +1,7 @@
-$("#charts").html("<%= escape_javascript(render('charts/charts')) %>").hide().fadeIn();
+$("#content").html("<%= escape_javascript(render('charts/charts')) %>").hide().fadeIn();
 $("#chart_pagination").html("<%= escape_javascript(render('charts/pagination')) %>");
+$(".chart:first").toggleClass("active");
+$.get($(".chart:first").attr("name"),null,null,"script");
 /*var $list = $('.chart_outside');
 $list.css('left', -$list.outerWidth() + 'px');
 $list.animate({
