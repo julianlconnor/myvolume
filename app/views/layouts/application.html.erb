@@ -58,7 +58,7 @@
       
 
 
-      <div class="container">
+      <div id="content" class="container">
         <%= yield %>
       </div>
       <% if current_user %>
@@ -97,7 +97,7 @@
 <script type="text/javascript">
   $('.alert-message').delay(5000).slideUp(1000, function () { });
   $(document).ready(function(){
-
+    
     $("#jquery_jplayer_1").jPlayer({
       ready: function () {
         $(this).jPlayer("setMedia", {
