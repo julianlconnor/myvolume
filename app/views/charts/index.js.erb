@@ -1,7 +1,7 @@
-$("#charts").html("<%= escape_javascript(render('charts/charts')) %>");
-$("#chart_pagination").html("<%= escape_javascript(render('charts/pagination')) %>");
+$("#charts").html("<%= escape_javascript(render('charts/charts')) %>").hide().fadeIn();
+/*$("#chart_pagination").html("<%= escape_javascript(render('charts/pagination')) %>");
 var $list = $('.chart_outside');
 $list.css('left', -$list.outerWidth() + 'px');
 $list.animate({
    left: parseInt($list.css('left'),10) == 0 ? -$list.outerWidth() :0
-});     
+});*/     

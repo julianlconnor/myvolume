@@ -335,6 +335,7 @@ html[xmlns] .clearfix {
 }
 .pagination a, .pagination em, .pagination span {
   border: 1px solid #ddd;
+  border-radius: 3px;
   padding: 5px 10px;
 }
 .pagination a {
