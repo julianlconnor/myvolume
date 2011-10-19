@@ -1,0 +1,53 @@
+<td><%= ranked.rank.to_s.rjust(2, '0') %></td>
+<% if ranked.difference > 0 %>
+  <td class="positive"><%= "+#{ranked.difference}" %></td>
+<% elsif ranked.difference < 0 %>
+  <td class="negative"><%= "#{ranked.difference}" %></td>
+<% else %>
+  <td><%= "#{ranked.difference}" %></td>
+<% end %>
+
+<td class="thumb">
+<% if !!ranked.song.song_thumbnail %>
+  <%= image_tag ranked.song.song_thumbnail.small %>
+<% end %>
+</td>
+
+<td>
+<% if !!ranked.song.name and !!ranked.song.mix_name %>
+  <div class="song_name"><%= ranked.song.name %></div>
+  <div class="mix_name">(<%= ranked.song.mix_name %>)</div>
+<% end %>
+</td>
+
+<td class="artist">
+<% if !!ranked.song.artist %>
+  <%= ranked.song.artist  %>
+<% end %>
+</td>
+
+<td class="genre">
+<% if !!ranked.song.genres %>
+  <% if ranked.song.genres.first.id == 15 %>
+    <% @s = ranked.song.genres.first.name.split(' / ') %>
+    <div class="genre">
+      <%= @s[0] %>
+    </div>
+    <div class="genre">
+    <%= @s[-1] %>
+    </div>
+  <% else %>
+    <div class="genre"><%= ranked.song.genres.first.name  %></div>
+  <% end %>
+<% end %>
+</td>
+
+
+<% if is_favorite(ranked.song.id) %>
+  <td class="heart active" url="/favorite/<%= ranked.song.id %>">
+<% else %>
+  <td class="heart" url="/favorite/<%= ranked.song.id %>">
+<% end %>
+</td>
+
+<td class="download" url="<%= generateQuery(ranked.song) %>"></td>
