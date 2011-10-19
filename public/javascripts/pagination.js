@@ -40,11 +40,15 @@ $(function() {
      });
      /* Top Downloads AJAX */
      $('li.topdownloads').live('click', function(){
+       $('.nav li').removeClass('active');
+       $('li.topdownloads').addClass('active');
        $.get('/topdownloads',null,null,"script");
        return false;
      });
      /* Charts AJAX */
      $('li.charts').live('click', function(){
+       $('.nav li').removeClass('active');
+       $('li.charts').addClass('active');
        $.get('/charts',null,null,"script");
        return false;
      });
