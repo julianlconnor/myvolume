@@ -1,2 +1,2 @@
-$("#flashSpace").html("<%= escape_javascript(render('layouts/flash')) %>");
+$(".alert").html("<%= escape_javascript(render('layouts/flash', :locals => {:flash => flash})) %>");
 $("#chart_songs tr.<%= @song_id %> td.heart").toggleClass('active');

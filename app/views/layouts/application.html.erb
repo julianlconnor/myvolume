@@ -28,13 +28,7 @@
     <div class="top_background"></div>
       <% if current_user %>
         <div class="alert">
-            <% for name in flash_names %>
-                <% if flash[name] %>
-                    <div class="alert-message <%= name %>">
-                        <p><%= flash[name] %></p>
-                    </div>
-                <% end %>
-            <% end %>
+          <%= render 'layouts/flash', :locals => {:flash => flash} %>
         </div>
         <div class="topbar">
           <div class="topbar-inner">

@@ -1,14 +1,9 @@
-<% if notice or alert %>
-  <div id="flash">
-		<div class="alert-message info">
-		  <p><%= notice %></p>
-		</div>
-		<div class="alert-message warning">
-		  <p><%= alert %></p>
-		</div>
-		<!-- <span class="close_flash">[x]</span> -->   
-  </div>
+<% if !!flash %>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, :class => "flash #{key}") %>
+  <% end %>
 <% end %>
+
 <script>
 	$(function() {
 		$('#flash').delay(5000).fadeOut();
