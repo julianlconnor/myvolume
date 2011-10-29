@@ -1,4 +1,4 @@
-<td><%= ranked.rank.to_s.rjust(2, '0') %></td>
+<td class="ranked"><%= ranked.rank.to_s.rjust(2, '0') %></td>
 <% if ranked.difference > 0 %>
   <td class="positive"><%= "+#{ranked.difference}" %></td>
 <% elsif ranked.difference < 0 %>
