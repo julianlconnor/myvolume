@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def index
     @user = User.new
     if current_user
-      redirect_to(:controller => "charts", :method => "index")
+      redirect_to :controller => 'home', :action => 'index'
     end
   end
 
@@ -18,14 +18,14 @@ class SessionsController < ApplicationController
       authorization = Authorization.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authorization.create_with_omniauth(auth)
       session[:uid] = authorization['id']
       flash[:success] = "You have been logged in via Facebook."
-      redirect_to root_url
+      redirect_to :controller => 'home', :action => 'index'
     else
       # Regular authentication request
       user = User.authenticate(params[:email], params[:password])
       if user
         session[:user_id] = user.id
         flash[:success] = "You are now Logged in!"
-        redirect_to '/charts'
+        redirect_to :controller => 'home', :action => 'index'
       else
         flash[:error] = "Invalid email or password."
         redirect_to root_path
