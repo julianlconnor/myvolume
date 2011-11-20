@@ -5,6 +5,9 @@ Myvolume::Application.routes.draw do
   resources :songs
   resources :users
   resources :sessions
+
+  match "/topdownloads" => "charts#top_downloads"
+
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
@@ -60,14 +63,6 @@ Myvolume::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => "sessions#index"
   
-  match "home/top_downloads"
-  match "/topdownloads", :to => 'songs#top_downloads'
-  match '/auth/facebook/callback', :to => 'sessions#create'
-  match '/favorite/:id', :to => 'users#favorite'
-  match '/charts/:id/get', :to => 'charts#showSongs'
-  match '/playtrack/:id', :to => 'home#playtrack'
-  match '/auths/:id',   :to => 'users#showAuth'
-
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

@@ -11,14 +11,9 @@ class ChartsController < ApplicationController
     end
   end
   def index
-    @charts = Chart.paginate :page => params[:chart_page], :order => "publish_date desc"
-    @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
+    @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
 
-    respond_to do |format|
-      format.js
-      format.html
-      format.xml  { render :xml => @charts }
-    end
+    render :json => @charts.to_json
   end
 
   def charts_paginate
@@ -29,12 +24,18 @@ class ChartsController < ApplicationController
   # Will is the best!
   # GET /charts/1.xml
   def show
-    @chart = Chart.find(params[:id])
+    @data = @chart = Chart.find(params[:id])
+    @data['songs'] = @chart.songs
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @chart }
-    end
+    render :json => @data.to_json
+  end
+
+  def top_downloads
+    @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
+    @data = []
+    @topdownloads.each {|td| @data << td.song }
+
+    render :json => @data.to_json
   end
   
   def showSongs

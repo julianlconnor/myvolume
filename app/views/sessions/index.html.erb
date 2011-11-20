@@ -10,8 +10,9 @@
       <%= render "login" %>
     </div>
 </div><!-- /login_outside -->
+
 <script type="text/javascript">
-$(function() {
+(function($) {
     $('.register').live('click', function(event) {
       event.preventDefault();
       $('.login_box').slideUp(400, function() {

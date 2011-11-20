@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
       redirect_to(:controller => "charts", :method => "index")
     end
   end
+
   def new
     @user = User.new
   end

@@ -1,8 +1,7 @@
-<div id="chart_wrapper" class="clearfix">
+<div id = "charts">
   <div id = "chart_pagination">
     <%= render 'charts/pagination' %>
   </div>
-  <div id = "charts">
   <div class="chart_list">
     <% @charts.each do |chart| %>
       <div class="chart clearfix" <%= "name=/charts/#{chart.id}/get" %> title="<%= chart.name %>">
@@ -28,9 +27,8 @@
           </div>
       </div>
     <% end %>
-    </div><!-- /chart_list -->
-  </div>
-  <div id = "chart_songs">
-    <%= render "chart_songs" %>
-  </div>
+  </div><!-- /chart_list -->
+</div>
+<div id = "chart_songs">
+  <%= render "chart_songs" %>
 </div>
