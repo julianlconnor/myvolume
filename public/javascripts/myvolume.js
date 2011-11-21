@@ -27,22 +27,20 @@
 
     window.Charts = new ChartList;
 
-    window.ChartsView = Backbone.View.extend({
-        //template: _.template($("chart-template").html()),
+    window.ChartsView = Backbone.View.extend({    
         el: $("#charts"),
-
+        
         initialize: function() {
              console.log("ChartsView::Init");
+             console.log(this);
              _.bindAll(this, "render", "addOne", "addAll");
             Charts.bind("reset", this.addAll, this);
             Charts.fetch();
-
             this.render();
         },
 
         render: function() {
             console.log("ChartsView::Render");
-            console.log(this);
             $(this.el).html("<div class='chart_list'></div>");
             return this;
         },
@@ -80,7 +78,7 @@
 
         initialize: function() {
             console.log("AppView yay");
-            var view = new ChartsView();
+            var view = new ChartsView;
         }
     });
 
