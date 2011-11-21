@@ -1,6 +1,6 @@
 (function($) {
 
-    window.ChartModel = Backbone.Model.extend({
+    var ChartModel = Backbone.Model.extend({
         
         defaults: function() {
             return {
@@ -18,7 +18,7 @@
 
     });
 
-    window.ChartList = Backbone.Collection.extend({
+    var ChartList = Backbone.Collection.extend({
         
         model: ChartModel,
         url: "/charts"
@@ -27,13 +27,13 @@
 
     window.Charts = new ChartList;
 
-    window.ChartsView = Backbone.View.extend({
-        //template: _.template($("chart-template").html()),
+    var ChartsView = Backbone.View.extend({
         el: $("#charts"),
 
         initialize: function() {
              console.log("ChartsView::Init");
              _.bindAll(this, "render", "addOne", "addAll");
+
             Charts.bind("reset", this.addAll, this);
             Charts.fetch();
 
@@ -42,7 +42,7 @@
 
         render: function() {
             console.log("ChartsView::Render");
-            console.log(this);
+            console.log(this.el);
             $(this.el).html("<div class='chart_list'></div>");
             return this;
         },
@@ -60,7 +60,7 @@
        
     });
     
-    window.ChartItemView = Backbone.View.extend({
+    var ChartItemView = Backbone.View.extend({
         initialize: function() {
             console.log("ChartItemView::Init");
             _.bindAll(this, 'render');
@@ -79,8 +79,8 @@
         el: $("body"),
 
         initialize: function() {
-            console.log("AppView yay");
-            var view = new ChartsView();
+            console.log("AppView::Init");
+            window._ChartsView = new ChartsView;
         }
     });
 
