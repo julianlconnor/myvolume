@@ -10,10 +10,20 @@ class ChartsController < ApplicationController
       redirect_to root_path
     end
   end
+  def snippet(title, wordcount)  
+    title.split[0..(wordcount-1)].join(" ") + (title.split.size > wordcount ? "..." : "") 
+  end
   def index
     @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
+    
+    @data = []
+    @charts.each do |chart|
+      @thumbnails = {"thumbnail_small"=>chart.chart_thumbnail.small, "thumbnail_medium"=>chart.chart_thumbnail.medium, "name_truncated" => snippet(chart.name,4)}
+      @genres = {"genres"=> chart.genres.map {|genre| genre.name }}
+      @data << chart.attributes.merge!(@thumbnails).merge!(@genres)
+    end
 
-    render :json => @charts.to_json
+    render :json => @data.to_json
   end
 
   def charts_paginate
