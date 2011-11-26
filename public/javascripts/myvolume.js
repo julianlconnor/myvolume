@@ -1,5 +1,26 @@
 (function($) {
 
+
+    var Router = Backbone.Router.extend({
+      
+      routes: {
+        "charts/:id"  : "showChart",
+        ""            : "showIndex"
+      },
+      
+      showChart: function() {
+        console.log("Router::showChart");
+      },
+
+      showIndex: function() {
+        console.log("Router::showIndex");
+        _Router.navigate("charts/10", true);
+      }
+
+    });
+
+    window._Router = new Router;
+
     var ChartModel = Backbone.Model.extend({
         
         defaults: function() {
@@ -42,7 +63,6 @@
 
         render: function() {
             console.log("ChartsView::Render");
-            console.log(this.el);
             $(this.el).html("<div class='chart_list'></div>");
             return this;
         },
@@ -81,6 +101,7 @@
         initialize: function() {
             console.log("AppView::Init");
             window._ChartsView = new ChartsView;
+            Backbone.history.start();
         }
     });
 
