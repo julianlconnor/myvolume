@@ -75,25 +75,51 @@
         
         addAll: function() {
             console.log("ChartsView::addAll");
+            window.activeChartModel = Charts.models[0];
+            window.activeChartModel.isActive();
             Charts.each(this.addOne);
         }
        
     });
     
     var ChartItemView = Backbone.View.extend({
+        
+        //template: ich.chart_item_template({ chart: this.model}),
+        events: {
+            "click div.chart": "activateChart"
+            
+        },
+        
         initialize: function() {
             console.log("ChartItemView::Init");
-            _.bindAll(this, 'render');
+            _.bindAll(this, 'render', "activateChart");
             Charts.bind("change", this.render, this);
         },
      
         render: function() {
             console.log("ChartItemView::Render");
-            $(this.el).html("<div class='chart'>" + "lolol" + "</div>");
+
+            console.log(this.model.toJSON());
+            var template = ich.chart_item_template(this.model.toJSON());
+            $(this.el).html(template);
+            
+            var genres = this.model.attributes.genres;
+            var node = $(this.el).find(".genres");
+            for (var i = 0; i < genres.length; i++) {
+                node.append(ich.genre_item_template({ name: genres[i] }));
+            }
+            
             return this;
+        },
+     
+        activateChart: function() {
+            window.activeChartModel.isInactive();
+            window.activeChartModel = this.model;
+            window.activeChartModel.isActive();
         }   
     
     });
+      
 
     window.AppView = Backbone.View.extend({
         el: $("body"),

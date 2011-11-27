@@ -9,6 +9,7 @@
         <%= javascript_include_tag "jquery.jplayer.min.js" %> 
         <%= javascript_include_tag "underscore.js" %>
         <%= javascript_include_tag "backbone.js" %>
+        <%= javascript_include_tag "ICanHaz.min.js" %>
 
         <%= csrf_meta_tag %>
         <!-- Google Analytics -->
@@ -118,4 +119,23 @@
         }).jPlayer("play");
     });
   });
+</script>
+
+<script type="text/html" id="chart_item_template">
+    <div class="chart clearfix {{ id }}" title="{{ name }}" active="{{ active }}">
+      <div class="clearfix top">
+        <img src="{{ thumbnail_small }}"/>
+        <div class="chart_text">
+          <div class="title">
+            <span class="label success">New</span>
+            {{ name_truncated }}
+          </div>
+        </div><!-- /chart_text -->
+      </div>
+      <div class="genres"></div>
+    </div>
+</script>
+
+<script type="text/html" id="genre_item_template">
+    <span class="genre">{{ name }}</span>
 </script>

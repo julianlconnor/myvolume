@@ -213,14 +213,14 @@ html[xmlns] .clearfix {
   -webkit-box-shadow: 1px 1px 1px #888;
   -moz-box-shadow: 1px 1px 1px #888;
 }
-.chart:hover, .chart_list .active {
+.chart:hover, div[active="true"] {
   cursor: pointer;
   border: 1px solid #999;
   -webkit-box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
   -moz-box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
   box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
 }
-.chart_list .active {
+div[active="true"] {
   background: whitesmoke;
   background: -webkit-linear-gradient(top, #BEFFE8, #B2FFD1);
   border: 1px solid #bbb;
