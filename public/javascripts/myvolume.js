@@ -8,13 +8,18 @@
         ""            : "showIndex"
       },
       
-      showChart: function() {
+      showChart: function(chartId) {
         console.log("Router::showChart");
+        if (typeof window._ChartsView === 'undefined') window._ChartsView = new ChartsView(chartId);
       },
 
       showIndex: function() {
         console.log("Router::showIndex");
-        _Router.navigate("charts/10", true);
+        if (typeof window._ChartsView === 'undefined') window._ChartsView = new ChartsView;
+      },
+
+      startApp: function() {
+        //if (typeof window.App === 'undefined') window.App = new 
       }
 
     });
@@ -35,6 +40,11 @@
         
         isActive: function() {
             this.set({ active: true });
+            this.goTo();
+        },
+
+        goTo: function() {
+            window._Router.navigate( 'charts/'+this.get('id'), true);
         }
 
     });
@@ -43,6 +53,8 @@
         
         model: ChartModel,
         url: "/charts"
+
+
 
     });
 
@@ -84,22 +96,20 @@
     
     var ChartItemView = Backbone.View.extend({
         
-        //template: ich.chart_item_template({ chart: this.model}),
         events: {
-            "click div.chart": "activateChart"
-            
+            "click": "activateChart"
         },
         
         initialize: function() {
             console.log("ChartItemView::Init");
             _.bindAll(this, 'render', "activateChart");
-            Charts.bind("change", this.render, this);
+
+            this.model.bind('change', this.render);
         },
      
         render: function() {
             console.log("ChartItemView::Render");
 
-            console.log(this.model.toJSON());
             var template = ich.chart_item_template(this.model.toJSON());
             $(this.el).html(template);
             
@@ -113,6 +123,7 @@
         },
      
         activateChart: function() {
+            console.log("ChartItemView::activateChart");
             window.activeChartModel.isInactive();
             window.activeChartModel = this.model;
             window.activeChartModel.isActive();
@@ -126,11 +137,9 @@
 
         initialize: function() {
             console.log("AppView::Init");
-            window._ChartsView = new ChartsView;
             Backbone.history.start();
         }
     });
-
     window.App = new AppView;
 
 })(jQuery);
