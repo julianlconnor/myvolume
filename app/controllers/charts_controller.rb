@@ -10,11 +10,18 @@ class ChartsController < ApplicationController
       redirect_to root_path
     end
   end
+
   def snippet(title, wordcount)  
     title.split[0..(wordcount-1)].join(" ") + (title.split.size > wordcount ? "..." : "") 
   end
+
   def index
-    @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
+    if !params[:top].nil?
+      @charts = Chart.where("id <= :id",{:id => params[:top]}).paginate(:page => params[:page], :order => "publish_date desc")
+    else
+      @charts = Chart.paginate(:page => params[:page], :order => "publish_date desc")
+    end
+
     
     @data = []
     @charts.each do |chart|

@@ -122,18 +122,16 @@
 </script>
 
 <script type="text/html" id="chart_item_template">
-    <div class="chart clearfix {{ id }}" title="{{ name }}" active="{{ active }}">
-      <div class="clearfix top">
-        <img src="{{ thumbnail_small }}"/>
-        <div class="chart_text">
-          <div class="title">
-            <span class="label success">New</span>
-            {{ name_truncated }}
-          </div>
-        </div><!-- /chart_text -->
-      </div>
-      <div class="genres"></div>
+    <div class="clearfix top">
+      <img src="{{ thumbnail_small }}"/>
+      <div class="chart_text">
+        <div class="title">
+          <span class="label success">New</span>
+          {{ name_truncated }}
+        </div>
+      </div><!-- /chart_text -->
     </div>
+    <div class="genres"></div>
 </script>
 
 <script type="text/html" id="genre_item_template">

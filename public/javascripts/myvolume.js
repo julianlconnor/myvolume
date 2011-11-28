@@ -11,6 +11,7 @@
       showChart: function(chartId) {
         console.log("Router::showChart");
         if (typeof window._ChartsView === 'undefined') window._ChartsView = new ChartsView(chartId);
+        if (typeof window._ChartSongsView === 'undefined') window._ChartSongsView = new ChartSongsView(chartId);
       },
 
       showIndex: function() {
@@ -25,6 +26,7 @@
     });
 
     window._Router = new Router;
+
 
     var ChartModel = Backbone.Model.extend({
         
@@ -63,19 +65,20 @@
     var ChartsView = Backbone.View.extend({
         el: $("#charts"),
 
-        initialize: function() {
+        initialize: function(chartId) {
              console.log("ChartsView::Init");
              _.bindAll(this, "render", "addOne", "addAll");
 
             Charts.bind("reset", this.addAll, this);
-            Charts.fetch();
+
+            if (typeof chartId !== 'undefined') Charts.fetch({ data: { top: chartId }});
+            else Charts.fetch();
 
             this.render();
         },
 
         render: function() {
             console.log("ChartsView::Render");
-            $(this.el).html("<div class='chart_list'></div>");
             return this;
         },
         
@@ -95,6 +98,9 @@
     });
     
     var ChartItemView = Backbone.View.extend({
+        tagName: 'div',
+
+        className: 'chart clearfix',
         
         events: {
             "click": "activateChart"
@@ -103,7 +109,7 @@
         initialize: function() {
             console.log("ChartItemView::Init");
             _.bindAll(this, 'render', "activateChart");
-
+            console.log(this);
             this.model.bind('change', this.render);
         },
      
@@ -111,7 +117,11 @@
             console.log("ChartItemView::Render");
 
             var template = ich.chart_item_template(this.model.toJSON());
-            $(this.el).html(template);
+            $(this.el)
+            .addClass(this.model.get('id'))
+            .attr('title', this.model.get('name'))
+            .attr('active', this.model.get('active'))
+            .html(template);
             
             var genres = this.model.attributes.genres;
             var node = $(this.el).find(".genres");
@@ -127,7 +137,7 @@
             window.activeChartModel.isInactive();
             window.activeChartModel = this.model;
             window.activeChartModel.isActive();
-        }   
+        }
     
     });
       
