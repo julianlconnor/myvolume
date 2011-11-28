@@ -55,7 +55,7 @@
       
 
 
-      <div id="content" class="container"><%= yield %></div>
+      <div id="content" class="container"></div>
 
       <% if current_user %>
         <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -136,4 +136,20 @@
 
 <script type="text/html" id="genre_item_template">
     <span class="genre">{{ name }}</span>
+</script>
+
+<script type="text/html" id="chart_song_item_template">
+    <td class="thumb">
+        <img src = "{{ thumbnail_small }}"/>
+    </td>
+    <td>
+        <div class="song_name">{{ name }}</div>
+        <div class="mix_name">({{ mix_name }})</div>
+    </td>
+    <td class="artist">
+        {{ artist }}
+    </td>
+    <td class="genre"></td>
+    <td class="heart"></td>
+    <td class="download"></td>
 </script>

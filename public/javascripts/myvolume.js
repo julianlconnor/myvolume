@@ -57,13 +57,12 @@
         url: "/charts"
 
 
-
     });
 
     window.Charts = new ChartList;
-
-    var ChartsView = Backbone.View.extend({
-        el: $("#charts"),
+    
+    var ChartSongsView = Backbone.View.extend({
+        el: "table#songs",
 
         initialize: function(chartId) {
              console.log("ChartsView::Init");
@@ -97,9 +96,47 @@
        
     });
     
-    var ChartItemView = Backbone.View.extend({
+
+    var ChartsView = Backbone.View.extend({
+        el: "#charts",
         tagName: 'div',
 
+        initialize: function(chartId) {
+             console.log("ChartsView::Init");
+             _.bindAll(this, "render", "addOne", "addAll");
+
+            Charts.bind("reset", this.addAll, this);
+
+            this.render();
+
+            if (typeof chartId !== 'undefined') Charts.fetch({ data: { top: chartId }});
+            else Charts.fetch();
+
+        },
+
+        render: function() {
+            console.log("ChartsView::Render");
+            $("#content").append('<div id="charts"></div>');
+            return this;
+        },
+        
+        addOne: function(result) {
+            console.log("ChartsView::addOne");
+            var chart = new ChartItemView({model: result});
+            $(this.el).append(chart.render().el);
+        },
+        
+        addAll: function() {
+            console.log("ChartsView::addAll");
+            window.activeChartModel = Charts.models[0];
+            window.activeChartModel.isActive();
+            Charts.each(this.addOne);
+        }
+       
+    });
+    
+    var ChartItemView = Backbone.View.extend({
+        tagName: 'div',
         className: 'chart clearfix',
         
         events: {
