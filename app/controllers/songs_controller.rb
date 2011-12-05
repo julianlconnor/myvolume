@@ -4,12 +4,12 @@ class SongsController < ApplicationController
   load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
   # GET /songs.xml
   def index
-    @songs = Song.all
+    @chart = Chart.find(params[:chart_id])
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @songs }
-    end
+    @data = []
+    @chart.songs.each {|song| @data << song.attributes.merge!({"thumbnail_small"=>song.song_thumbnail.small}).merge!({"genre"=>song.genres.first.name})}
+
+    render :json => @data.to_json
   end
 
   # GET /songs/1

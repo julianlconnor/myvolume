@@ -56,58 +56,93 @@
         model: ChartModel,
         url: "/charts"
 
+    });
+
+    var SongModel = Backbone.Model.extend({
 
     });
 
+    var ChartSongList = Backbone.Collection.extend({
+        model: SongModel,
+        url: "/songs"
+    });
+
     window.Charts = new ChartList;
+    window.Songs = new ChartSongList;
     
-    var ChartSongsView = Backbone.View.extend({
-        el: "table#songs",
+    var SongItemView = Backbone.View.extend({
+        tagName: 'tr',
+        
+        initialize: function() {
+            console.log("ChartItemView::Init");
+
+            _.bindAll(this, 'render');
+            this.model.bind('change', this.render);
+        },
+     
+        render: function() {
+            console.log("ChartItemView::Render");
+            console.log(this.model.toJSON());
+
+            var template = ich.song_item_template(this.model.toJSON());
+            $(this.el).html(template);
+            
+            //TODO: Add Genres
+            var genre = this.model.attributes.genre;
+            var node = this.$(".genre");
+            node.append(ich.genre_item_template({ name: genre }));
+
+            return this;
+        }
+    
+    });
+ 
+ var ChartSongsView = Backbone.View.extend({
+        id: 'songs',
+        tagName: 'table',
 
         initialize: function(chartId) {
-             console.log("ChartsView::Init");
+             console.log("ChartSongsView::Init");
              _.bindAll(this, "render", "addOne", "addAll");
 
-            Charts.bind("reset", this.addAll, this);
-
-            if (typeof chartId !== 'undefined') Charts.fetch({ data: { top: chartId }});
-            else Charts.fetch();
+            Songs.bind("reset", this.addAll, this);
 
             this.render();
         },
 
         render: function() {
-            console.log("ChartsView::Render");
+            console.log("ChartSongsView::render");
+            $('#content').append($(this.el));
+            this.addAll();
             return this;
         },
         
         addOne: function(result) {
-            console.log("ChartsView::addOne");
-            var chart = new ChartItemView({model: result});
-            $(this.el).append(chart.render().el);
+            console.log("ChartSongsView::addOne");
+            var song = new SongItemView({model: result});
+            $(this.el).append(song.render().el);
         },
         
         addAll: function() {
-            console.log("ChartsView::addAll");
-            window.activeChartModel = Charts.models[0];
-            window.activeChartModel.isActive();
-            Charts.each(this.addOne);
+            console.log("ChartSongsView::addAll");
+            $('table#songs').empty();
+            Songs.each(this.addOne);
         }
        
     });
     
 
     var ChartsView = Backbone.View.extend({
-        el: "#charts",
+        id: 'charts',
         tagName: 'div',
 
         initialize: function(chartId) {
-             console.log("ChartsView::Init");
-             _.bindAll(this, "render", "addOne", "addAll");
-
-            Charts.bind("reset", this.addAll, this);
+            console.log("ChartsView::Init");
+            _.bindAll(this, "render", "addOne", "addAll");
 
             this.render();
+
+            Charts.bind("reset", this.addAll, this);
 
             if (typeof chartId !== 'undefined') Charts.fetch({ data: { top: chartId }});
             else Charts.fetch();
@@ -116,7 +151,9 @@
 
         render: function() {
             console.log("ChartsView::Render");
-            $("#content").append('<div id="charts"></div>');
+            $('#content').empty();
+            $('#content').append($(this.el));
+            this.addAll();
             return this;
         },
         
@@ -128,8 +165,10 @@
         
         addAll: function() {
             console.log("ChartsView::addAll");
-            window.activeChartModel = Charts.models[0];
-            window.activeChartModel.isActive();
+            if (Charts.length > 0) {
+                window.activeChartModel = Charts.models[0];
+                window.activeChartModel.isActive();
+            }
             Charts.each(this.addOne);
         }
        
@@ -146,7 +185,6 @@
         initialize: function() {
             console.log("ChartItemView::Init");
             _.bindAll(this, 'render', "activateChart");
-            console.log(this);
             this.model.bind('change', this.render);
         },
      
@@ -174,6 +212,7 @@
             window.activeChartModel.isInactive();
             window.activeChartModel = this.model;
             window.activeChartModel.isActive();
+            Songs.fetch({data: {chart_id: this.model.get('id')}});
         }
     
     });
