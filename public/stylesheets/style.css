@@ -241,7 +241,7 @@ div.genre, span.genre {
   display: inline-block;
   margin-bottom: 4px;
   margin-right: 2px;
-  font-size: .9em;
+  font-size: .85em;
   border-radius: 4px;
   -moz-border-radius: 4px;
 }
@@ -276,6 +276,10 @@ table img {
   position: relative;
   top: 2px;
 }
+table .thumb {
+    width: 30px;
+    padding: 0 10px;
+}
 table .thumb img {
   box-shadow: 1px 1px 1px #888;
   -webkit-box-shadow: 1px 1px 1px #888;
@@ -309,7 +313,6 @@ td.artist {
 }
 td.genre {
   width: 85px;
-  font-size: .85em;
 }
 div.song_name {
   color: #333;
