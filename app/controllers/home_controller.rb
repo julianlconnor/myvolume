@@ -16,10 +16,6 @@ class HomeController < ApplicationController
   end
 
   def index
-    #Genre.fetch_genres
-    # Chart.fetch_charts
-    # TopDownload.fetch_top_downloads
-    # @charts = Chart.order("publish_date desc").limit(10)
   end
   
   def playtrack
