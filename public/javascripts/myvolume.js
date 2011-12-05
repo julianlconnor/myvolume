@@ -65,10 +65,8 @@
         el: "table#songs",
 
         initialize: function(chartId) {
-             console.log("ChartsView::Init");
+             console.log("ChartsSongsView::Init");
              _.bindAll(this, "render", "addOne", "addAll");
-
-            Charts.bind("reset", this.addAll, this);
 
             if (typeof chartId !== 'undefined') Charts.fetch({ data: { top: chartId }});
             else Charts.fetch();
@@ -77,18 +75,18 @@
         },
 
         render: function() {
-            console.log("ChartsView::Render");
+            console.log("ChartsSongsView::Render");
             return this;
         },
         
         addOne: function(result) {
-            console.log("ChartsView::addOne");
+            console.log("ChartsSongsView::addOne");
             var chart = new ChartItemView({model: result});
             $(this.el).append(chart.render().el);
         },
         
         addAll: function() {
-            console.log("ChartsView::addAll");
+            console.log("ChartsSongsView::addAll");
             window.activeChartModel = Charts.models[0];
             window.activeChartModel.isActive();
             Charts.each(this.addOne);
@@ -146,7 +144,6 @@
         initialize: function() {
             console.log("ChartItemView::Init");
             _.bindAll(this, 'render', "activateChart");
-            console.log(this);
             this.model.bind('change', this.render);
         },
      
