@@ -55,7 +55,7 @@
       
 
 
-      <div id="content" class="container"><%= yield %></div>
+      <div id="content" class="container clearfix"><%= yield %></div>
 
       <% if current_user %>
         <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -87,7 +87,6 @@
           </div>
         </div>
       <% end %>
-      <%= javascript_include_tag "myvolume.js" %>
 
     </body>
 </html>
