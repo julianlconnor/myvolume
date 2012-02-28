@@ -6,11 +6,11 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'nokogiri'
 gem 'cancan', :git => 'git://github.com/ryanb/cancan.git', :branch => '2.0'
 gem 'omniauth'
 gem 'faraday'	# Handle FB OmniAuth SSL
 gem 'haml'
-gem 'mysql'
 gem 'json'		# API Calls
 gem 'mongrel'	# Web Server
 gem 'pg', '~> 0.11.0'		# PostgreSQL
