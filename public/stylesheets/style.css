@@ -266,7 +266,7 @@ tr {
 
 table {
 /* edit bootstrap */
-  width: auto;
+  width: 690px;
   border: solid 1px #ccc;
   box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
   word-wrap: break-word;

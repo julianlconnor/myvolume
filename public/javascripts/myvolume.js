@@ -73,10 +73,14 @@
     var SongItemView = Backbone.View.extend({
         tagName: 'tr',
         
+        events: {
+          "click" : "play"
+        },
+
         initialize: function() {
             console.log("ChartItemView::Init");
 
-            _.bindAll(this, 'render');
+            _.bindAll(this, 'render', 'play');
             this.model.bind('change', this.render);
         },
      
@@ -93,6 +97,17 @@
             node.append(ich.genre_item_template({ name: genre }));
 
             return this;
+        },
+
+        play: function() {
+            var sample_url = this.model.get('sample_url');
+          
+            $(".playing").removeClass("playing");
+            $(this.el).addClass("playing");
+
+            $("#jquery_jplayer_1").jPlayer("setMedia", {
+              mp3: sample_url
+            }).jPlayer("play");
         }
     
     });
@@ -140,12 +155,9 @@
             console.log("ChartsView::Init");
             _.bindAll(this, "render", "addOne", "addAll");
 
-            this.render();
-
             Charts.bind("reset", this.addAll, this);
+            this.render(chartId);
 
-            if (typeof chartId !== 'undefined') Charts.fetch({ data: { top: chartId }});
-            else Charts.fetch();
 
         },
 
@@ -153,7 +165,10 @@
             console.log("ChartsView::Render");
             $('#content').empty();
             $('#content').append($(this.el));
-            this.addAll();
+
+            if (typeof chartId !== 'undefined') Charts.fetch({ data: { top: chartId }});
+            else Charts.fetch();
+
             return this;
         },
         
@@ -163,14 +178,19 @@
             $(this.el).append(chart.render().el);
         },
         
-        addAll: function() {
+        addAll: function(callback) {
             console.log("ChartsView::addAll");
             if (Charts.length > 0) {
                 window.activeChartModel = Charts.models[0];
                 window.activeChartModel.isActive();
             }
             Charts.each(this.addOne);
+
+
+            if (typeof callback === 'function') callback();
+
         }
+        
        
     });
     
