@@ -2,7 +2,6 @@ require 'rubygems'
 require 'set'
 require 'open-uri'
 require 'net/http'
-require 'mysql'
 
 class HomeController < ApplicationController
 

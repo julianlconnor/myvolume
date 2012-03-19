@@ -15,6 +15,8 @@ body {
   line-height: 18px;
   color: #333333;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke: 1px rgba(0,0,0,0);
 }
 .top_background {
   height: 230px;
@@ -99,50 +101,29 @@ html[xmlns] .clearfix {
   left:0;
   overflow-x:visible;
   overflow-y:visible;
-  position:fixed;
   right:0;
   top:0;
   z-index:10000;
+  margin: 15px 0;
 }
-.topbar img {
-  padding: 7px 10px 8px 0;
+.topbar .logo img {
+  padding: 7px 35px;
+  margin-right: 30px;
   float: left;
+}
+.topbar li.avatar img {
+  padding: 7px 0;
 }
 .topbar a {
   color: #7a7a7a;
 }
 .topbar a:hover, .topbar ul .active > a {
-  background-color: #898989;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#cecece), to(#cdcccc));
-  background-image: -moz-linear-gradient(top, #cecece, #cdcccc);
-  background-image: -ms-linear-gradient(top, #cecece, #cdcccc);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cecece), color-stop(100%, #cdcccc));
-  background-image: -webkit-linear-gradient(top, #cecece, #cdcccc);
-  background-image: -o-linear-gradient(top, #cecece, #cdcccc);
-  background-image: linear-gradient(top, #cecece, #cdcccc);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cecece', endColorstr='#cdcccc', GradientType=0);
   color: #8b8b8b;
   text-decoration: none;
-}
-.topbar-inner, .topbar .fill {
-  background-color: #eee;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#eee), to(#e3e0e1));
-  background-image: -moz-linear-gradient(top, #eee, #e3e0e1);
-  background-image: -ms-linear-gradient(top, #eee, #e3e0e1);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eee), color-stop(100%, #e3e0e1));
-  background-image: -webkit-linear-gradient(top, #eee, #e3e0e1);
-  background-image: -o-linear-gradient(top, #eee, #e3e0e1);
-  background-image: linear-gradient(top, #eee, #e3e0e1);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eee', endColorstr='#e3e0e1', GradientType=0);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 .topbar div > ul, .nav {
   display: block;
   float: left;
-  margin: 0 10px 0 0;
   position: relative;
   left: 0;
 }
@@ -154,12 +135,17 @@ html[xmlns] .clearfix {
 .topbar div > ul > li, .nav > li {
   display: block;
   float: left;
+  margin-left: 15px;
+}
+.topbar ul li:first-child {
+  margin-left: 0;
 }
 .topbar div > ul a, .nav a {
   display: block;
+  color: #000;
+  padding: 12px 0;
   float: none;
-  padding: 10px 10px 11px;
-  line-height: 19px;
+  line-height: 15px;
   text-decoration: none;
 }
 
@@ -266,7 +252,7 @@ tr {
 
 table {
 /* edit bootstrap */
-  width: 690px;
+  width: 698px;
   border: solid 1px #ccc;
   box-shadow: rgba(0, 0, 0, 0.0976562) 0 1px 5px;
   word-wrap: break-word;
