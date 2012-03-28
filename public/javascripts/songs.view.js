@@ -1,28 +1,24 @@
 myvolume.views.Songs = Backbone.View.extend({
-    id: 'songs',
-    tagName: 'table',
+    el: '#songs',
 
     initialize: function(chartId) {
-         console.log("ChartSongsView::Init");
-         _.bindAll(this, "render", "addOne", "addAll");
+         _.bindAll(this,
+             'render',
+             'fadeIn');
+         this.view = new myvolume.views.SongsTable();
+         this.view.on('ready', this.fadeIn);
     },
 
-    render: function() {
-        console.log("ChartSongsView::render");
-        $('#content').append($(this.el));
-        this.addAll();
+    render: function(id) {
+        myvolume.routers.workspace.navigate('charts/' + id);
+        $(this.el).empty();
+        $(this.el).html('<div class="loader"><img src="/images/ajax-loader.gif" /></div>');
+        this.view.render(id);
         return this;
     },
-    
-    addOne: function(result) {
-        console.log("ChartSongsView::addOne");
-        var song = new SongItemView({model: result});
-        $(this.el).append(song.render().el);
-    },
-    
-    addAll: function() {
-        console.log("ChartSongsView::addAll");
-        $('table#songs').empty();
+
+    fadeIn: function() {
+        $(this.el).htmlFadeIn(this.view.el);
     }
-   
+    
 });

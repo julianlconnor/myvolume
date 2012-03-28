@@ -41,8 +41,8 @@ class ChartsController < ApplicationController
   # Will is the best!
   # GET /charts/1.xml
   def show
-    @data = @chart = Chart.find(params[:id])
-    @data['songs'] = @chart.songs
+    @chart = Chart.find(params[:id])
+    @data = @chart.songs.map { |song| song.attributes }
 
     render :json => @data.to_json
   end

@@ -248,11 +248,17 @@ div.genre {
   font-size: 1.1em;
 }
 /* Chart Songs Table */
-#chart_songs {
-  margin: 0px 0 20px 0;
+#songs {
   position: relative;
-  float: left;
-  width: 690px;
+  float: right;
+  min-height: 500px;
+  max-width: 695px; width: 695px;
+}
+#songs .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
 }
 tr {
   color: #555;

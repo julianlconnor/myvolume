@@ -11,7 +11,16 @@ myvolume.views.Chart = Backbone.View.extend({
     
     initialize: function() {
         console.log("ChartItemView::Init");
-        _.bindAll(this, 'render', 'triggerClicked');
+        _.bindAll(this,
+            'render',
+            'triggerClicked', 
+            'triggerActivate',
+            'triggerDeactivate',
+            'activate',
+            'deactivate');
+
+        this.model.on('activate', this.activate);
+        this.model.on('deactivate', this.deactivate);
     },
  
     render: function() {
@@ -29,9 +38,20 @@ myvolume.views.Chart = Backbone.View.extend({
     },
 
     triggerClicked: function() {
-        this.trigger('clicked', this.model);
-        $('[active="true"]').attr('active', 'false');
+        this.trigger('chart:clicked', this.model);
+    },
+    triggerActivate: function() {
+        this.trigger('activate', this.model);
+    },
+    triggerDeactivate: function() {
+        this.trigger('deactivate', this.model);
+    },
+    activate: function() {
         $(this.el).attr('active', 'true');
+    },
+    deactivate: function() {
+        $(this.el).attr('active', 'false');
     }
+
 
 });

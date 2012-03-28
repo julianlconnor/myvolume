@@ -1,9 +1,12 @@
-myvolume.views.Song = Backbone.View.extend({
+myvolume.views.SongRow = Backbone.View.extend({
     tagName: 'tr',
     
     events: {
       "click" : "play"
     },
+
+    template: _.template($('#song-item-template').html()),
+    templateGenre: _.template($('#genre-item-template').html()),
 
     initialize: function() {
         console.log("ChartItemView::Init");
@@ -13,16 +16,14 @@ myvolume.views.Song = Backbone.View.extend({
     },
  
     render: function() {
-        console.log("ChartItemView::Render");
-        console.log(this.model.toJSON());
+        console.log("ChartItemView::Render", this.model);
 
-        var template = ich.song_item_template(this.model.toJSON());
-        $(this.el).html(template);
+        $(this.el).html(this.template(this.model.toJSON()));
         
         //TODO: Add Genres
-        var genre = this.model.attributes.genre;
+        var genre = this.model.get('genre');
         var node = this.$(".genre");
-        node.append(ich.genre_item_template({ name: genre }));
+        node.append(this.templateGenre({ name: genre }));
 
         return this;
     },

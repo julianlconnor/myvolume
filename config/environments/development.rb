@@ -15,7 +15,8 @@ Myvolume::Application.configure do
       "jquery.jplayer.min.js",
       "underscore.js",
       "backbone.js",
-      "application.js"
+      "application.js",
+      "jquery_extension.js"
   ]
   MYVOLUME_JS_APP = [
       "chart.view.js",
@@ -24,6 +25,7 @@ Myvolume::Application.configure do
       "chart.collection.js",
       "song.view.js",
       "songs.view.js",
+      "songstable.view.js",
       "song.model.js",
       "song.collection.js",
       "workspace.js"
