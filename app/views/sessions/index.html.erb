@@ -1,0 +1,37 @@
+<div class="clearfix login_outside">
+    <div class="clearfix">
+      <div class="facebook_login">
+        <%= link_to image_tag("facebook_signin.png"), "/auth/facebook", :class => "facebook" %>
+      </div>
+      <div class="register_button"><%= link_to "Register", new_user_path, :class => "register btn generic" %></div> 
+    </div>
+    <%= image_tag "myvolume_logo_72dpi.png" %>
+    <div class="login_box">
+      <%= render "login" %>
+    </div>
+</div><!-- /login_outside -->
+
+<script type="text/javascript">
+(function($) {
+    $('.register').live('click', function(event) {
+      event.preventDefault();
+      $('.login_box').slideUp(400, function() {
+        $('.login_box').html('<%= escape_javascript(render(:partial => 'users/new')) %>');
+        $('.login_box').slideDown(400, function() {
+          $('.register_button').html('<%= link_to "Login", sessions_path, :class => "login btn generic" %>');
+          });
+        });
+      });
+
+    $('.login').live('click', function(event) {
+      event.preventDefault();
+      $('.login_box').slideUp(400, function() {
+        $('.login_box').html('<%= escape_javascript(render(:partial => 'login')) %>');
+        console.log('done');
+        $('.login_box').slideDown(400, function() {
+          $('.register_button').html('<%= link_to "Register", new_user_path, :class => "register btn generic" %>');
+          });
+        });
+      });
+})(jQuery);
+</script>

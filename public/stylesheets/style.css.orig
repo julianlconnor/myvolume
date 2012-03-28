@@ -1,0 +1,115 @@
+body {
+    padding-top: 40px;
+}
+.container {
+    overflow: hidden;
+}
+.clear {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+/* Charts Structure */
+#charts {
+<<<<<<< HEAD
+    margin-top: 12px;
+    border-bottom: 1px solid #ddd;
+=======
+    margin-top: 30px;
+>>>>>>> e0b34e65cf62cbaef4b056215f95b01d2574d4a6
+}
+#charts h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.chart {
+    float: left;
+    width: 468px;
+    margin-bottom: 20px;
+}
+.chart_list {
+    position: relative;
+}
+.chart_outside {
+    border-bottom: 1px solid #ddd;
+}
+.chart .title {
+    color: #333;
+    font-weight: bold;
+}
+.chart .genres {
+    font-size: 11px;
+    width: 300px;
+}
+.chart_text, .chart img {
+    float: left;
+}
+.chart img {
+    margin-right: 10px;
+    box-shadow: 1px 1px 1px #888;
+    -webkit-box-shadow: 1px 1px 1px #888;
+    -moz-box-shadow: 1px 1px 1px #888;
+}
+/*.genre {
+    padding: 3px;
+}
+.genre.even {
+    color: #8ac0de;
+}
+.genre.odd {
+    color: #516c8a;
+}*/
+
+/*
+ *  #404a69 darkest blue
+ *  #516c8a darker blue
+ *  #8ac0de blue -- background
+ *  #bfd3de light blue
+ *  #ffac00 orange
+ *  #ffffff and of course white
+ */
+
+/* Pagination */
+.pagination {
+    float: right;
+    margin-top: 18px;
+    height: 25px;
+}
+.pagination a, .pagination em, .pagination span {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+}
+.pagination a {
+    color: #2D6E90;
+    
+}
+.pagination a:hover {
+    border: 1px solid #8ac0de;
+    text-decoration: none;
+}
+.pagination em{
+}
+
+.login-box {
+  margin: 0 auto;
+  width: 400px;
+  border-radius: 3px;
+}
+.register-box {
+  width: 400px;
+}
+.center {
+  margin: 0 auto;
+  width: 800px;
+}
+
+/* ALERT MESSAGE */
+.alert-message {
+  position: absolute;
+  top: 50px;
+  width: 910px;
+}
+form#new_user {
+  width: 400px;
+  margin: 0 auto;
+}

@@ -4,12 +4,12 @@ class SongsController < ApplicationController
   load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
   # GET /songs.xml
   def index
-    @songs = Song.all
+    @chart = Chart.find(params[:chart_id])
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @songs }
-    end
+    @data = []
+    @chart.songs.each {|song| @data << song.attributes.merge!({"thumbnail_small"=>song.song_thumbnail.small}).merge!({"genre"=>song.genres.first.name})}
+
+    render :json => @data.to_json
   end
 
   # GET /songs/1
@@ -18,6 +18,9 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
   end
 
+  def top_downloads
+    @top_downloads = TopDownload.paginate :page => params[:top_download_page], :order => "rank asc"
+  end
   # GET /songs/new
   # GET /songs/new.xml
   def new

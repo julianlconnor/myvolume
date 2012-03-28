@@ -1,0 +1,9 @@
+<% if !@songs.nil? %>
+<table>
+    <% @songs.each do |song| %>
+      <tr class="play <%= song.id %>" name="<%= song.sample_url %>" class="#{song.id}">
+          <%= render 'songs/song', :song => song %>
+      </tr>
+    <% end %>
+</table>
+<% end %>

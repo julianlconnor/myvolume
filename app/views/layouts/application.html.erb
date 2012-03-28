@@ -1,210 +1,165 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>myvolu.me</title>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :all %>
-  <%= javascript_include_tag "ajax.js" %>
-  <%= javascript_include_tag "playerjuggle.js" %>
-  
+  <head>
+      <title>myvolu.me</title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+      <%= stylesheet_link_tag :all %>
+      <% for dep in MYVOLUME_JS_DEPS %>
+        <%= javascript_include_tag dep %>
+      <% end %>
 
-  <%= csrf_meta_tag %>
-  <!-- Google Analytics -->
-  <script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-12298170-2']);
-	  _gaq.push(['_trackPageview']);
+      <script type="text/javascript">
+          _.templateSettings = {
+              interpolate: /\{\{\=(.+?)\}\}/g,
+              evaluate: /\{\{(.+?)\}\}/g
+          };
+      </script>
 
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	</script>
-	<!-- End Google Analytics -->
-</head>
-<body>
-	<div id="topbar">
-		<div id="logo"><%= link_to "myvolu.meα", root_path  %></div>
-    <div id="tagline">An easy way to discover new music.</div>
-    <div id="flashSpace">
-			<%= render 'layouts/flash' %>
-    </div>
-		<!-- <ul id="topnav">
-			<li class="highlighted"><%= link_to "Charts", charts_path %></li>
-		</ul> -->
-    <div id="right">
-      <span id="usernav">
-        <%= render 'home/userNav' %>
-      </span> 
-    </div>
-	</div>
-	<div id="container">
-		<div id="header">
-		</div>
-		<%= yield %>
-		<div id="footer">
-			<div class="content_wrapper">
-				<p id="copyright">
-				©2011 mumbls
-				<strong> ~ !_!</strong>
-				</p>
-				<div id="lastupdate"><%= CronWatcher.last.last_update.strftime("Last Updated at %I:%M%p on %m/%d/%Y ♥") %></div>  
-			</div>
-		</div>
-	</div>
-	
+      <%= csrf_meta_tag %>
+
+      <!-- Google Analytics -->
+      <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-12298170-2']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+           })();
+      </script>
+
+    <!-- End Google Analytics -->
+  </head>
+  <body>
+    <div class="top_background"></div>
+      <% if current_user %>
+        <div class="alert">
+          <%= render 'layouts/flash', :locals => {:flash => flash} %>
+        </div>
+        <div class="topbar">
+          <div class="container clearfix">
+            <div class="logo">
+              <a href="/"><%= image_tag('myvolume-logo.png') %></a>
+            </div>
+            <ul class="secondary-nav">
+              <li class="avatar"><img src="<%= avatar_url(current_user) %>" height="26px"/></li>
+              <li><a href="#"><%= proper_name(current_user) %></a></li>
+              <li><a href="/log_out">Log Out</a></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+      
 
 
-</body>
+      <% if current_user %>
+        <div id="content" class="container clearfix">
+            <div id="charts"></div>
+            <div id="songs"></div>
+        </div>
+
+
+        <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+        <div class="jp-audio-container">
+          <div class="jp-audio">
+            <div class="jp-type-single">
+              <div id="jp_interface_1" class="jp-interface">
+                <ul class="jp-controls">
+                  <li><a href="#" class="jp-play" tabindex="1">play</a></li>
+                  <li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
+                  <li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
+                  <li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
+                </ul>
+                <div class="jp-progress-container">
+                  <div class="jp-progress">
+                    <div class="jp-seek-bar">
+                      <div class="jp-play-bar"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="jp-volume-bar-container">
+                  <div class="jp-volume-bar">
+                    <div class="jp-volume-bar-value"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div id="content" class="container clearfix"><%= yield %></div>
+      <% end %>
+
+    </body>
+
+    <script type="text/template" id="chart-item-template">
+        <div class="clearfix top">
+          <img src="{{= thumbnail_small }}"/>
+          <div class="chart_text">
+            <div class="title">
+              <span class="label success">New</span>
+              {{= name_truncated }}
+            </div>
+          </div><!-- /chart_text -->
+        </div>
+        <div class="genres"></div>
+    </script>
+
+    <script type="text/template" id="genre-item-template">
+        <span class="genre">{{= name }}</span>
+    </script>
+
+    <script type="text/template" id="song-item-template">
+        <td class="thumb">
+            <img src = "{{= thumbnail_small }}"/>
+        </td>
+        <td>
+            <div class="song_name">{{= name }}</div>
+            <div class="mix_name">({{= mix_name }})</div>
+        </td>
+        <td class="artist">
+            {{= artist }}
+        </td>
+        <td class="genre"></td>
+        <td class="heart"></td>
+        <td class="download"></td>
+    </script>
+
+    <% for dep in MYVOLUME_JS_APP %>
+      <%= javascript_include_tag dep %>
+    <% end %>
+
 </html>
-<script>
-	var a = audiojs.createAll({
-		trackEnded: function() {
-			var playing = $('ol li.playing');
-			var next = $('ol li.playing').next();
-			if (!next.length) next = $('ol li').first();
-			// Image juggle
-			playing.find('.play_button').html("<img src='/images/player_play.png'>");
-			next.find('.play_button').html("<img src='/images/player_pause.png'>");
+<script type="text/javascript">
+  $('.alert-message').delay(5000).slideUp(1000, function () { });
+  $(document).ready(function(){
+    
+    $("#jquery_jplayer_1").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "http://geo-samples.beatport.com/items/volumes/volume1/items/2000000/600000/70000/6000/300/80/2676381.LOFI.mp3",
+        });
+      },
+      ended: function (event) {
+        $(this).jPlayer("play");
+      },
+      swfPath: "js",
+      supplied: "mp3"
+    });
+    
+    $(".play").live("click", function(e){
+      var sample_url = $(this).attr('name');
+      
+        $(".playing").removeClass("playing");
+        $(this).addClass("playing");
 
-			next.addClass('playing').siblings().removeClass('playing');
-			audio.load($('.track_info a', next).attr('data-src'));
-			audio.play();
-		}
-	});
-	
-	var audio = a[0];
-	first = $('#charts ul .track_info a').attr('data-src');
-	audio.load(first);
-	
-	function playAudio(url){
-		audio.load(url);
-		audio.play();
-	}
-
-	// Setup the player to autoplay the next track
-	// Load in the first track
-	// Expand a playlist on header click
-	$('div.chartheader').live('click',function(e) {
-		var chart_id = $(this).attr("id");
-		$("." + chart_id).slideToggle("slow");
-	});
-	
-	$(window).scroll(function(){
-		var x = 0 - ($(this).scrollLeft() / 15);
-				$("#player_fixed").offset({
-					left: x + 30
-				});
-	});
-
-	// Load in a track on click from right div playlists
-	$('ul li div.play_button').live('click',function(e) {
-		// Copy selected node
-		var clicked_node = $(this).parent().parent().parent().parent().parent().clone();
-		$('ol li.playing').find('.play_button').html("<img src='/images/player_play.png'>");
-		var playing = $(".playing").removeClass('playing');
-		// Hide play and queue button during playback
-		clicked_node.find('.play_button').html("<img src='/images/player_pause.png'>");
-		clicked_node.find('.queue_button').html("<img src='/images/minus.png'>");
-		// Show play and queue button for previously playing track
-		// playing.find('.play_button').show();
-		// playing.find('.queue_button').show();
-		// Load the track into the player
-
-		e.preventDefault();
-		//$(this).addClass('playing').siblings().removeClass('playing');
-		clicked_node.addClass('playing').addClass('playlist').prependTo($("#player_playlist"));
-			if ( $("#player_playlist li").length > 5 )
-				$("#player_playlist li:last").remove();
-		playAudio($('.track_info a', clicked_node).attr('data-src'));
-		// audio.load($('.track_info a', clicked_node).attr('data-src'));
-		// 		audio.play();
-	});
-
-	// Queue track on playlist, same but append
-	$('ul li div.queue_button').live('click', function(e) {
-		var clicked_node = $(this).parent().parent().parent().parent().parent().clone();
-		// Load the track into the player
-		//e.preventDefault();
-		clicked_node.find('.queue_button').html("<img src='/images/minus.png'>");
-		//$(this).addClass('playing').siblings().removeClass('playing');
-		clicked_node.appendTo($("#player_playlist"));
-		if ( $("#player_playlist li").length > 5 )
-			$("#player_playlist li:last").remove()
-	});
-
-	// Load in a track on click from the player playlist
-	$('ol li:not(.playing) div.play_button').live('click', function(e) {
-		var clicked_node = $(this).parent().parent().parent().parent().parent();
-		// Load the track into the player
-		e.preventDefault();
-		// If there's a track currently playing, change it's play icon to 'paused'
-		$('ol li.playing').find('.play_button').html("<img src='/images/player_play.png'>");
-		clicked_node.find('.play_button').html("<img src='/images/player_pause.png'>");
-		clicked_node.addClass('playing').siblings().removeClass('playing');
-		audio.load($('.track_info a', clicked_node).attr('data-src'));
-		audio.play();
-	});
-
-	// Track that's playing, gets paused, etc..
-	$('ol li.playing div.play_button').live('click', function(e) {
-		var clicked_node = $(this).parent().parent().parent().parent().parent();
-		e.preventDefault();
-		// If the track is currently paused
-		//if ( clicked_node.find('.play_button img').attr("src") == '/images/player_pause.png'){
-		if (audio.playing){
-			//alert("let's pause");
-			clicked_node.find('.play_button').html("<img src='/images/player_play.png'>");
-			audio.pause();
-		}
-		else {
-			//alert("let's play");
-			clicked_node.find('.play_button').html("<img src='/images/player_pause.png'>");
-			audio.play();
-		}
-	});
-
-	// Track that's not playing gets removed
-	$('ol li:not(.playing) div.queue_button').live('click', function(e) {
-		var clicked_node = $(this).parent().parent().parent().parent().parent();
-		e.preventDefault();
-		$('ol li').eq($('ol li').index(clicked_node)).remove();
-	});
-
-	// Track that's playing is removed
-	$('ol li.playing div.queue_button').live('click', function(e) {
-		var clicked_node = $(this).parent().parent().parent().parent().parent();
-		e.preventDefault();
-		var next = $('ol li.playing').next();
-		$('ol li').eq($('ol li').index(clicked_node)).remove();
-
-		if (!next.length && !($('ol li').length)) {
-			// Removing node, empties player_playlist, load first node
-			first = $('ul .track_info a').attr('data-src');
-			audio.load(first);
-		}
-		else if ( $('ol li').first() != null ) {
-			// Removed last node in player_playlist, set first to playing
-			var next = $('ol li').first();
-			next.addClass('playing');
-			next.find('.play_button').html("<img src='/images/player_pause.png'>");
-			audio.load($('.track_info a', next).attr('data-src'));
-			audio.play();
-		}
-		else {
-			// Simply set next node in player_playlist to playing
-			next.addClass('playing');
-			next.find('.play_button').html("<img src='/images/player_pause.png'>")
-			audio.load($('.track_info a', next).attr('data-src'));
-			audio.play();
-		}
-	});
-	// Handles the toggle for logging in and registration
-	$('span.registerToggle').live('click',function(e) {
-		$("#loginbox").slideToggle("slow");
-		$("#user_box").slideToggle("slow");
-	});
+        $("#jquery_jplayer_1").jPlayer("setMedia", {
+          mp3: sample_url
+        }).jPlayer("play");
+    });
+  });
 </script>

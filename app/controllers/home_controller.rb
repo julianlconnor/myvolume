@@ -2,22 +2,19 @@ require 'rubygems'
 require 'set'
 require 'open-uri'
 require 'net/http'
-require 'mysql'
 
 class HomeController < ApplicationController
+
+  before_filter :authenticate
+
+  def authenticate
+    if !current_user
+      flash[:error] = "You must log in to see that page."
+      redirect_to :controller => "sessions", :action => "index"
+    end
+  end
+
   def index
-    #Genre.fetch_genres
-    # Chart.fetch_charts
-    # TopDownload.fetch_top_downloads
-    # @charts = Chart.order("publish_date desc").limit(10)
-    @user = User.new
-    # if current_user
-    #   favorite
-    # end
-    @charts = Chart.paginate :page => params[:chart_page], :order => "publish_date desc"
-    @topdownloads = TopDownload.paginate :page => params[:top_download_page], :order => "rank asc"
-    @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
-    @mostActive = mergeActiveAuthUsers()
   end
   
   def playtrack

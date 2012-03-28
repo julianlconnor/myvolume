@@ -1,0 +1,29 @@
+<div class="user-profile">
+  <div class="page-header">
+    <h3><%= @user.alias %></h3>
+  </div>
+  <div class="page-header">
+    <h3>Favorites</h3>
+  </div>
+  <table class="zebra-striped">
+      <tr>
+        <th>#</th>
+        <th>Artwork</th>
+        <th>Track</th>
+        <th>Remix</th>
+        <th>Artist</th>
+        <th>Favorited On</th>
+      </tr>
+      <% @user.favorites.each_with_index do |f,i| %>
+      <tr>
+        <td><%= i %></td>
+        <td><%= image_tag f.song.song_thumbnail.small %></td>
+        <td><%= f.song.name %></td>
+        <td><%= f.song.mix_name %></td>
+        <td><%= f.song.artist %></td>
+        <td><%= f.song.created_at.to_formatted_s(:short) %></td>
+      </tr>
+      <% end %>
+    </table>
+        
+</div>

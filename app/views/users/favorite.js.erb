@@ -1,11 +1,2 @@
-$("#flashSpace").html("<%= escape_javascript(render('layouts/flash')) %>");
-$("#rightbar").html("<%= escape_javascript(render('home/sessionAjaxSwitch')) %>");
-var temp = $(".heart.justclicked");
-temp.html("❤");
-var hearts = $("a.<%= @song_id %>");
-<% if @error == 1 -%>
-	hearts.removeClass("active");
-<% elsif @error == 0 -%>
-	hearts.addClass("active");
-<% end %>
-temp.removeClass("justclicked");
+$(".alert").html("<%= escape_javascript(render('layouts/flash', :locals => {:flash => flash})) %>");
+$("#chart_songs tr.<%= @song_id %> td.heart").toggleClass('active');

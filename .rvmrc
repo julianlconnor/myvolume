@@ -1,8 +1,2 @@
-#!/usr/bin/env bash
-
-# This is an RVM Project .rvmrc file, used to automatically load the ruby
-# development environment upon cd'ing into the directory
-
-# First we specify our desired <ruby>[@<gemset>], the @gemset name is optional.
 rvm use 1.8.7
-rvm gemset use global
+rvm gemset use myvolume

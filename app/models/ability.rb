@@ -7,8 +7,6 @@ class Ability
       can :read, :all
       can :update, :all
       can :destroy, :all
-    else
-      can :read, :all
     end
   end
     

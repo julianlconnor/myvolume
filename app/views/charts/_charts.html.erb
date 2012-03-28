@@ -1,0 +1,34 @@
+<div id = "charts">
+  <div id = "chart_pagination">
+    <%= render 'charts/pagination' %>
+  </div>
+  <div class="chart_list">
+    <% @charts.each do |chart| %>
+      <div class="chart clearfix" <%= "name=/charts/#{chart.id}/get" %> title="<%= chart.name %>">
+      <div class="clearfix top">
+        <%= image_tag chart.chart_thumbnail.small %>
+        <div class="chart_text">
+          <div class="title">
+            <span class="label success">New</span>
+            <%= truncate(chart.name, :length => 40) %>
+          </div>
+        </div><!-- /chart_text -->
+      </div>
+          <div class="genres">
+            <% chart.genres.each do |genre| %>
+              <span class="genre">
+                <% if genre.name.length > 12 %>
+                  <%= truncate(genre.name, :length => 12, :separator => ' ', :omission => '') %>
+                <% else %>
+                  <%= genre.name %>
+                <% end %>
+              </span>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div><!-- /chart_list -->
+</div>
+<div id = "chart_songs">
+  <%= render "chart_songs" %>
+</div>

@@ -1,6 +1,13 @@
 class SessionsController < ApplicationController
-  
+  def index
+    @user = User.new
+    if current_user
+      redirect_to :controller => 'home', :action => 'index'
+    end
+  end
+
   def new
+    @user = User.new
   end
   
   def create
@@ -10,21 +17,20 @@ class SessionsController < ApplicationController
       auth = request.env['omniauth.auth']
       authorization = Authorization.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authorization.create_with_omniauth(auth)
       session[:uid] = authorization['id']
-      flash.now.alert = "You have been logged in via Facebook."
-      redirect_to root_url
+      flash[:success] = "You have been logged in via Facebook."
+      redirect_to :controller => 'home', :action => 'index'
     else
       # Regular authentication request
       user = User.authenticate(params[:email], params[:password])
       if user
         session[:user_id] = user.id
-        flash.now.alert = "You are now Logged in!"
+        flash[:success] = "You are now Logged in!"
+        redirect_to :controller => 'home', :action => 'index'
       else
-        flash.now.alert = "Invalid email or password"
+        flash[:error] = "Invalid email or password."
+        redirect_to root_path
       end
     end
-    @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
-    @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
-    @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
   end
   
   def refresh
@@ -34,9 +40,8 @@ class SessionsController < ApplicationController
     @user = User.new
     session[:user_id] = nil
     session[:uid] = nil
-    flash.now.alert = "You have been Logged Out!"
-    @charts = Chart.paginate :page => params[:page], :order => "publish_date desc"
-    @topdownloads = TopDownload.paginate :page => params[:page], :order => "rank asc"
+    flash[:success] = "You have been Logged Out!"
+    redirect_to(root_path)
   end
 
 end

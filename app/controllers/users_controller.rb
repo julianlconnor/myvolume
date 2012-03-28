@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource :only => [:edit, :create, :update, :destroy]
+  load_and_authorize_resource :only => [:edit, :update, :destroy]
   def index
     redirect_to :root
   end
@@ -19,17 +19,17 @@ class UsersController < ApplicationController
         if !favorite
           favorite = AuthorizationFavorite.new(:song_id => params[:id], :authorization_id => current_user.id)
           if favorite.save
-            flash.now.alert = "Successfully added #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
+            flash[:info] = "Successfully added #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
             favorite.song.favorite_count += 1
             current_user.favorite_count += 1
             favorite.song.save
           else
             @error = 1
-            flash.now.alert = "Unable to add #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
+            flash[:info] = "Unable to add #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
           end
         else
           @error = 1
-          flash.now.alert = "Successfully removed #{favorite.song.name} (#{favorite.song.mix_name}) from your favorites."
+          flash[:info] = "Successfully removed #{favorite.song.name} (#{favorite.song.mix_name}) from your favorites."
           favorite.song.favorite_count -= 1
           current_user.favorite_count -= 1
           favorite.song.save
@@ -41,17 +41,17 @@ class UsersController < ApplicationController
         if !favorite
           favorite = Favorite.new(:song_id => params[:id], :user_id => current_user.id)
           if favorite.save
-            flash.now.alert = "Successfully added #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
+            flash[:info] = "Successfully added #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
             favorite.song.favorite_count += 1
             current_user.favorite_count += 1
             favorite.song.save
           else
             @error = 1
-            flash.now.alert = "Unable to add #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
+            flash[:info] = "Unable to add #{favorite.song.name} (#{favorite.song.mix_name}) to your favorites."
           end
         else
           @error = 1
-          flash.now.alert = "Successfully removed #{favorite.song.name} (#{favorite.song.mix_name}) from your favorites."
+          flash[:info] = "Successfully removed #{favorite.song.name} (#{favorite.song.mix_name}) from your favorites."
           favorite.song.favorite_count -= 1
           current_user.favorite_count -= 1
           favorite.song.save
@@ -60,11 +60,12 @@ class UsersController < ApplicationController
       end
       current_user.save
     else
-      flash.now.alert = "You must log in or register to favorite tracks. :)"
+      flash[:error] = "You must log in or register to favorite tracks. :)"
       @error = 1
     end
-    @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
-    @mostActive = mergeActiveAuthUsers()
+    @song = Song.find(@song_id)
+    # @mostLoved = Song.find(:all, :limit => 10, :order => "favorite_count DESC, created_at DESC")
+    #     @mostActive = mergeActiveAuthUsers()
   end
   
   def mergeActiveAuthUsers
@@ -85,9 +86,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash.now.alert = "You have successfully registered. Please log-in."
+      flash[:success] = "You have successfully registered. Please log-in."
+      redirect_to root_path
     else
-      render "errors.js.erb"
+      render :action => "new"
     end
   end
 
