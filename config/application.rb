@@ -36,6 +36,16 @@ module Myvolume
       OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     end
 
+    config.myvolume_js_deps = [
+        "jquery.js",
+        "jquery.jplayer.min.js",
+        "underscore.js",
+        "backbone.js"
+    ]
+    config.myvolume_js_app = [
+        "workspace.js"
+    ]
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

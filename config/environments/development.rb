@@ -10,6 +10,25 @@ Myvolume::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
+  MYVOLUME_JS_DEPS = [
+      "jquery.js",
+      "jquery.jplayer.min.js",
+      "underscore.js",
+      "backbone.js",
+      "application.js"
+  ]
+  MYVOLUME_JS_APP = [
+      "chart.view.js",
+      "charts.view.js",
+      "chart.model.js",
+      "chart.collection.js",
+      "song.view.js",
+      "songs.view.js",
+      "song.model.js",
+      "song.collection.js",
+      "workspace.js"
+  ]
+
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true

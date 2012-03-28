@@ -12,6 +12,13 @@ Myvolume::Application.configure do
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
+  MYVOLUME_JS_DEPS = [
+      "myvolume_deps.min.js"
+  ]
+  MYVOLUME_JS_APP = [
+      "myvolume_app.min.js"
+  ]
+
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
