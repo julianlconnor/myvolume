@@ -12,11 +12,31 @@ Myvolume::Application.configure do
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
+  #MYVOLUME_JS_DEPS = [
+  #    "myvolume_deps.min.js"
+  #]
+  #MYVOLUME_JS_APP = [
+  #    "myvolume_app.min.js"
+  #]
   MYVOLUME_JS_DEPS = [
-      "myvolume_deps.min.js"
+      "jquery.js",
+      "jquery.jplayer.min.js",
+      "underscore.js",
+      "backbone.js",
+      "application.js",
+      "jquery_extension.js"
   ]
   MYVOLUME_JS_APP = [
-      "myvolume_app.min.js"
+      "chart.view.js",
+      "charts.view.js",
+      "chart.model.js",
+      "chart.collection.js",
+      "song.view.js",
+      "songs.view.js",
+      "songstable.view.js",
+      "song.model.js",
+      "song.collection.js",
+      "workspace.js"
   ]
 
   # For nginx:
