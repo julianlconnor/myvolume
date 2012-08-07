@@ -5,16 +5,10 @@ require 'net/http'
 
 class HomeController < ApplicationController
 
-  before_filter :authenticate
-
-  def authenticate
-    if !current_user
-      flash[:error] = "You must log in to see that page."
-      redirect_to :controller => "sessions", :action => "index"
-    end
-  end
-
   def index
+    respond_to do |format|
+      format.html
+    end
   end
   
   def playtrack

@@ -1,15 +1,7 @@
 class ChartsController < ApplicationController
   #attr_accessible 
-  before_filter :authenticate
-  load_and_authorize_resource :only => [:index]
   # GET /charts
   # GET /charts.xml
-  def authenticate
-    if !current_user
-      flash[:error] = "You must log in to see that page."
-      redirect_to root_path
-    end
-  end
 
   def snippet(title, wordcount)  
     title.split[0..(wordcount-1)].join(" ") + (title.split.size > wordcount ? "..." : "") 

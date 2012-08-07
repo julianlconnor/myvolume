@@ -166,6 +166,7 @@ DEPENDENCIES
   haml
   json
   mongrel
+  nokogiri
   omniauth
   pg (~> 0.11.0)
   rails (= 3.0.0)
