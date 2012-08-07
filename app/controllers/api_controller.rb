@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'open-uri'
 require 'net/http'
-require 'mysql'
 
 class ApiController < ApplicationController
   def fetch_new_charts
